@@ -8,6 +8,7 @@ class Home extends Controller
 	public function register() {
 		$this->view('info/Register');
 	}
+	public function login() {
+		$this->view('info/Login');
+	}
 }
-
-?>
