@@ -32,11 +32,11 @@
 				<input type="text" placeholder="Username">
 				<input type="email" placeholder="Email">
 				<input type="password" placeholder="Password">
+				<div class="main-login-register--container">
+					<button type="submit" class="green--btn">Register</button>
+					<button class="gray--btn">Or login instead</button>
+				</div>
 			</form>
-			<div class="main-login-register--container">
-				<button class="green--btn">Register</button>
-				<button class="gray--btn">Or login instead</button>
-			</div>
 		</div>
 	</main>
 
