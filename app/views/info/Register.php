@@ -33,8 +33,8 @@ include '../public/src/components/header.php'
         </select>
     </div>
     <div class="main-login-register--container">
-        <a href="<?=$ROOT?>/public/home/index" class="green--btn">Register</a>
-        <a href="<?=$ROOT?>/public/home/index" class="gary--btn">Or login instead</a>
+        <a href="<?=$ROOT?>/public/home/index" class="a--btn green--btn">Register</a>
+        <a href="<?=$ROOT?>/public/home/index" class="a--btn gray--btn">Or login instead</a>
     </div>
 </form>
 <footer>

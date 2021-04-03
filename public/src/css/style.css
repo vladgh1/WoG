@@ -94,14 +94,16 @@ button {
 	outline: none;
 }
 
-.green--btn {
-	background-color: #45462A;
-	color: #FBF5F3;
+.a--btn {
+	font-family: Alata;
 	padding: 0.2rem 0.5rem;
 	border: solid 1px black;
 	border-radius: 5em;
-	left: 0;
-	bottom: 0;
+}
+
+.green--btn {
+	background-color: #45462A;
+	color: #FBF5F3;
 }
 
 /* .blue--btn {
