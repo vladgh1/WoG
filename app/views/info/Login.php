@@ -7,8 +7,8 @@ include '../public/src/components/header.php'
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
     <div class="main-login-register--container">
-    <a href="<?=$ROOT?>/public/home/index" class="a--btn green--btn">Login</a>
-        <a href="<?=$ROOT?>/public/home/index" class="a--btn gray--btn">Or register instead</a>
+    <a href="<?=$ROOT?>/public/home/loggedIN" class="a--btn green--btn">Login</a>
+        <a href="<?=$ROOT?>/public/info/register" class="a--btn gray--btn">Or register instead</a>
     </div>
 </form>
 

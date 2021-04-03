@@ -11,4 +11,7 @@ class Home extends Controller
 	public function login() {
 		$this->view('info/Login');
 	}
+	public function loggedIn() {
+		$this->view('home/loggedInIndex');
+	}
 }
