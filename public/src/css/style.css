@@ -192,3 +192,11 @@ button {
 	font-size: 1.2rem;
 	color: #FBF5F3;
 }
+
+.center--container {
+	position: absolute;
+	top: 50%;
+	left:50%;
+  transform: translate(-50%, -50%);
+	margin-right: 3rem;
+}
