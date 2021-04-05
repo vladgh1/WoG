@@ -2,7 +2,7 @@
 include '../public/src/components/header.php'
 ?>
 
-<form action="" method="get" class="center--container">
+<form action="" method="get" class="center--container set-login-form-width">
     <h3>Login now:</h3>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">

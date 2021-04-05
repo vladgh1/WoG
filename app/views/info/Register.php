@@ -2,7 +2,7 @@
 include '../public/src/components/header.php'
 ?>
 
-<form action="" method="get" class="center--container">
+<form action="" method="get" class="center--container set-register-form-width">
     <h3>Register now:</h3>
     <input type="text" placeholder="Username">
     <input type="email" placeholder="Email">

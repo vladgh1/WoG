@@ -4,16 +4,17 @@
 <html lang="en">
 
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Workout Generator - Register Page</title>
+	<title>Workout Generator</title>
 	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/style.css'>
 </head>
 
 <body>
 	<header>
-		<section>
+		<section class="main-menu--container">
 			<div class="logo--container">
 				<a href="<?= $ROOT ?>/public/home/index" class="logo-text">Workout Generator</a>
 			</div>

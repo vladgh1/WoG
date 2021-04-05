@@ -54,6 +54,7 @@ header {
 	display: block;
 	position: fixed;
 	width: 100%;
+	z-index: 1;
 }
 
 header section {
@@ -100,7 +101,6 @@ button {
 	border: solid 1px black;
 	border-radius: 5em;
 }
-
 .green--btn {
 	background-color: #45462A;
 	color: #FBF5F3;
@@ -176,10 +176,11 @@ button {
 	height: auto;
 }
 
-/* .motivational-text {
+ .motivational-text {
+	/* font-size: 10em; */
 	position: relative;
 	top: 50%;
-} */
+}
 
 .register-form--container {
 	display: inline-block;
@@ -200,10 +201,61 @@ button {
 	color: #FBF5F3;
 }
 
+.main-menu--container{
+	margin-bottom: 2em;
+}
+
+.set-login-form-width{
+	width: 18.1em;
+}
+.set-register-form-width{
+	margin-top:4em ;
+	width: 36.2em;
+}
+
 .center--container {
 	position: absolute;
 	top: 50%;
 	left:50%;
   transform: translate(-50%, -50%);
 	margin-right: 3rem;
+}
+
+
+@media screen and (max-width: 780px){
+	.motivational-text--container{
+	margin-top: 1em;
+	display: block;
+	width:70%;
+	font-size: 2em;
+	position: relative;	
+	top:0;
+	left:15%;
+	}
+	.landing-main--container{
+		flex-wrap:wrap;
+	}
+	.register-form{
+		position: relative;
+		display :block;
+		width:70%;
+		top: 0%;
+		left:15%;
+		/* transform: translate(100%,0); */
+	}
+	.logo-text{
+		font-size: 1.3em;
+	}
+	
+	.set-register-form-width{
+		width: 18.1em;
+		height:100%;
+	}
+}
+
+@media screen and (max-width: 660px){
+	.set-register-form-width{
+	width: 18.1em;
+	/* height:100%; */
+}
 }
