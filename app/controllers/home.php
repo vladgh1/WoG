@@ -9,15 +9,15 @@ class Home extends Controller
 		$this->view('home/main');
 	}
 	public function register() {
-		$this->view('info/Register');
+		$this->view('info/register');
 	}
 	public function login() {
-		$this->view('info/Login');
+		$this->view('info/login');
 	}
 	public function loggedIn() {
 		$this->view('home/loggedInIndex');
 	}
 	public function generator() {
-		$this->view('info/Generator');
+		$this->view('info/generator');
 	}
 }

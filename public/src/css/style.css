@@ -1,34 +1,33 @@
 /* Font declaration */
 @font-face {
-	font-family: Alata;
-	src: url("../../../public/src/fonts/Alata-Regular.ttf");
+  font-family: Alata;
+  src: url("../../../public/src/fonts/Alata-Regular.ttf");
 }
 
 @font-face {
-	font-family: DelaGothicOne;
-	src: url("../../../public/src/fonts/DelaGothicOne-Regular.ttf");
+  font-family: DelaGothicOne;
+  src: url("../../../public/src/fonts/DelaGothicOne-Regular.ttf");
 }
 
 @font-face {
-	font-family: FredokaOne;
-	src: url("../../../public/src/fonts/FredokaOne-Regular.ttf");
+  font-family: FredokaOne;
+  src: url("../../../public/src/fonts/FredokaOne-Regular.ttf");
 }
 
 @font-face {
-	font-family: TrainOne;
-	src: url("../../../public/src/fonts/TrainOne-Regular.ttf");
+  font-family: TrainOne;
+  src: url("../../../public/src/fonts/TrainOne-Regular.ttf");
 }
 
 @font-face {
-	font-family: ZillaSlabHighlightBold;
-	src: url("../../../public/src/fonts/ZillaSlabHighlight-Bold.ttf");
+  font-family: ZillaSlabHighlightBold;
+  src: url("../../../public/src/fonts/ZillaSlabHighlight-Bold.ttf");
 }
 
 @font-face {
-	font-family: ZillaSlabHighlightRegular;
-	src: url("../../../public/src/fonts/ZillaSlabHighlight-Regular.ttf");
+  font-family: ZillaSlabHighlightRegular;
+  src: url("../../../public/src/fonts/ZillaSlabHighlight-Regular.ttf");
 }
-
 
 /*
 
@@ -43,210 +42,184 @@ Main colors:
 */
 
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* body {
 } */
 
 header {
-	display: block;
-	position: fixed;
-	width: 100%;
-	z-index: 1;
+  display: block;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 header section {
-	background-color: #793627;
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  background-color: #793627;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 a {
-	text-decoration: none;
-	font-family: TrainOne;
-	color: #FBF5F3;
-	-webkit-transition: color 0.5s;
-    transition: color 0.5s;
+  text-decoration: none;
+  font-family: TrainOne;
+  color: #fbf5f3;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
 }
 
 a:hover {
-	color: #C8C9A6;
+  color: #c8c9a6;
 }
 
 input {
-	background-color: #282B28;
-	color: #FBF5F3;
-	font-family: Alata;
-	font-size: 1.5rem;
-	padding: 0.5rem;
-	border-radius: 0.3rem;
-	margin: 5px 0;
+  background-color: #282b28;
+  color: #fbf5f3;
+  font-family: Alata;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 5px 0;
 }
 
 button {
-	border-radius: 0.5rem;
-	padding: 0.2rem 0.5rem;
-	font-family: Alata;
-	font-size: 1.2rem;
-	outline: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  font-family: Alata;
+  font-size: 1.2rem;
+  outline: none;
 }
 
 .a--btn {
-	font-family: Alata;
-	padding: 0.2rem 0.5rem;
-	border: solid 1px black;
-	border-radius: 5em;
+  font-family: Alata;
+  padding: 0.2rem 0.5rem;
+  border: solid 1px black;
+  border-radius: 5em;
 }
 .green--btn {
-	background-color: #45462A;
-	color: #FBF5F3;
+  background-color: #45462a;
+  color: #fbf5f3;
 }
-
-/* .blue--btn {
-
-}
-
-.red--btn {
-
-}
-
-.white--btn {
-
-} */
 
 .gray--btn {
-	background-color: #dd6300;
-	color: #000000;
+  background-color: #a7a7a7;
+  color: #282b28;
+}
+
+.gray--btn:hover {
+  color: #575857;
 }
 
 .logo--container {
-	padding: 3px;
+  padding: 3px;
 }
 
 .logo-text {
-	font-family: DelaGothicOne;
-	font-size: 2rem;
-	color: #FBF5F3;
+  font-family: DelaGothicOne;
+  font-size: 2rem;
+  color: #fbf5f3;
 }
 
 .header-login-register--container {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-login-register--container a {
-	margin: 0.8em;
+  margin: 0.8em;
 }
 
 .main-login-register--container {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-
 .workout-background-image {
-	width: 100vw;
-	height: 100vh;
-	background-image: linear-gradient(to left, rgba(162, 74, 54, 0.87), #a24a3654), url("https://images.unsplash.com/photo-1581009137042-c552e485697a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to left, rgba(162, 74, 54, 0.87), #a24a3654),
+    url("https://images.unsplash.com/photo-1581009137042-c552e485697a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .motivational-text--container {
-	font-family: ZillaSlabHighlightBold;
-	font-size: 3rem;
+  font-family: ZillaSlabHighlightBold;
+  font-size: 3rem;
 }
 
 .landing-main--container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .motivational-text--container {
-	display: inline-block;
-	width: 40%;
-	height: auto;
+  display: inline-block;
+  width: 40%;
+  height: auto;
 }
 
- .motivational-text {
-	/* font-size: 10em; */
-	position: relative;
-	top: 50%;
+.motivational-text {
+  /* font-size: 10em; */
+  position: relative;
+  top: 50%;
 }
 
 .register-form--container {
-	display: inline-block;
-	margin-right: 3rem;
+  display: inline-block;
+  margin-right: 3rem;
 }
 
 .register-form {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-end;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .register-form h3 {
-	font-family: Alata;
-	font-size: 1.2rem;
-	color: #FBF5F3;
+  font-family: Alata;
+  font-size: 1.2rem;
+  color: #fbf5f3;
 }
 
-.main-menu--container{
-	margin-bottom: 2em;
+.main-menu--container {
+  margin-bottom: 2em;
 }
 
-.set-login-form-width{
-	width: 18.1em;
+.set-login-form-width {
+  width: 18.1em;
 }
-.set-register-form-width{
-	margin-top:4em ;
-	width: 36.2em;
+.set-register-form-width {
+  margin-top: 4em;
+  width: 36.2em;
 }
 
 .center--container {
-	position: absolute;
-	top: 50%;
-	left:50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-	margin-right: 3rem;
+  margin-right: 3rem;
 }
 
-.side-btn{
-	left: 10em;
+.side-btn {
+  left: 10em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .error-container {
   text-align: center;
   font-size: 180px;
-  font-family: 'Catamaran', sans-serif;
+  font-family: "Catamaran", sans-serif;
   font-weight: 800;
   margin: 20px 15px;
 }
@@ -254,7 +227,7 @@ button {
   display: inline-block;
   line-height: 0.7;
   position: relative;
-  color: #FFB485;
+  color: #ffb485;
 }
 .error-container > span {
   display: inline-block;
@@ -262,11 +235,11 @@ button {
   vertical-align: middle;
 }
 .error-container > span:nth-of-type(1) {
-  color: #D1F2A5;
+  color: #d1f2a5;
   animation: colordancing 4s infinite;
 }
 .error-container > span:nth-of-type(3) {
-  color: #F56991;
+  color: #f56991;
   animation: colordancing2 4s infinite;
 }
 .error-container > span:nth-of-type(2) {
@@ -276,135 +249,136 @@ button {
 }
 .error-container > span:nth-of-type(2):before,
 .error-container > span:nth-of-type(2):after {
-	border-radius: 0%;
-	content:"";
-	position: absolute;
-	top: 0; left: 0;
-	width: inherit; height: inherit;
+  border-radius: 0%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
   border-radius: 999px;
-	box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+  box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
+    inset 0 30px 0 rgba(239, 250, 180, 0.4),
+    inset -30px 0 0 rgba(255, 196, 140, 0.4),
+    inset 0 -30px 0 rgba(245, 105, 145, 0.4);
   animation: shadowsdancing 4s infinite;
 }
 .error-container > span:nth-of-type(2):before {
-	-webkit-transform: rotate(45deg);
-	   -moz-transform: rotate(45deg);
-			transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .screen-reader-text {
-    position: absolute;
-    top: -9999em;
-    left: -9999em;
+  position: absolute;
+  top: -9999em;
+  left: -9999em;
 }
 @keyframes shadowsdancing {
   0% {
     box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+      inset 0 30px 0 rgba(239, 250, 180, 0.4),
+      inset -30px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 -30px 0 rgba(245, 105, 145, 0.4);
   }
   25% {
     box-shadow: inset 30px 0 0 rgba(245, 105, 145, 0.4),
-				inset 0 30px 0 rgba(209, 242, 165, 0.4),
-				inset -30px 0 0 rgba(239, 250, 180, 0.4),	
-				inset 0 -30px 0 rgba(255, 196, 140, 0.4);
+      inset 0 30px 0 rgba(209, 242, 165, 0.4),
+      inset -30px 0 0 rgba(239, 250, 180, 0.4),
+      inset 0 -30px 0 rgba(255, 196, 140, 0.4);
   }
   50% {
-     box-shadow: inset 30px 0 0 rgba(255, 196, 140, 0.4),
-				inset 0 30px 0 rgba(245, 105, 145, 0.4),
-				inset -30px 0 0 rgba(209, 242, 165, 0.4),	
-				inset 0 -30px 0 rgba(239, 250, 180, 0.4);
+    box-shadow: inset 30px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 30px 0 rgba(245, 105, 145, 0.4),
+      inset -30px 0 0 rgba(209, 242, 165, 0.4),
+      inset 0 -30px 0 rgba(239, 250, 180, 0.4);
   }
   75% {
-   box-shadow: inset 30px 0 0 rgba(239, 250, 180, 0.4),
-				inset 0 30px 0 rgba(255, 196, 140, 0.4),
-				inset -30px 0 0 rgba(245, 105, 145, 0.4),	
-				inset 0 -30px 0 rgba(209, 242, 165, 0.4);
+    box-shadow: inset 30px 0 0 rgba(239, 250, 180, 0.4),
+      inset 0 30px 0 rgba(255, 196, 140, 0.4),
+      inset -30px 0 0 rgba(245, 105, 145, 0.4),
+      inset 0 -30px 0 rgba(209, 242, 165, 0.4);
   }
   100% {
     box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-				inset 0 30px 0 rgba(239, 250, 180, 0.4),
-				inset -30px 0 0 rgba(255, 196, 140, 0.4),	
-				inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+      inset 0 30px 0 rgba(239, 250, 180, 0.4),
+      inset -30px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 -30px 0 rgba(245, 105, 145, 0.4);
   }
 }
 @keyframes colordancing {
   0% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   25% {
-    color: #F56991;
+    color: #f56991;
   }
   50% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   75% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   100% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
 }
 @keyframes colordancing2 {
   0% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   25% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   50% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   75% {
-    color: #F56991;
+    color: #f56991;
   }
   100% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
 }
 
-@media screen and (max-width: 780px){
-	.motivational-text--container{
-	margin-top: 18%;
-	display: block;
-	width:70%;
-	font-size: 2.7em;
-	position: relative;	
-	top:0;
-	left:15%;
-	}
-	.landing-main--container{
-		flex-wrap:wrap;
-	}
-	.register-form{
-		position: relative;
-		display :block;
-		width: 18.1em;
-		top: 0%;
-		right:-50%
-		/* transform: translate(100%,0); */
-	}
-	.register-form--container{
+@media screen and (max-width: 780px) {
+  .motivational-text--container {
+    margin-top: 18%;
+    display: block;
+    width: 70%;
+    font-size: 2.7em;
+    position: relative;
+    top: 0;
+    left: 15%;
+  }
+  .landing-main--container {
+    flex-wrap: wrap;
+  }
+  .register-form {
+    position: relative;
+    display: block;
+    width: 18.1em;
+    top: 0%;
+    right: -50%;
+    /* transform: translate(100%,0); */
+  }
+  .register-form--container {
+    width: 100%;
+    right: 15%;
+  }
+  .logo-text {
+    font-size: 1.3em;
+  }
 
-		width: 100%;
-		right:15%;
-	}
-	.logo-text{
-		font-size: 1.3em;
-	}
-	
-	.set-register-form-width{
-		width: 18.1em;
-		height:100%;
-	}
+  .set-register-form-width {
+    width: 18.1em;
+    height: 100%;
+  }
 }
 
-@media screen and (max-width: 660px){
-	.set-register-form-width{
-	width: 18.1em;
-	/* height:100%; */
-}
+@media screen and (max-width: 660px) {
+  .set-register-form-width {
+    width: 18.1em;
+    /* height:100%; */
+  }
 }
