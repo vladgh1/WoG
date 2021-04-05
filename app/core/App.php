@@ -8,11 +8,14 @@ class App
 
 	public function __construct() {
 		$url=$this->parseURL();
-		if(isset($url[0]))
+		if(isset($url[0])) {
 			if (file_exists('../app/controllers/' . $url[0] . '.php')) {
 				$this->controller = $url[0];
 				unset($url[0]);
+			} else {
+				$this->method = 'error';
 			}
+		}
 
 		require_once '../app/controllers/' . $this->controller . '.php';
 
@@ -22,6 +25,8 @@ class App
 			if (method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 				unset($url[1]);
+			} else {
+				$this->method = 'error';
 			}
 		}
 

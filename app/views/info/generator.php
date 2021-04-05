@@ -1,7 +1,7 @@
 <?php global $ROOT; ?>
 
 <!DOCTYPE html>
-<html lang="en" style=" background-color: #61889e;">
+<html lang="en">
 
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1">

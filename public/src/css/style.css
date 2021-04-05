@@ -46,8 +46,9 @@ Main colors:
   padding: 0;
 }
 
-/* body {
-} */
+body {
+	background-color: #793627;
+}
 
 header {
   display: block;
@@ -66,7 +67,7 @@ header section {
 
 a {
   text-decoration: none;
-  font-family: TrainOne;
+  font-family: Alata;
   color: #fbf5f3;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -140,7 +141,7 @@ button {
 }
 
 .workout-background-image {
-  width: 100vw;
+  width: auto;
   height: 100vh;
   background-image: linear-gradient(to left, rgba(162, 74, 54, 0.87), #a24a3654),
     url("https://images.unsplash.com/photo-1581009137042-c552e485697a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
