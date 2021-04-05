@@ -1,7 +1,7 @@
 <?php global $ROOT; ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style=" background-color: #61889e;">
 
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,7 +16,7 @@
 	<header>
 		<section class="main-menu--container">
 			<div class="logo--container">
-				<a href="<?= $ROOT ?>/public/home/index" class="logo-text">Workout Generator</a>
+				<a href="<?= $ROOT ?>/public/home/main" class="logo-text">Workout Generator</a>
 			</div>
 			<div class="header-login-register--container">
 

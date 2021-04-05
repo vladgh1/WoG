@@ -5,6 +5,9 @@ class Home extends Controller
 	public function index() {
 		$this->view('home/index');
 	}
+	public function main() {
+		$this->view('home/main');
+	}
 	public function register() {
 		$this->view('info/Register');
 	}
