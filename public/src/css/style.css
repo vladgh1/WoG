@@ -47,7 +47,7 @@ Main colors:
 }
 
 body {
-	background-color: #793627;
+  background-color: #793627;
 }
 
 header {
@@ -344,29 +344,24 @@ button {
 
 @media screen and (max-width: 780px) {
   .motivational-text--container {
-    margin-top: 18%;
+    margin-top: 1em;
     display: block;
-    width: 70%;
+	position: absolute;
+	top: 1rem;
+    width: 80%;
     font-size: 2.7em;
-    position: relative;
-    top: 0;
-    left: 15%;
   }
+
   .landing-main--container {
     flex-wrap: wrap;
   }
-  .register-form {
-    position: relative;
-    display: block;
-    width: 18.1em;
-    top: 0%;
-    right: -50%;
-    /* transform: translate(100%,0); */
-  }
+
   .register-form--container {
-    width: 100%;
-    right: 15%;
+    position: absolute;
+	bottom: 2rem;
+	right: 0;
   }
+  
   .logo-text {
     font-size: 1.3em;
   }
@@ -380,6 +375,5 @@ button {
 @media screen and (max-width: 660px) {
   .set-register-form-width {
     width: 18.1em;
-    /* height:100%; */
   }
 }

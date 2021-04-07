@@ -18,7 +18,10 @@
 
 	<main class="landing-main--container workout-background-image">
 		<div class="motivational-text--container">
-			<h1 class="motivational-text">Just Do It!</h1>
+			<h1 class="motivational-text"><?php
+				$text = json_decode(file_get_contents($ROOT . '/public/data/motivational-text.json'));
+				echo $text->text;
+			?></h1>
 		</div>
 		<div class="register-form--container ">
 			<form action="" method="get" class="register-form ">
