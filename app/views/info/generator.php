@@ -19,15 +19,21 @@
 	<form action="" method="get" class="center--container">
 		<h3>Generate now:</h3>
 		<label for="luni">Luni</label>
+		<incarca ceva></incarca>
+		<label for="luni">Marti</label>
+		<incarca ceva></incarca>
 		<div id="luni">
+		<!-- <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> -->
+		</div>
 			<input type="number" placeholder="Hours of workout(min)">
 			<label for="Wtime">Workout Time(min):</label>
-			<input type="range" id="Wtime" min=0 max=180 step=1>
+			<input type="range" id="Wtime" min=0 max=180 step=1 value="90" class="slider" id="myRange">
 			<p>P unde afisam timpul!!!</p>
 			<label for="intensity">Workout Intensity:</label>
-			<input name="intensity" type="range" min=0 max=1000 step=1>
+			<input type="range" name="intensity" min=0 max=1000 step=1 value="500" class="slider" id="myRange">
 		</div>
 
+<button type="submit" >Aici dai sublit!!!</button>
 
 		<!-- <div>
 			<select>

@@ -17,9 +17,9 @@
 
 	<form action="" method="get" class="center--container set-register-form-width">
 		<h3>Register now:</h3>
-		<input type="text" placeholder="Username">
-		<input type="email" placeholder="Email">
-		<input type="password" placeholder="Password">
+		<input type="text" name="nume" placeholder="Username">
+		<input type="email" name="email" placeholder="Email">
+		<input type="password" name="pass" placeholder="Password">
 		<input type="password" placeholder="Confirm Password">
 		<input type="number" placeholder="Age">
 		<select default>

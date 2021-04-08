@@ -11,10 +11,10 @@
 	<title>Workout Generator</title>
 	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/style.css'>
 </head>
-
+<?php include '../public/src/components/header.php'; ?>
 <body>
 
-	<?php include '../public/src/components/header.php'; ?>
+	
 
 	<form action="" method="get" class="center--container set-login-form-width">
 		<h3>Login now:</h3>
@@ -25,9 +25,6 @@
 			<a href="<?= $ROOT; ?>/public/info/register" class="a--btn gray--btn">Or register instead</a>
 		</div>
 	</form>
-
-	<footer>
-	</footer>
 </body>
 
 </html>
