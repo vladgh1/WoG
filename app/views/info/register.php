@@ -23,7 +23,7 @@
 		<input type="password" placeholder="Confirm Password">
 		<input type="number" placeholder="Age">
 		<select default>
-			<option value="Not yet confirmed..." style="display: none;">--Please choose a gender role--</option>
+			<option value="Not yet confirmed..." style="display: none;">--Choose a gender--</option>
 			<option value="Attack Helicopter">Attack Helicopter</option>
 			<option value="Male">Male</option>
 			<option value="Female">Female</option>

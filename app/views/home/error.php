@@ -14,8 +14,8 @@
 
 <body>
 
-	<?php include $ROOT . '/public/src/components/header.php'; ?>
-	
+	<?php include '../public/src/components/header.php'; ?>
+	<br>
 	<section>
 		<section class="error-container">
 			<span>4</span>
@@ -24,8 +24,24 @@
 		</section>
 	</section>
 
-	<footer>
-	</footer>
+	<div class="tictactoe--container">
+        <table id="board" class="board">
+            <tr>
+                <td id="one" class="even"></td>
+                <td id="two"></td>
+                <td id="three" class="even"></td>
+            </tr>
+            <tr>
+                <td id="four"></td>
+                <td id="five" class="even"></td>
+                <td id="six"></td>
+            </tr>
+            <tr>
+                <td id="seven" class="even"></td>
+                <td id="eight"></td>
+                <td id="nine" class="even"></td>
+            </tr>
+        </table>
 
 </body>
 

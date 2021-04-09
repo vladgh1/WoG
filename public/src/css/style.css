@@ -118,7 +118,7 @@ a:hover {
   color: #c8c9a6;
 }
 
-input {
+input,select {
   background-color: #282b28;
   color: #fbf5f3;
   font-family: Alata;
@@ -127,6 +127,7 @@ input {
   border-radius: 0.3rem;
   margin: 5px 0;
 }
+
 
 button {
   border-radius: 0.5rem;
@@ -148,12 +149,12 @@ button {
 }
 
 .gray--btn {
-  background-color: #a7a7a7;
+  background-color: #6fb5b8;
   color: #282b28;
 }
 
 .gray--btn:hover {
-  color: #575857;
+  color: #b10000;
 }
 
 .logo--container {
@@ -204,7 +205,7 @@ button {
 
 .motivational-text--container {
   display: inline-block;
-  width: 40%;
+  width: 50%;
   height: auto;
 }
 
@@ -212,25 +213,6 @@ button {
   /* font-size: 10em; */
   position: relative;
   top: 50%;
-}
-
-.register-form--container {
-  display: inline-block;
-  margin-right: 3rem;
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-wrap: wrap;
-}
-
-.register-form h3 {
-  font-family: Alata;
-  font-size: 1.2rem;
-  color: #fbf5f3;
 }
 
 .main-menu--container {
@@ -247,10 +229,11 @@ button {
 
 .center--container {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin-right: 3rem;
+
 }
 
 .side-btn {
@@ -382,46 +365,125 @@ button {
   }
 }
 
-@media screen and (max-width: 860px) {
+.general-info--container{
+    position:absolute;
+    right: 15%;
+    top: 25%;
+    border: solid 1px black;
+    background-color: blanchedalmond;
+    border-radius: 5%;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0.2rem;
+}
+
+.general-info--container p,ul{
+    font-family: Alata;
+    font-size: 1rem;
+    
+}
+.general-info--container hr{
+  margin:0.5em 0px;
+  width: 90%;
+  color:rgb(41, 65, 65)
+}
+
+.tictactoe--container{
+  position: absolute;
+  width:300px;
+  height: 300px;
+  bottom: 5%;
+  left:41%;
+}
+
+.board {
+  float: center;
+  font-size: 250%;
+  font-weight: bold;
+  margin-right: 40px;
+}
+
+.board td {
+  height: 95px;
+  text-align: center;
+  vertical-align: middle;
+  width:100px;
+}
+
+.board td.best {
+  background-color: #F5F5F5;
+}
+
+.board #one,
+.board #two {
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+
+.board #three,
+.board #six {
+  border-bottom: 1px solid #CCC;
+}
+
+.board #four,
+.board #five {
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+
+.board #seven,
+.board #eight {
+  border-right: 1px solid #CCC;
+}
+
+.board td.highlight {
+  background-color: #F5F5F5;
+}
+
+
+@media screen and (max-width: 900px) {
   .motivational-text--container {
     margin-top: 1em;
     display: block;
 	  position: absolute;
 	  top: 1rem;
-    width: 80%;
-    font-size: 2.5rem;
+    width: 100%;
+    font-size: 2.2rem;
+
+  }
+
+  .general-info--container{
+    top:auto;
+    right: auto;
+    bottom: 1%;
+    transform: translate(-50%, 0);
+    left: 50%;
   }
 
   .landing-main--container {
     flex-wrap: wrap;
   }
-
-  .register-form--container {
-    position: absolute;
-	bottom: 2rem;
-	right: 0;
-  }
   
   .logo-text {
     font-size: 1.3em;
   }
-
-  .set-register-form-width {
-    width: 18.1em;
-    height: 100%;
-  }
 }
 
-@media screen and (max-width: 660px) {
-  .set-register-form-width {
-    width: 18.1em;
-  }
-}
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 630px) {
 	.motivational-text--container {
 		display: none;
 	}
+
+  .general-info--container{
+    top:20%;
+    right: auto;
+		transform: translate(-50%, 0);
+    left: 50%;
+    bottom: auto;
+  }
 
 	.register-form--container {
 		right: 50%;

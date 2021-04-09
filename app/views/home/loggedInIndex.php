@@ -26,9 +26,52 @@
 				echo $text->text;
 			?></h1>
 		</div>
-	</main>
-	<a class="a--btn gray--btn" style="position:absolute; right:10%; top:50%;" href="../info/generator">
-	Generate now!</a>
+</main>
+	<div class="general-info--container">
+		<p>
+			Nume: Popescu
+		</p>
+		<hr>
+		<p>
+			Prenume: Ion
+		</p>
+		<hr>
+		<p>
+			Varsta: 43
+		</p>
+		<!-- calcul din data nasterii! -->
+		<hr>
+		<p>
+			Inaltime: 180cm
+		</p>
+		<hr>
+		<p>
+			Greutate: 70
+		</p>
+		<hr>
+		<p>
+			Planul pe azi:
+		</p>
+		<ul>
+			<li>
+				<input type="checkbox">
+				30 min alergare
+			</li>
+			<li>
+			<input type="checkbox">
+				25 min incalzire
+			</li>
+			<li>
+			<input type="checkbox">
+				40 min ceva...
+			</li>
+		</ul>
+	<hr>
+		<a class="a--btn gray--btn" href="../info/generator">
+	Generate another program!</a>
+	</div>
+	<!-- <a class="a--btn gray--btn" style="position:absolute; right:10%; top:50%;" href="../info/generator">
+	Generate now!</a> -->
 
 	<footer>
 	</footer>
