@@ -451,10 +451,19 @@ button {
   font-family: Alata;
   background-color:none  ;
   overflow-x: hidden;
-  color:rgb(170, 252, 153);
+  color: rgb(223, 213, 124); 
   font-size: 1.2em;
 }
 
+::-webkit-scrollbar{
+  width:15px;
+}
+::-webkit-scrollbar-track {
+  background: #979797; 
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(223, 213, 124); 
+}
 @media screen and (max-width: 900px) {
   .motivational-text--container {
     margin-top: 1em;
