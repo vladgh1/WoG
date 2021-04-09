@@ -246,6 +246,7 @@ button {
   font-family: "Catamaran", sans-serif;
   font-weight: 800;
   margin: 20px 15px;
+  right: 50%;  
 }
 .error-container > span {
   display: inline-block;
@@ -393,10 +394,10 @@ button {
 
 .tictactoe--container{
   position: absolute;
-  width:300px;
+  width:auto;
   height: 300px;
-  bottom: 5%;
-  left:41%;
+  right: 48.5%;
+  transform: translate(50%,0);  
 }
 
 .board {
@@ -443,6 +444,16 @@ button {
   background-color: #F5F5F5;
 }
 
+.infoPanel--container{
+  overflow: scroll;
+  width: 500px;
+  height: 300px;
+  font-family: Alata;
+  background-color:none  ;
+  overflow-x: hidden;
+  color:rgb(170, 252, 153);
+  font-size: 1.2em;
+}
 
 @media screen and (max-width: 900px) {
   .motivational-text--container {
