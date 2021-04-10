@@ -16,24 +16,19 @@
 
 	<?php include '../public/src/components/loggedInHeader.php'; ?>
 
-	<form action="" method="get" class="center--container">
-		<h3>Generate now:</h3>
-		<label for="luni">Luni</label>
-		<incarca ceva></incarca>
-		<label for="luni">Marti</label>
-		<incarca ceva></incarca>
-		<div id="luni">
-		<!-- <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> -->
-		</div>
-			<input type="number" placeholder="Hours of workout(min)">
-			<label for="Wtime">Workout Time(min):</label>
-			<input type="range" id="Wtime" min=0 max=180 step=1 value="90" class="slider" id="myRange">
-			<p>P unde afisam timpul!!!</p>
-			<label for="intensity">Workout Intensity:</label>
-			<input type="range" name="intensity" min=0 max=1000 step=1 value="500" class="slider" id="myRange">
+	<form action="#" method="get" class="center--container">
+		<h1 class="generator-form-title font--alata">Generate now:</h1>
+		<div id="generate" class="generator-form--container">
+			
+			<label for="Wtime" class="font--alata">Workout Time(min):</label>
+			<input type="range" id="intensity" min=0 max=180 step=1 value="90" class="slider" id="timeRange">
+			<!-- <p>P unde afisam timpul!!!</p> -->
+			<label for="intensity" class="font--alata">Workout Intensity:</label>
+			<input type="range" name="intensity" min=0 max=1000 step=1 value="500" class="slider" id="intensity">
+			<input type="number" placeholder="Hours of workout(min)">	
 		</div>
 
-<button type="submit" >Aici dai sublit!!!</button>
+<button type="submit" class="a--btn green--btn">Submit</button>
 
 		<!-- <div>
 			<select>
@@ -49,7 +44,7 @@
 			</select>
 		</div> -->
 		<div class="main-login-register--container">
-			<a href="<?= $ROOT ?>/public/home/loggedIN" class="a--btn green--btn">JUST DO IT!</a>
+			<a href="<?= $ROOT ?>/public/home/loggedIN" class="a--btn gray--btn">Back to the main page!!</a>
 		</div>
 	</form>
 

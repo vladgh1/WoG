@@ -70,8 +70,6 @@
 		<a class="a--btn gray--btn" href="../info/generator">
 	Generate another program!</a>
 	</div>
-	<!-- <a class="a--btn gray--btn" style="position:absolute; right:10%; top:50%;" href="../info/generator">
-	Generate now!</a> -->
 
 	<footer>
 	</footer>

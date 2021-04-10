@@ -16,8 +16,8 @@
 
 	
 
-	<form action="" method="get" class="center--container set-login-form-width">
-		<h3>Login now:</h3>
+	<form action="#" method="get" class="center--container set-login-form-width">
+		<h3 class="font--alata">Login now:</h3>
 		<input type="text" placeholder="Username">
 		<input type="password" placeholder="Password">
 		<div class="main-login-register--container">
