@@ -14,7 +14,7 @@
 
 <body>
 
-	<?php include '../public/src/components/header.php'; ?>
+	<?php include '../public/src/components/loggedInHeader.php'; ?>
 
 	<form action="" method="get" class="center--container">
 		<h3>Generate now:</h3>
