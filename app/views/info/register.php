@@ -1,5 +1,7 @@
 	<?php global $ROOT; ?>
-
+	<?php
+	require 'dbconfig/config.php';
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -15,13 +17,13 @@
 	<body>
 		<?php include '../public/src/components/header.php'; ?>
 
-		<form action="" method="get" class="center--container set-register-form-width">
+		<form method="post" action="register" class="center--container set-register-form-width">
 			<h3 class="font--alata">Register now:</h3>
-			<input type="text" name="nume" placeholder="Username">
-			<input type="email" name="email" placeholder="Email">
-			<input type="password" name="pass" placeholder="Password">
-			<input type="password" placeholder="Confirm Password">
-			<input type="number" placeholder="Age">
+			<input type="text" name="username" placeholder="Username" required>
+			<input type="email" name="email" placeholder="Email" required>
+			<input type="password" name="password" placeholder="Password" required>
+			<input type="password" name="cpassword" placeholder="Confirm Password" required>
+			<input type="number" name="age" placeholder="Age">
 			<select>
 				<option value="Not yet confirmed..." style="display: none;">--Choose a gender--</option>
 				<option value="Attack Helicopter">Attack Helicopter</option>
@@ -31,7 +33,7 @@
 			</select>
 
 			<div>
-				<input type="number" placeholder="Height">
+				<input type="number" name="height" placeholder="Height">
 				<select>
 					<option value="cm">CM</option>
 					<option value="feet/inches">Feet/Inches</option>
@@ -39,17 +41,63 @@
 			</div>
 
 			<div>
-				<input type="number" placeholder="Weight">
+				<input type="number" name="weight" placeholder="Weight">
 				<select>
 					<option value="kg">Kg</option>
 					<option value="pounds">Pounds</option>
 				</select>
 			</div>
 			<div class="main-login-register--container">
-				<a href="<?= $ROOT; ?>/public/home/loggedIN" class="a--btn green--btn">Register</a>
-				<a href="<?= $ROOT; ?>/public/info/login" class="a--btn gray--btn">Or login instead</a>
+				<input type="submit" name="submit_btn" value="Sign Up">
+				<!-- <a href="<?= $ROOT; ?>/public/home/loggedIN" class="a--btn green--btn">Register</a>
+				<a href="<?= $ROOT; ?>/public/info/login" class="a--btn gray--btn">Or login instead</a> -->
 			</div>
 		</form>
+		
+		<?php
+			if(isset($_POST['submit_btn']))
+			{
+				//echo '<script type="text/javascript"> alert("Sign Up button clicked") </script>';
+				$username= $_POST['username'];
+				$email= $_POST['email'];
+				$password= $_POST['password'];
+				$cpassword= $_POST['cpassword'];
+				$age= $_POST['age'];
+				$height= $_POST['height'];
+				$weight = $_POST['weight'];
+
+				if($password==$cpassword)
+				{
+					$query="select * from user where username='$username'";
+					$query_run = mysqli_query($con,$query);
+					
+					if(mysqli_num_rows($query_run)>0)
+						{
+							echo '<script type="text/javascript"> alert("User already exists.. try another username") </script>';
+						}
+						else
+						{
+							$query="insert into user values('$username','$email','$password','$age','$height','$weight')";
+							$query_run = mysqli_query($con,$query);
+
+							if($query_run)
+							{
+								echo '<script type="text/javascript"> alert("User registered") </script>';
+							}
+							else
+							{
+								echo '<script type="text/javascript"> alert("Error!") </script>';
+
+							}
+						}
+				}
+				else
+				{
+					echo '<script type="text/javascript"> alert("Passwords do not match") </script>';
+				}
+			}
+		?>
+
 		<footer>
 		</footer>
 	</body>
