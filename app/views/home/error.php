@@ -10,39 +10,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Workout Generator</title>
 	<link rel="stylesheet" href='<?= $ROOT; ?>/public/src/css/style.css'>
+	<link rel="stylesheet" href='<?= $ROOT; ?>/public/src/css/errorPageStyle.css'>
+	<script src='<?= $ROOT; ?>/public/src/scripts/pushup-game.js'></script>
 </head>
 
 <body>
 
 	<?php include '../public/src/components/header.php'; ?>
-	<br>
-	<section>
-		<section class="error-container">
-			<span>4</span>
-			<span><span class="screen-reader-text">0</span></span>
-			<span>4</span>
-		</section>
-	</section>
+	<div class="error-code--container">
+		<h1 id="error-code">404</h1>
+		<p id="push-up-game-hint">space</p>
+	</div>
 
-	<div class="tictactoe--container">
-        <table id="board" class="board">
-            <tr>
-                <td id="one" class="even"></td>
-                <td id="two"></td>
-                <td id="three" class="even"></td>
-            </tr>
-            <tr>
-                <td id="four"></td>
-                <td id="five" class="even"></td>
-                <td id="six"></td>
-            </tr>
-            <tr>
-                <td id="seven" class="even"></td>
-                <td id="eight"></td>
-                <td id="nine" class="even"></td>
-            </tr>
-        </table>
-    </div>
+	<div id="push-up-game">
+		<div id="push-up-game-sprite" style="background: url('<?= $ROOT; ?>/public/src/sprites/workout.png') 0px 0px;"></div>
+	</div>
+
 </body>
 
 </html>

@@ -1,0 +1,62 @@
+* {
+	font-family: PressStart2P, serif;
+}
+
+body {
+	overflow: hidden;
+}
+
+.error-code--container {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#error-code {
+	font-size: 10rem;
+	color: #FBF5F3;
+}
+
+#push-up-game-hint {
+	font-size: 0.8rem;
+	color: #f3e356;
+	position: center;
+}
+
+#push-up-game {
+	position: absolute;
+	bottom: 10rem;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#push-up-game-sprite {
+	transform: scale(20);
+	image-rendering: pixelated;
+	height: 14px;
+	width: 18px;
+}
+
+@media screen and (max-width: 600px) {
+	#error-code {
+		font-size: 8rem;
+	}
+	
+	#push-up-game-sprite {
+		transform: scale(18);
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#error-code {
+		font-size: 5rem;
+	}
+
+	#push-up-game-sprite {
+		transform: scale(15);
+	}
+}

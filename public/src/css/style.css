@@ -29,6 +29,11 @@
   src: url("../../../public/src/fonts/ZillaSlabHighlight-Regular.ttf");
 }
 
+@font-face {
+  font-family: PressStart2P;
+  src: url("../../../public/src/fonts/PressStart2P-Regular.ttf");
+}
+
 /*
 
 Main colors:
@@ -45,11 +50,6 @@ Main colors:
   margin: 0;
   padding: 0;
 }
-
-
-
-
-
 
 
 .slider {
@@ -84,9 +84,8 @@ Main colors:
 }
 
 
-
 body {
-  background: linear-gradient(0deg, rgba(161,163,66,1) 10%, rgba(121,54,39,1) 90%);
+  background: linear-gradient(0deg, rgb(206, 92, 64) 10%, rgba(121,54,39,1) 90%);
   height: 100vh;
   width: 100vw;
 }
@@ -108,7 +107,7 @@ header section {
 
 a {
   text-decoration: none;
-  font-family: Alata;
+  font-family: Alata, serif;
   color: #fbf5f3;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -118,10 +117,10 @@ a:hover {
   color: #c8c9a6;
 }
 
-input,select {
+input, select {
   background-color: #282b28;
   color: #fbf5f3;
-  font-family: Alata;
+  font-family: Alata, serif;
   font-size: 1.5rem;
   padding: 0.5rem;
   border-radius: 0.3rem;
@@ -129,19 +128,19 @@ input,select {
 }
 
 .font--alata{
-  font-family: Alata;
+  font-family: Alata, serif;
 }
 
 button {
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
-  font-family: Alata;
+  font-family: Alata, serif;
   font-size: 1.2rem;
   outline: none;
 }
 
 .a--btn {
-  font-family: Alata;
+  font-family: Alata, serif;
   padding: 0.3rem 0.8rem;
   border: solid 1px black;
   border-radius: 5em;
@@ -166,7 +165,7 @@ button {
 }
 
 .logo-text {
-  font-family: DelaGothicOne;
+  font-family: DelaGothicOne, serif;
   font-size: 2rem;
   color: #fbf5f3;
 }
@@ -189,14 +188,14 @@ button {
 .workout-background-image {
   width: auto;
   height: 100vh;
-  
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .motivational-text--container {
-  font-family: ZillaSlabHighlightBold;
+  font-family: ZillaSlabHighlightBold, sans-serif;
   font-size: 2.5rem;
 }
 
@@ -214,7 +213,6 @@ button {
 }
 
 .motivational-text {
-  /* font-size: 10em; */
   position: relative;
   top: 50%;
 }
@@ -244,218 +242,25 @@ button {
   left: 10em;
 }
 
-.error-container {
-  text-align: center;
-  font-size: 180px;
-  font-family: "Catamaran", sans-serif;
-  font-weight: 800;
-  margin: 20px 15px;
-  right: 50%;  
-}
-.error-container > span {
-  display: inline-block;
-  line-height: 0.7;
-  position: relative;
-  color: #ffb485;
-}
-.error-container > span {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-}
-.error-container > span:nth-of-type(1) {
-  color: #d1f2a5;
-  animation: colordancing 4s infinite;
-}
-.error-container > span:nth-of-type(3) {
-  color: #f56991;
-  animation: colordancing2 4s infinite;
-}
-.error-container > span:nth-of-type(2) {
-  width: 120px;
-  height: 120px;
-  border-radius: 999px;
-}
-.error-container > span:nth-of-type(2):before,
-.error-container > span:nth-of-type(2):after {
-  border-radius: 0%;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: inherit;
-  height: inherit;
-  border-radius: 999px;
-  box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-    inset 0 30px 0 rgba(239, 250, 180, 0.4),
-    inset -30px 0 0 rgba(255, 196, 140, 0.4),
-    inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  animation: shadowsdancing 4s infinite;
-}
-.error-container > span:nth-of-type(2):before {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+.general-info--container p, ul{
+  font-family: Alata, serif;
+  font-size: 1rem;
 
-.screen-reader-text {
-  position: absolute;
-  top: -9999em;
-  left: -9999em;
-}
-@keyframes shadowsdancing {
-  0% {
-    box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-      inset 0 30px 0 rgba(239, 250, 180, 0.4),
-      inset -30px 0 0 rgba(255, 196, 140, 0.4),
-      inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  }
-  25% {
-    box-shadow: inset 30px 0 0 rgba(245, 105, 145, 0.4),
-      inset 0 30px 0 rgba(209, 242, 165, 0.4),
-      inset -30px 0 0 rgba(239, 250, 180, 0.4),
-      inset 0 -30px 0 rgba(255, 196, 140, 0.4);
-  }
-  50% {
-    box-shadow: inset 30px 0 0 rgba(255, 196, 140, 0.4),
-      inset 0 30px 0 rgba(245, 105, 145, 0.4),
-      inset -30px 0 0 rgba(209, 242, 165, 0.4),
-      inset 0 -30px 0 rgba(239, 250, 180, 0.4);
-  }
-  75% {
-    box-shadow: inset 30px 0 0 rgba(239, 250, 180, 0.4),
-      inset 0 30px 0 rgba(255, 196, 140, 0.4),
-      inset -30px 0 0 rgba(245, 105, 145, 0.4),
-      inset 0 -30px 0 rgba(209, 242, 165, 0.4);
-  }
-  100% {
-    box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
-      inset 0 30px 0 rgba(239, 250, 180, 0.4),
-      inset -30px 0 0 rgba(255, 196, 140, 0.4),
-      inset 0 -30px 0 rgba(245, 105, 145, 0.4);
-  }
-}
-@keyframes colordancing {
-  0% {
-    color: #d1f2a5;
-  }
-  25% {
-    color: #f56991;
-  }
-  50% {
-    color: #ffc48c;
-  }
-  75% {
-    color: #effab4;
-  }
-  100% {
-    color: #d1f2a5;
-  }
-}
-@keyframes colordancing2 {
-  0% {
-    color: #ffc48c;
-  }
-  25% {
-    color: #effab4;
-  }
-  50% {
-    color: #d1f2a5;
-  }
-  75% {
-    color: #f56991;
-  }
-  100% {
-    color: #ffc48c;
-  }
-}
-
-.general-info--container{
-    position:absolute;
-    right: 15%;
-    top: 25%;
-    border: solid 1px black;
-    background-color: blanchedalmond;
-    border-radius: 5%;
-    width: 300px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0.2rem;
-}
-
-.general-info--container p,ul{
-    font-family: Alata;
-    font-size: 1rem;
-    
 }
 .general-info--container hr{
-  margin:0.5em 0px;
+  margin: 0.5em 0;
   width: 90%;
-  color:rgb(41, 65, 65)
-}
-
-.tictactoe--container{
-  position: absolute;
-  width:auto;
-  height: 300px;
-  right: 48.5%;
-  transform: translate(50%,0);  
-}
-
-.board {
-  float: center;
-  font-size: 250%;
-  font-weight: bold;
-  margin-right: 40px;
-}
-
-.board td {
-  height: 95px;
-  text-align: center;
-  vertical-align: middle;
-  width:100px;
-}
-
-.board td.best {
-  background-color: #F5F5F5;
-}
-
-.board #one,
-.board #two {
-  border-right: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
-}
-
-.board #three,
-.board #six {
-  border-bottom: 1px solid #CCC;
-}
-
-.board #four,
-.board #five {
-  border-right: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
-}
-
-.board #seven,
-.board #eight {
-  border-right: 1px solid #CCC;
-}
-
-.board td.highlight {
-  background-color: #F5F5F5;
+  color: rgb(41, 65, 65)
 }
 
 .infoPanel--container{
   overflow: scroll;
   width: 500px;
   height: 300px;
-  font-family: Alata;
-  background-color:none  ;
+  font-family: Alata, serif;
+  background-color: transparent;
   overflow-x: hidden;
-  color: rgb(223, 213, 124); 
+  color: rgb(223, 213, 124);
   font-size: 1.2em;
 }
 
@@ -463,10 +268,10 @@ button {
   width:15px;
 }
 ::-webkit-scrollbar-track {
-  background: #979797; 
+  background: #979797;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(223, 213, 124); 
+  background: rgb(223, 213, 124);
 }
 .generator-form--container{
   width: 21rem;
@@ -475,7 +280,6 @@ button {
   flex-direction: column;
 }
 .generator-form--container input{
-  
   width :100%;
 }
 
@@ -490,11 +294,10 @@ button {
   .motivational-text--container {
     margin-top: 1em;
     display: block;
-	  position: absolute;
-	  top: 1rem;
+    position: absolute;
+    top: 1rem;
     width: 100%;
     font-size: 2.2rem;
-
   }
 
   .infoPanel--container{
@@ -514,34 +317,34 @@ button {
   .landing-main--container {
     flex-wrap: wrap;
   }
-  
+
   .logo-text {
     font-size: 1.3em;
   }
 }
 
 @media screen and (max-width: 630px) {
-	.motivational-text--container {
-		display: none;
-	}
+  .motivational-text--container {
+    display: none;
+  }
 
   .general-info--container{
     top:20%;
     right: auto;
-		transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
     left: 50%;
     bottom: auto;
   }
 
-	.register-form--container {
-		right: 50%;
-		transform: translate(50%, 0);
-		margin: 0;
-    
-	}
+  .register-form--container {
+    right: 50%;
+    transform: translate(50%, 0);
+    margin: 0;
+
+  }
 
   .set-register-form-width{
-      width: 15rem;
+    width: 15rem;
   }
 
   .set-register-form-width input,select{
@@ -558,12 +361,12 @@ button {
 }
 
 @media screen and (max-width: 360px) {
-	.main-menu--container {
-		font-size: 0.8rem;
-	}
+  .main-menu--container {
+    font-size: 0.8rem;
+  }
 
-	.register-form--container,
-	.register-form * {
-		font-size: 1rem;
-	}
+  .register-form--container,
+  .register-form * {
+    font-size: 1rem;
+  }
 }
