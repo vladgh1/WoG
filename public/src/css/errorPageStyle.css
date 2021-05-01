@@ -19,12 +19,39 @@ body {
 #error-code {
 	font-size: 10rem;
 	color: #FBF5F3;
+	-webkit-text-stroke-width: 0.05em;
+	-webkit-text-stroke-color: black;
 }
 
 #push-up-game-hint {
 	font-size: 0.8rem;
 	color: #f3e356;
-	position: center;
+	position: relative;
+	top: .5em;
+
+	animation: hint-movement;
+	-webkit-animation: hint-movement;
+	-moz-animation: hint-movement;
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+
+	animation-timing-function: cubic-bezier(.26,1.12,0,1);
+	-webkit-animation-timing-function: cubic-bezier(.26,1.12,0,1);
+	-moz-animation-timing-function: cubic-bezier(.26,1.12,0,1);
+
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	-moz-animation-direction: alternate;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+
+	animation-delay: 2s;
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
 }
 
 #push-up-game {
@@ -34,19 +61,42 @@ body {
 	transform: translate(-50%, 0);
 }
 
-#push-up-game-sprite {
+.push-up-game-sprite {
 	transform: scale(20);
 	image-rendering: pixelated;
+}
+
+#push-up-game-sprite-body {
 	height: 14px;
 	width: 18px;
+}
+
+#push-up-game-sprite-hands {
+	position: relative;
+	height: 8px;
+	width: 18px;
+}
+
+@keyframes game-hands-move-forward {
+	0% {top: 0}
+	100% {top: -80px}
+}
+
+@keyframes game-hands-move-backward {
+	from {top: -80px}
+	to {top: 0}
+}
+
+@keyframes hint-movement {
+	from {top: .5em}
+	to {top: 1.5em}
 }
 
 @media screen and (max-width: 600px) {
 	#error-code {
 		font-size: 8rem;
 	}
-	
-	#push-up-game-sprite {
+	.push-up-game-sprite {
 		transform: scale(18);
 	}
 }
@@ -56,7 +106,7 @@ body {
 		font-size: 5rem;
 	}
 
-	#push-up-game-sprite {
+	.push-up-game-sprite {
 		transform: scale(15);
 	}
 }

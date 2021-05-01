@@ -1,33 +1,32 @@
-let spritePadding = 18;
+let spritePadding = 2;
 let counter = 0;
 
-document.addEventListener('touchstart', pushdown, false);
+document.addEventListener('touchstart', pushDown, false);
 
-document.addEventListener('touchend', pushup, false);
+document.addEventListener('touchend', pushUp, false);
 
-document.addEventListener('touchcancel', pushup, false);
+document.addEventListener('touchcancel', pushUp, false);
 
 document.addEventListener('keydown', event => {
 	if (event.code === 'Space') {
-		pushdown();
+		pushDown();
 	}
 });
 
 document.addEventListener('keyup', event => {
 	if (event.code === 'Space') {
-		pushup();
+		pushUp();
 	}
 });
 
 
 
-function pushup() {
-	document.getElementById("push-up-game-sprite").style.backgroundPosition = "0px 0px";
+function pushUp() {
+	document.getElementById("push-up-game-sprite-hands").style.animation = "game-hands-move-backward 0.1s cubic-bezier(.15,1.01,.62,1.27) 1 normal forwards";
 	document.getElementById("push-up-game-hint").style.visibility = "hidden";
-	counter++;
-	document.getElementById("error-code").textContent = counter;
+	document.getElementById("error-code").textContent = (++counter).toString();
 }
 
-function pushdown() {
-	document.getElementById("push-up-game-sprite").style.backgroundPosition = spritePadding + "px 0px";
+function pushDown() {
+	document.getElementById("push-up-game-sprite-hands").style.animation = "game-hands-move-forward 0.1s cubic-bezier(.15,1.01,.62,1.27) 1 normal forwards";
 }

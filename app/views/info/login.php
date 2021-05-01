@@ -12,15 +12,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Workout Generator</title>
-	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/style.css'>
+	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/loginStyle.css'>
 </head>
 <?php include '../public/src/components/header.php'; ?>
 <body>
-
-	
-
 	<form action="#" method="post" class="center--container set-login-form-width">
-		<h3 class="font--alata">Login now:</h3>
+		<h3 class="login-text font--alata">Login now:</h3>
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
 		<div class="main-login-register--container">
@@ -29,6 +26,7 @@
 			<a href="<?= $ROOT; ?>/public/info/register" class="a--btn gray--btn">Or register instead</a> 
 		</div>
 	</form>
+
 	<?php
 	if(isset($_POST['login']))
 	{

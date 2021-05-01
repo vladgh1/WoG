@@ -23,7 +23,8 @@
 	</div>
 
 	<div id="push-up-game">
-		<div id="push-up-game-sprite" style="background: url('<?= $ROOT; ?>/public/src/sprites/workout.png') 0px 0px;"></div>
+		<div class="push-up-game-sprite" id="push-up-game-sprite-body" style="background: url('<?= $ROOT; ?>/public/src/sprites/workout-min.png') 0 0;"></div>
+        <div class="push-up-game-sprite" id="push-up-game-sprite-hands" style="background: url('<?= $ROOT; ?>/public/src/sprites/workout-min.png') 0 8px;"></div>
 	</div>
 
 </body>
