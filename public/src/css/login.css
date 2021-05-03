@@ -1,0 +1,13 @@
+.login-text {
+  color: white;
+}
+
+.set-login-form-width {
+  width: min-content;
+}
+
+.login-buttons--container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}

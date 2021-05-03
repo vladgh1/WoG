@@ -29,6 +29,9 @@ body {
 	position: relative;
 	top: .5em;
 
+	-webkit-text-stroke-width: 0.5px;
+	-webkit-text-stroke-color: #4f4012;
+
 	animation: hint-movement;
 	-webkit-animation: hint-movement;
 	-moz-animation: hint-movement;
