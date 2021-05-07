@@ -21,6 +21,9 @@
 		<form method="post" action="register" class="center--container set-register-form-width">
 			<h3 class="register-text font--alata">Register now:</h3>
 			<div class="register-form-block">
+				<input type="text" name="fullname" placeholder="Full Name" required>
+			</div>
+			<div class="register-form-block">
 				<input type="text" name="username" placeholder="Username" required>
 			</div>
 
@@ -38,32 +41,30 @@
 
 			<div class="register-form-block">
 				<input type="number" name="age" placeholder="Age">
-				<select>
-					<option value="Not yet confirmed..." style="display: none;">--Choose a gender--</option>
-					<option value="Attack Helicopter">Attack Helicopter</option>
+				<select name="gender" required>
+					<option value="" style="display: none;">Choose a gender</option>
 					<option value="Male">Male</option>
 					<option value="Female">Female</option>
-					<option value="Bruh....">Other</option>
 				</select>
 			</div>
 
 			<div class="register-form-block">
 				<input type="number" name="height" placeholder="Height">
-				<select>
+				<select name="typeheight" required>
 					<option value="cm">CM</option>
-					<option value="feet/inches">Feet/Inches</option>
+					<option value="feet/inches">Feet & Inches</option>
 				</select>
 			</div>
 
 			<div class="register-form-block">
 				<input type="number" name="weight" placeholder="Weight">
-				<select>
+				<select name="typeweight" required>
 					<option value="kg">Kg</option>
 					<option value="pounds">Pounds</option>
 				</select>
 			</div>
 			<div class="main-login-register--container">
-				<input type="submit" name="submit_btn pointable" value="Sign Up">
+				<input type="submit" name="submit_btn" value="Sign Up">
 				<!-- <a href="<?= $ROOT; ?>/public/home/loggedIN" class="a--btn green--btn">Register</a>
 				<a href="<?= $ROOT; ?>/public/info/login" class="a--btn gray--btn">Or login instead</a> -->
 			</div>
@@ -80,6 +81,10 @@
 				$age= $_POST['age'];
 				$height= $_POST['height'];
 				$weight = $_POST['weight'];
+				$gender = $_POST['gender'];
+				$typeheight= $_POST['typeheight'];
+				$typeweight = $_POST['typeweight'];
+				$fullname = $_POST['fullname'];
 
 				if($password==$cpassword)
 				{
@@ -92,8 +97,10 @@
 						}
 						else
 						{
-							$query="insert into user values('$username','$email','$password','$age','$height','$weight')";
+							$query="insert into user values('$username','$email','$password')";
 							$query_run = mysqli_query($con,$query);
+							$query2="insert into userinfo (fullname,age,height,weight,typeweight,typeheight,gender,username) values('$fullname','$age','$height','$weight','$typeweight','$typeheight','$gender','$username')";
+							$query_run2=mysqli_query($con,$query2);
 
 							if($query_run)
 							{
