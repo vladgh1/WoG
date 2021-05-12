@@ -63,7 +63,7 @@
 				</select>
 			</div>
 			<div class="main-login-register--container">
-				<input type="submit" name="submit_btn pointable" value="Sign Up">
+				<input type="submit" name="submit_btn" value="Sign Up">
 				<!-- <a href="<?= $ROOT; ?>/public/home/loggedIN" class="a--btn green--btn">Register</a>
 				<a href="<?= $ROOT; ?>/public/info/login" class="a--btn gray--btn">Or login instead</a> -->
 			</div>
@@ -72,7 +72,7 @@
 		<?php
 			if(isset($_POST['submit_btn']))
 			{
-				//echo '<script type="text/javascript"> alert("Sign Up button clicked") </script>';
+				// echo '<script type="text/javascript"> alert("Sign Up button clicked") </script>';
 				$username= $_POST['username'];
 				$email= $_POST['email'];
 				$password= $_POST['password'];

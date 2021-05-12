@@ -290,6 +290,13 @@ button {
   margin-bottom:1rem ;
 }
 
+.exercise--container{
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  display: inline-block;
+}
+
 @media screen and (max-width: 900px) {
   .motivational-text--container {
     margin-top: 1em;
