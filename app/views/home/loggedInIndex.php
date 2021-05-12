@@ -1,5 +1,8 @@
 <?php global $ROOT; ?>
-
+<?php
+	$con = mysqli_connect("localhost","root","") or die("Unable to connect");
+	mysqli_select_db($con,"logindb");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,24 +32,48 @@
 </main>
 	<div class="general-info--container">
 		<p>
-			Nume: Popescu
+			Nume: <?php
+				 $sql ="SELECT fullname FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+			?>
 		</p>
 		<hr>
 		<p>
-			Prenume: Ion
-		</p>
-		<hr>
-		<p>
-			Varsta: 43
+			Varsta: <?php
+				 $sql ="SELECT age FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+			?>
 		</p>
 		<!-- calcul din data nasterii! -->
 		<hr>
 		<p>
-			Inaltime: 180cm
+			Inaltime: <?php
+				 $sql ="SELECT height FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+				 $sql ="SELECT typeheight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+			?>
 		</p>
 		<hr>
 		<p>
-			Greutate: 70
+			Greutate: <?php
+				 $sql ="SELECT weight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+				 $sql ="SELECT typeweight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+				 $result = mysqli_query($con,$sql);
+				 $row = mysqli_fetch_row($result);
+				 echo $row[0];
+			?>
 		</p>
 		<hr>
 		<p>

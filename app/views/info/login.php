@@ -1,7 +1,10 @@
 <?php global $ROOT; ?>
 <?php
-	session_start();
-	require 'dbconfig/config.php';
+session_start();
+require 'dbconfig/config.php';
+include 'includes/retrieve.php';
+include 'includes/functions.php';
+//include 'includes/logic.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +19,7 @@
 	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/login.css'>
 </head>
 <?php include '../public/src/components/header.php'; ?>
+
 <body>
 	<form action="#" method="post" class="center--container set-login-form-width">
 		<h3 class="login-text font--alata">Login now:</h3>
@@ -23,24 +27,21 @@
 		<input type="password" name="password" placeholder="Password">
 		<div class="login-buttons--container">
 			<input type="submit" name="login" value="Log In" class="pointable">
-			<a href="<?= $ROOT; ?>/public/info/register" class="a--btn gray--btn pointable">Or register instead</a> 
+			<a href="<?= $ROOT; ?>/public/info/register" class="a--btn gray--btn pointable">Or register instead</a>
 		</div>
 	</form>
 
 	<?php
-	if(isset($_POST['login']))
-	{
-		$username=$_POST['username'];
-		$password=$_POST['password'];
-		$query="select * from user WHERE username='$username' and password='$password'";
-		$query_run=mysqli_query($con,$query);
-		if(mysqli_num_rows($query_run)>0)
-		{
-			$_SESSION['username']=$username;
+	if (isset($_POST['login'])) {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$query = "select * from user WHERE username='$username' and password='$password'";
+		$query_run = mysqli_query($con, $query);
+		if (mysqli_num_rows($query_run) > 0) {
+			$_SESSION['username'] = $username;
+			$_SESSION['status'] = true;
 			header("location:$ROOT/public/home/loggedIn");
-		}
-		else
-		{
+		} else {
 			echo '<script type="text/javascript"> alert("Invalid credentials") </script>';
 		}
 	}
