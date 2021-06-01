@@ -34,7 +34,7 @@ include 'includes/functions.php';
 	<?php
 	if (isset($_POST['login'])) {
 		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$query = "select * from user WHERE username='$username' and password='$password'";
 		$query_run = mysqli_query($con, $query);
 		if (mysqli_num_rows($query_run) > 0) {

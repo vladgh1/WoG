@@ -90,6 +90,7 @@
 				{
 					$query="select * from user where username='$username'";
 					$query_run = mysqli_query($con,$query);
+					$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 					
 					if(mysqli_num_rows($query_run)>0)
 						{
@@ -97,7 +98,7 @@
 						}
 						else
 						{
-							$query="insert into user values('$username','$email','$password')";
+							$query="insert into user values('$username','$email','$hashed_password')";
 							$query_run = mysqli_query($con,$query);
 							$query2="insert into userinfo (fullname,age,height,weight,typeweight,typeheight,gender,username) values('$fullname','$age','$height','$weight','$typeweight','$typeheight','$gender','$username')";
 							$query_run2=mysqli_query($con,$query2);
