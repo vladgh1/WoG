@@ -1,4 +1,3 @@
-<?php global $ROOT; ?>
 <?php
 session_start();
 require 'dbconfig/config.php';
@@ -15,12 +14,13 @@ include 'includes/functions.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Workout Generator</title>
-	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/style.css'>
-	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/login.css'>
+	<link rel="stylesheet" href='<?= APPROOT ?>/public/src/css/style.css'>
+	<link rel="stylesheet" href='<?= APPROOT ?>/public/src/css/login.css'>
 </head>
-<?php include '../public/src/components/header.php'; ?>
 
 <body>
+	<?php require APPROOT . '/views/includes/header.php'?>
+
 	<form action="#" method="post" class="center--container set-login-form-width">
 		<h3 class="login-text font--alata">Login now:</h3>
 		<input type="text" name="username" placeholder="Username">
