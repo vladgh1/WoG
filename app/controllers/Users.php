@@ -252,6 +252,7 @@ class Users extends Controller {
 	public function logout() {
 		unset($_SESSION['user']);
 		unset($_SESSION['email']);
+		header('location:' . URLROOT . '/public/home/');
 	}
 
 	private function stdHeight(float $height, string $type) {

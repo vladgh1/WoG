@@ -1,7 +1,3 @@
-<?php global $ROOT; ?>
-<?php
-require 'dbconfig/config.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +6,17 @@ require 'dbconfig/config.php';
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Workout Generator</title>
-	<link rel="stylesheet" href='<?= $ROOT ?>/public/src/css/style.css'>
+	<title><?= APPNAME ?> - generated result</title>
+	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
 </head>
 
 <body>
+	<?php require_once APPROOT . '/includes/loggedInHeader'; ?>
 
-	<?php include '../public/src/components/loggedInHeader.php';
-	$intensity = $_SESSION['intensity'];
+	<!-- Only HTML code -->
+	<!-- For functionality use controller and model -->
+
+	<!-- $intensity = $_SESSION['intensity'];
 	$Pfocus= $_SESSION['Pfocus'];
 	$Sfocus= $_SESSION['Sfocus'];
 	$Wtime= $_SESSION['Wtime'];
@@ -60,7 +59,7 @@ require 'dbconfig/config.php';
 			echo "<br>";
 		}
 
-	?>
+	?> -->
 
 	<footer>
 	</footer>
