@@ -14,4 +14,7 @@ class Home extends Controller
 	public function generator() {
 		$this->view('info/generator');
 	}
+	public function generatorRez() {
+		$this->view('info/generatorResults');
+	}
 }
