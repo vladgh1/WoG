@@ -18,7 +18,7 @@
 
 	<?php include '../public/src/components/loggedInHeader.php'; ?>
 
-	<form action="#" method="get" class="center--container">
+	<form action="" method="get" class="center--container">
 		<h1 class="generator-form-title font--alata">Generate now:</h1>
 		<div id="generate" class="generator-form--container">
 			
@@ -80,59 +80,15 @@
 <?php
 			if(isset($_GET['generate']))
 			{
-				
-				//echo '<script type="text/javascript"> alert("Sign Up button clicked") </script>';
-				$Wtime= $_GET['Wtime'];
-				$intensity= $_GET['intensity'];
-				$intended= $_GET['intended'];
-				$Pfocus= $_GET['Pfocus'];
-				$Sfocus= $_GET['Sfocus'];
+				$_SESSION['Wtime']= $_GET['Wtime'];
+				$_SESSION['intensity']= $_GET['intensity'];
+				$_SESSION['intended']= $_GET['intended'];
+				$_SESSION['Pfocus']= $_GET['Pfocus'];
+				$_SESSION['Sfocus']= $_GET['Sfocus'];
 
-				$Primary="select * from work where intended='$intended' and focus='$Pfocus'";
-				$Secondary="select * from work where intended='$intended' and focus='$Sfocus'";
-				$query_Primary = mysqli_query($con,$Primary);
-				$query_Secondary = mysqli_query($con,$Secondary);
-				
-				// echo mysqli_fetch_array($query_Primary, MYSQLI_NUM);
-				$nrExercises=$Wtime/15;
-				$nrSecondaryExercise=0;
-				$nrPrimaryExercise=0;
-				if(($Pfocus==$Sfocus && $Pfocus!="None") || $Sfocus=="None" && $Pfocus!="None")
-				$nrPrimaryExercise=$nrExercises;
-				else if($Pfocus=="None" && $Sfocus!="None"){
-					$nrSecondaryExercise=$nrExercises;
-				}
-				else if($Pfocus!="None" && $Sfocus!="None"){
-				$nrPrimaryExercise=ceil($nrExercises/2);
-				$nrSecondaryExercise=$nrExercises-$nrPrimaryExercise;
-				}
-
-				// echo $nrPrimaryExercise." ".$nrSecondaryExercise;
-
-				if($query_Primary->num_rows>0)
-				foreach($query_Primary as $exercise)
-				{
-					if($nrPrimaryExercise==0)break;
-					$nrPrimaryExercise--;
-					// echo $exercise["nume"]." ". $exercise["intensitate".$intensity];
-					echo "<a href='".$exercise["link"]."'><img class='exercise--container' src='". $exercise["photo"] ."'></a>";
-					echo "<br>";
-				}
-				if($query_Secondary->num_rows>0 && $Pfocus!=$Sfocus)
-				foreach($query_Secondary as $exercise)
-				{
-					if($nrSecondaryExercise==0)break;
-					$nrSecondaryExercise--;
-					// echo $exercise["nume"]." ". $exercise["intensitate".$intensity];
-					echo "<a href='".$exercise["link"]."'><img class='exercise--container' src='". $exercise["photo"] ."'></a>";
-					echo "<br>";
-				}
+				header("location:../info/generatorRez");
 			}
 		?>
-		
-		<!-- <div class="main-login-register--container">
-			<a href="<?= $ROOT ?>/public/home/loggedIN" class="a--btn gray--btn">Back to the main page!!</a>
-		</div> -->
 	</form>	
 
 	<footer>

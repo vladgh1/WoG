@@ -22,7 +22,8 @@ include 'includes/functions.php';
 
 <body>
 	<form action="#" method="post" class="center--container set-login-form-width">
-		<h3 class="login-text font--alata">Login now:</h3>
+
+		<h3 class="login-text font--alata">Your new program</h3>
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
 		<div class="login-buttons--container">
