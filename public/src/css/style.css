@@ -232,9 +232,10 @@ button {
   margin-bottom: 2em;
 }
 
-.set-register-form-width {
-  margin-top: 4em;
-  width: 36.2em;
+.main-login-register--container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .center--container {

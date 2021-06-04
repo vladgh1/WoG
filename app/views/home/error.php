@@ -7,9 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Workout Generator</title>
-	<link rel="stylesheet" href='<?= APPROOT ?>/public/src/css/style.css'>
-	<link rel="stylesheet" href='<?= APPROOT ?>/public/src/css/errorPage.css'>
-	<script src='<?= APPROOT ?>/public/src/scripts/pushup-game.js'></script>
+	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
+	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/errorPage.css'>
+	<script src='<?= URLROOT ?>/public/src/scripts/pushup-game.js'></script>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
 	</div>
 
 	<div id="push-up-game">
-		<div class="push-up-game-sprite" id="push-up-game-sprite-body" style="background: url('<?= APPROOT ?>/public/src/sprites/workout-min.png') 0 0;"></div>
-        <div class="push-up-game-sprite" id="push-up-game-sprite-hands" style="background: url('<?= APPROOT ?>/public/src/sprites/workout-min.png') 0 8px;"></div>
+		<div class="push-up-game-sprite" id="push-up-game-sprite-body" style="background: url('<?= URLROOT ?>/public/src/sprites/workout-min.png') 0 0;"></div>
+        <div class="push-up-game-sprite" id="push-up-game-sprite-hands" style="background: url('<?= URLROOT ?>/public/src/sprites/workout-min.png') 0 8px;"></div>
 	</div>
 </body>
 
