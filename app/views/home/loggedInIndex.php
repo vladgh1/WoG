@@ -29,78 +29,63 @@ $con = mysqli_connect("localhost","root","12345") or die("Unable to connect");
 				echo $text->text;
 			?></h1>
 		</div>
-</main>
-<a class="a--btn gray--btn" href="../info/generator">
-	Generate another program!</a>
-	
-	</div>
-	<div class="general-info--container">
-		<p>
-			Nume: <?php
-
-				 $sql ="select fullname FROM userinfo WHERE username= '{$_SESSION["username"]}' ";
-				 $result = mysqli_query($con,$sql) or die( mysqli_error($con));;
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-				 echo $result;
-			?>
-		</p>
-		<hr>
-		<p>
-			Varsta: <?php
-				 $sql ="SELECT age FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-				 $result = mysqli_query($con,$sql);
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-			?>
-		</p>
-		<!-- calcul din data nasterii! -->
-		<hr>
-		<p>
-			Inaltime: <?php
-				 $sql ="SELECT height FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-				 $result = mysqli_query($con,$sql);
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-				 $sql ="SELECT typeheight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-				 $result = mysqli_query($con,$sql);
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-			?>
-		</p>
-		<hr>
-		<p>
-			Greutate: <?php
-				 $sql ="SELECT weight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-				 $result = mysqli_query($con,$sql);
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-				 $sql ="SELECT typeweight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-				 $result = mysqli_query($con,$sql);
-				 $row = mysqli_fetch_row($result);
-				 echo $row[0];
-			?>
-		</p>
-		<hr>
-		<p>
-			Planul pe azi:
-		</p>
-		<ul>
-			<li>
-				<input type="checkbox">
-				30 min alergare
-			</li>
-			<li>
-			<input type="checkbox">
-				25 min incalzire
-			</li>
-			<li>
-			<input type="checkbox">
-				40 min ceva...
-			</li>
-		</ul>
-	<hr>
-		
+		<div class="general-info--container">
+			<p>Nume: <?php
+						$sql = "SELECT fullname FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+						$result = mysqli_query($con, $sql);
+						$row = mysqli_fetch_row($result);
+						echo $row[0];
+						?></p>
+			<hr>
+			<p>Varsta: <?php
+						$sql = "SELECT age FROM userinfo WHERE username='{$_SESSION['username']}'";
+						$result = mysqli_query($con, $sql);
+						$row = mysqli_fetch_row($result);
+						echo $row[0];
+						?></p>
+			<!-- calcul din data nasterii! -->
+			<hr>
+			<p>Inaltime: <?php
+							$sql = "SELECT height FROM userinfo WHERE username='{$_SESSION['username']}'";
+							$result = mysqli_query($con, $sql);
+							$row = mysqli_fetch_row($result);
+							echo $row[0];
+							$sql = "SELECT typeheight FROM userinfo WHERE username='{$_SESSION['username']}'";
+							$result = mysqli_query($con, $sql);
+							$row = mysqli_fetch_row($result);
+							echo $row[0];
+							?></p>
+			<hr>
+			<p>Greutate: <?php
+							$sql = "SELECT weight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+							$result = mysqli_query($con, $sql);
+							$row = mysqli_fetch_row($result);
+							echo $row[0];
+							$sql = "SELECT typeweight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
+							$result = mysqli_query($con, $sql);
+							$row = mysqli_fetch_row($result);
+							echo $row[0];
+							?></p>
+			<hr>
+			<p>Planul pe azi:</p>
+			<ul>
+				<li>
+					<input type="checkbox">
+					30 min alergare
+				</li>
+				<li>
+					<input type="checkbox">
+					25 min incalzire
+				</li>
+				<li>
+					<input type="checkbox">
+					40 min ceva...
+				</li>
+			</ul>
+			<hr>
+			<a id="generate--btn" class="a--btn gray--btn" href="../info/generator">Generate another program!</a>
+		</div>
+	</main>
 
 	<footer>
 	</footer>
