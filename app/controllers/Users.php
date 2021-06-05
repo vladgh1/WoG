@@ -13,6 +13,10 @@ class Users extends Controller {
 		$this->user_model = $this->model('User');
 	}
 
+	public function generator() {
+		$this->view('info/generator');
+	}
+
 	public function login() {
 		$data = [
 			'username' => '',
@@ -53,13 +57,11 @@ class Users extends Controller {
 
 			// Check if there are no errors
 			if (empty($data['usernameError'] && empty($data['passwordError']))) {
-				$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 				$loggedInUser = $this->user_model->login($data);
 				if ($loggedInUser) {
-					$this->createUserSession($$loggedInUser);
-					// $this->view('home/loggedIN');
+					$this->createUserSession($loggedInUser);
 				} else {
-					echo 'no';
+					echo $loggedInUser;
 					$data['passwordError'] = 'Password is incorrect';
 					// $this->view('info/login', $data);
 				}
@@ -246,13 +248,13 @@ class Users extends Controller {
 		session_start();
 		$_SESSION['user'] = $user->username;
 		$_SESSION['email'] = $user->email;
-		// header('location:' . URLROOT . '/public/home/loggedIN');
+		header('location:' . URLROOT . '/public/home/loggedIN');
 	}
 
 	public function logout() {
 		unset($_SESSION['user']);
 		unset($_SESSION['email']);
-		header('location:' . URLROOT . '/public/home/');
+		header('location:' . URLROOT . '/public/home/index');
 	}
 
 	private function stdHeight(float $height, string $type) {

@@ -11,9 +11,6 @@ class Home extends Controller
 	public function loggedIn() {
 		$this->view('home/loggedInIndex');
 	}
-	public function generator() {
-		$this->view('info/generator');
-	}
 	public function generatorRez() {
 		$this->view('info/generatorResults');
 	}

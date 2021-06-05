@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<?php require APPROOT . '/views/includes/header.php'?>
+	<?php require_once APPROOT . '/views/includes/header.php'?>
 
 	<main class="landing-main--container workout-background-image" style="<?php
 	$image = json_decode(file_get_contents(URLROOT . '/public/data/landing-page.json'));
