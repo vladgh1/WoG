@@ -2,6 +2,7 @@
 
 class User {
 	public $db;
+
 	public function __construct() {
 		$this->db = new Database();
 	}
@@ -13,13 +14,14 @@ class User {
 	}
 
 	public function login($data) {
-		// TODO: Change query to 'SELECT * FROM user u WHERE username = :username JOIN userinfo i ON u.username = i.username' 
-		$this->db->query('SELECT * FROM user WHERE username = :username');
+		$this->db->query('SELECT * FROM user u WHERE username = :username JOIN userinfo i ON u.username = i.username');
 		$this->db->bind(':username', $data['username']);
 		$row = $this->db->resultRow();
-		$hashed_password = $row->password;
-		if (password_verify($data['password'], $hashed_password)) {
-			return $row;
+		if ($row) {
+			$hashed_password = $row->password;
+			if (password_verify($data['password'], $hashed_password)) {
+				return $row;
+			}
 		}
 		return false;
 	}
@@ -29,7 +31,7 @@ class User {
 	}
 
 	private function addUser($data) {
-		$this->db->query('INSERT INTO user VALUES(:username, :email, :pass)');
+		$this->db->query('INSERT INTO user VALUES (:username, :email, :pass)');
 		$this->db->bind(':username', $data['username']);
 		$this->db->bind(':email', $data['email']);
 		$this->db->bind(':pass', $data['password']);
@@ -38,7 +40,7 @@ class User {
 
 	private function addUserInfo($data) {
 		// TODO: Solve the problem: row isn't added
-		$this->db->query('INSERT INTO userinfo VALUES(:fullname, :age, :userHeight, :userWeight, :gender, :username)');
+		$this->db->query('INSERT INTO userinfo VALUES (:fullname, :age, :userHeight, :userWeight, :gender, :username)');
 		$this->db->bind(':fullname', $data['fullname']);
 		$this->db->bind(':age', $data['age'], 'int');
 		$this->db->bind(':userHeight', $data['height'], 'int');

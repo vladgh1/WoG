@@ -25,8 +25,6 @@ class Users extends Controller {
 			'passwordError' => ''
 		];
 
-		$this->view('info/login', $data);
-
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post method
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -61,15 +59,16 @@ class Users extends Controller {
 				if ($loggedInUser) {
 					$this->createUserSession($loggedInUser);
 				} else {
-					echo $loggedInUser;
 					$data['passwordError'] = 'Password is incorrect';
-					// $this->view('info/login', $data);
 				}
 			}
 		}
+
+		$this->view('info/login', $data);
 	}
 
 	public function register() {
+		// TODO: Display errors in the view
 		$data = [
 			'fullname' => '',
 			'username' => '',
@@ -94,8 +93,6 @@ class Users extends Controller {
 			'weightError' => '',
 			'weightUnitError' => ''
 		];
-
-		$this->view('info/register', $data);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post method
@@ -131,7 +128,7 @@ class Users extends Controller {
 			if (empty($data['fullname'])) {
 				$data['fullnameError'] = 'Please enter your full name';
 			} elseif (!preg_match($this->fullname_validation, $data['fullname'])) {
-				$data['usernameError'] = 'Please enter your real full name';
+				$data['fullnameError'] = 'Please enter your real full name';
 			}
 
 			// Validate the username
@@ -184,10 +181,10 @@ class Users extends Controller {
 
 			// Validate the height
 			if (empty($data['height'])) {
-				$data['heightError'] = 'Please select  measure of your height';
+				$data['heightError'] = 'Please select measure of your height';
 			} elseif ($this->stdHeight($data['height'], $data['heightUnit']) <= 50 
 					|| $this->stdHeight($data['height'], $data['heightUnit']) > 300) {
-				$data['heightError'] = 'Selected measure  of height is not valid';
+				$data['heightError'] = 'Invalid height';
 			}
 
 			// Validate the height unit
@@ -199,10 +196,10 @@ class Users extends Controller {
 
 			// Validate the weight
 			if (empty($data['weight'])) {
-				$data['weightError'] = 'Please select  measure of your weight';
+				$data['weightError'] = 'Please select measure of your weight';
 			} elseif ($this->stdWeight($data['weight'], $data['weightUnit']) <= 30 
 					|| $this->stdWeight($data['weight'], $data['weightUnit']) > 300) {
-				$data['weightError'] = 'Selected measure  of weight is not valid';
+				$data['weightError'] = 'Invalid weight';
 			}
 
 			// Validate the weight unit
@@ -242,6 +239,8 @@ class Users extends Controller {
 				}
 			}
 		}
+
+		$this->view('info/register', $data);
 	}
 
 	public function createUserSession($user) {

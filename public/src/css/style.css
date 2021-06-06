@@ -249,6 +249,13 @@ button {
   left: 10em;
 }
 
+.error--input {
+  border: #cfb3ae solid 3px;
+}
+.error--input::placeholder {
+  color: #d14e37;
+}
+
 .general-info--container {
   position: absolute;
   right: 10%;
