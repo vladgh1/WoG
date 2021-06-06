@@ -23,42 +23,14 @@
 											?></h1>
 		</div>
 		<div class="general-info--container">
-			<p>Nume: <?php
-						$sql = "SELECT fullname FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-						$result = mysqli_query($con, $sql);
-						$row = mysqli_fetch_row($result);
-						echo $row[0];
-						?></p>
+			<p>Nume: <?= $_SESSION['fullname']; ?></p>
 			<hr>
-			<p>Varsta: <?php
-						$sql = "SELECT age FROM userinfo WHERE username='{$_SESSION['username']}'";
-						$result = mysqli_query($con, $sql);
-						$row = mysqli_fetch_row($result);
-						echo $row[0];
-						?></p>
-			<!-- calcul din data nasterii! -->
+			<!-- TODO: calcul din data nasterii! -->
+			<p>Varsta: <?= $_SESSION['age']; ?></p>
 			<hr>
-			<p>Inaltime: <?php
-							$sql = "SELECT height FROM userinfo WHERE username='{$_SESSION['username']}'";
-							$result = mysqli_query($con, $sql);
-							$row = mysqli_fetch_row($result);
-							echo $row[0];
-							$sql = "SELECT typeheight FROM userinfo WHERE username='{$_SESSION['username']}'";
-							$result = mysqli_query($con, $sql);
-							$row = mysqli_fetch_row($result);
-							echo $row[0];
-							?></p>
+			<p>Inaltime: <?= $_SESSION['height']; ?></p>
 			<hr>
-			<p>Greutate: <?php
-							$sql = "SELECT weight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-							$result = mysqli_query($con, $sql);
-							$row = mysqli_fetch_row($result);
-							echo $row[0];
-							$sql = "SELECT typeweight FROM userinfo WHERE username= '{$_SESSION['username']}' ";
-							$result = mysqli_query($con, $sql);
-							$row = mysqli_fetch_row($result);
-							echo $row[0];
-							?></p>
+			<p>Greutate: <?= $_SESSION['weight']; ?></p>
 			<hr>
 			<p>Planul pe azi:</p>
 			<ul>

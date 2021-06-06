@@ -14,7 +14,7 @@ class User {
 	}
 
 	public function login($data) {
-		$this->db->query('SELECT * FROM user u WHERE username = :username JOIN userinfo i ON u.username = i.username');
+		$this->db->query('SELECT * FROM user u JOIN userinfo i ON u.username = i.username WHERE u.username = :username');
 		$this->db->bind(':username', $data['username']);
 		$row = $this->db->resultRow();
 		if ($row) {
@@ -39,7 +39,6 @@ class User {
 	}
 
 	private function addUserInfo($data) {
-		// TODO: Solve the problem: row isn't added
 		$this->db->query('INSERT INTO userinfo VALUES (:fullname, :age, :userHeight, :userWeight, :gender, :username)');
 		$this->db->bind(':fullname', $data['fullname']);
 		$this->db->bind(':age', $data['age'], 'int');

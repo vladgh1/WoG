@@ -14,7 +14,6 @@ class Users extends Controller {
 	}
 
 	public function getTop() {
-		echo 'a';
 		$data = [
 			'a' => 10,
 			'b' => 9
@@ -262,15 +261,24 @@ class Users extends Controller {
 	}
 
 	public function createUserSession($user) {
-		session_start();
+		$_SESSION['fullname'] = $user->fullname;
 		$_SESSION['user'] = $user->username;
 		$_SESSION['email'] = $user->email;
+		$_SESSION['age'] = $user->age;
+		$_SESSION['weight'] = $user->weight;
+		$_SESSION['height'] = $user->height;
+		$_SESSION['gender'] = $user->gender;
 		header('location:' . URLROOT . '/public/home/loggedIN');
 	}
 
 	public function logout() {
+		unset($_SESSION['fullname']);
 		unset($_SESSION['user']);
 		unset($_SESSION['email']);
+		unset($_SESSION['age']);
+		unset($_SESSION['weight']);
+		unset($_SESSION['height']);
+		unset($_SESSION['gender']);
 		header('location:' . URLROOT . '/public/home/index');
 	}
 

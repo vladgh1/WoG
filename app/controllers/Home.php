@@ -17,6 +17,7 @@ class Home extends Controller
 		$this->view('home/error');
 	}
 	public function loggedIn() {
+		session_start();
 		$this->view('home/loggedInIndex');
 	}
 	public function generatorRez() {
