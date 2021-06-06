@@ -16,8 +16,12 @@
 
 	<form action="<?= URLROOT ?>/public/users/login" method="post" class="center--container set-login-form-width">
 		<h3 class="login-text font--alata">Login now:</h3>
-		<input type="text" name="username" placeholder="Username">
-		<input type="password" name="password" placeholder="Password">
+		<input type="text" class="<?=(isset($data['usernameError']) && strlen($data['usernameError']) == 0) ? '' : 'error--input'?>" name="username"
+			placeholder="<?=(isset($data['usernameError']) && strlen($data['usernameError']) == 0) ? 'Username' : $data['usernameError'];?>"
+			value="<?=(isset($data['usernameError']) && strlen($data['usernameError']) == 0 && isset($data['username']) && strlen($data['username'])) ? $data['username'] : null?>" required>
+		<input type="password" class="<?=(isset($data['passwordError']) && strlen($data['passwordError']) == 0) ? '' : 'error--input'?>" name="password"
+			placeholder="<?=(isset($data['passwordError']) && strlen($data['passwordError']) == 0) ? 'Password' : $data['passwordError'];?>"
+			value="<?=(isset($data['passwordError']) && strlen($data['passwordError']) == 0 && isset($data['password']) && strlen($data['password'])) ? $data['password'] : null?>" required>
 		<div class="login-buttons--container">
 			<input type="submit" name="login" value="Log In" class="pointable">
 			<a href="<?= APPROOT ?>/public/info/register" class="a--btn gray--btn pointable">Or register instead</a>

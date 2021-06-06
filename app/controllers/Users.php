@@ -39,16 +39,16 @@ class Users extends Controller {
 
 			// Validate the username
 			if (empty($data['username'])) {
-				$data['usernameError'] = 'Please enter username';
+				$data['usernameError'] = 'Enter username';
 			} elseif (!preg_match($this->username_validation, $data['username'])) {
-				$data['usernameError'] = 'Please enter a valid username';
+				$data['usernameError'] = 'Enter a valid username';
 			}
 
 			// Validate the password
 			if (empty($data['password'])) {
-				$data['passwordError'] = 'Please enter password';
+				$data['passwordError'] = 'Enter password';
 			} elseif (strlen($data['password'] < 5)) {
-				$data['passwordError'] = 'Please enter a password longer than 4 characters';
+				$data['passwordError'] = 'Enter a password longer than 4 characters';
 			} elseif (!preg_match($this->password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
 			}
@@ -68,7 +68,6 @@ class Users extends Controller {
 	}
 
 	public function register() {
-		// TODO: Display errors in the view
 		$data = [
 			'fullname' => '',
 			'username' => '',
