@@ -7,6 +7,12 @@ class User {
 		$this->db = new Database();
 	}
 
+	public function existsUserWithUsername($username) {
+		$this->db->query('SELECT * FROM user WHERE username = :username');
+		$this->db->bind(':username', $username);
+		return $this->db->rowCount() > 0;
+	}
+
 	public function existsUserWithEmail($email) {
 		$this->db->query('SELECT * FROM user WHERE email = :email');
 		$this->db->bind(':email', $email);

@@ -1,0 +1,24 @@
+.logo--container {
+  padding: 3px;
+}
+
+.logo-text {
+  font-family: DelaGothicOne, serif;
+  font-size: 2rem;
+  color: #fbf5f3;
+}
+
+.header-login-register--container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-login-register--container a {
+  margin: 0.8em;
+}
+
+@media screen and (max-width: 900px) {
+  .logo-text {
+    font-size: 1.3em;
+  }
+}

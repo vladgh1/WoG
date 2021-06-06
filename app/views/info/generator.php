@@ -8,28 +8,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= APPNAME ?> - generator</title>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
+	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/generator.css'>
 <body>
 
-	<?php include '../public/src/components/loggedInHeader.php'; ?>
+	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 
-	<form action="" method="get" class="center--container">
-		<h1 class="generator-form-title font--alata">Generate now:</h1>
-		<div id="generate" class="generator-form--container">
-			
-			<label for="Wtime" class="font--alata">Workout Time(min):</label>
-			<!-- <input type="number" id="Wtime" name="Wtime" class="slider" id="timeRange"> -->
-			<select id="Wtime" name="Wtime">
-				<option value="0" style="display: none;">--Not Selected--</option>
-				<option value="15">15</option>
-				<option value="30">30</option>
-				<option value="45">45</option>
-				<option value="60">60</option>
-				<option value="75">75</option>
-				<option value="90">90</option>
-				<option value="105">105</option>
-				<option value="120">120</option>
-			</select>
+	<form action="<?= URLROOT ?>/public/users/generate" method="post" id="generator--form" class="center--container">
+		<h1 id="generator-form-title" class="font--alata">Generate now:</h1>
+		<div id="generate" id="generator-form--container">
+			<div id="workout-time--container">
+				<label for="Wtime" class="font--alata">Workout Time(min):</label>
+				<div id="workout-time-slider--container">
+					<input type="range" class="range--input" name="time" min=15 max=120 step=5 value="30" class="slider" id="workout-time"></input>
+					<p id="workout-minutes-content">30 min</p>
+				</div>
+			</div>
 			
 			<div id="workout-intensity--container">
 				<label for="intensity" class="font--alata">Workout Intensity:</label>
@@ -76,7 +70,7 @@
 			<!-- <a href=""><img src="\WoG\app\Img\Ramat.jpg"></a> -->
 		</div>
 		
-	<button type="submit" name="generate" class="a--btn green--btn pointable" id="generator-submit--btn">Submit</button>
+		<button type="submit" name="generate" class="a--btn green--btn pointable" id="generator-submit--btn">Submit</button>
 	</form>	
 
 	<script src='<?= URLROOT ?>/public/src/scripts/generator.js'></script></head>

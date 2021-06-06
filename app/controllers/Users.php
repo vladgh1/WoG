@@ -153,6 +153,8 @@ class Users extends Controller {
 				$data['usernameError'] = 'Please enter username';
 			} elseif (!preg_match(self::$username_validation, $data['username'])) {
 				$data['usernameError'] = 'Please enter a valid username';
+			} elseif ($this->user_model->existsUserWithUsername($data['username'])) {
+				$data['usernameError'] = 'Username already taken';
 			}
 
 			// Validate the email
@@ -161,7 +163,7 @@ class Users extends Controller {
 			} elseif (!preg_match(self::$email_validation, $data['email'])) {
 				$data['emailError'] = 'Please enter a valid email';
 			} elseif ($this->user_model->existsUserWithEmail($data['email'])) {
-				$data['emailError'] = 'User with this email is already registered';
+				$data['emailError'] = 'Email already taken';
 			}
 
 			// Validate the password
@@ -246,13 +248,11 @@ class Users extends Controller {
 				// standartize height and weight
 				$data['height'] = $this->stdHeight($data['height'], $data['heightUnit']);
 				$data['weight'] = $this->stdWeight($data['weight'], $data['weightUnit']);
-
+				
 				// Register user
 				if($this->user_model->register($data)) {
 					// Redirect to login page
 					header('location: ' . URLROOT . '/public/users/login');
-				} else {
-					die('Something went wrong');
 				}
 			}
 		}

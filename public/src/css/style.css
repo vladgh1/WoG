@@ -175,26 +175,6 @@ button {
   color: #b2acc0;
 }
 
-.logo--container {
-  padding: 3px;
-}
-
-.logo-text {
-  font-family: DelaGothicOne, serif;
-  font-size: 2rem;
-  color: #fbf5f3;
-}
-
-.header-login-register--container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.header-login-register--container a {
-  margin: 0.8em;
-}
-
-
 .workout-background-image {
   width: auto;
   height: 100vh;
