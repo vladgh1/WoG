@@ -49,4 +49,9 @@ class User {
 		$this->db->bind(':username', $data['username']);
 		return $this->db->execute();
 	}
+
+	public function getTop() {
+		$this->db->query('SELECT username, score FROM leaderboard ORDER BY score DESC');
+		return $this->db->resultSet();
+	}
 }

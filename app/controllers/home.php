@@ -3,7 +3,15 @@
 class Home extends Controller
 {
 	public function index() {
-		$this->view('home/index');
+		// TODO: remove test functionality
+		$data = [
+			'afsdhlfhsdl' => 10,
+			'b' => 9,
+			'c' => 8,
+		];
+		$this->view('home/index', $data);
+		// $user = new User();
+		// $this->view('home/index', $user->getTop());
 	}
 	public function error() {
 		$this->view('home/error');

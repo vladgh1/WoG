@@ -1,20 +1,39 @@
 <?php
 
 class Users extends Controller {
-	private $fullname_validation = "/^[A-Z][\-a-z]*\s([A-Z]\.)?[A-Z][\-a-z]*$/";
-	private $username_validation = "/^[_a-zA-Z0-9]+$/";
-	private $email_validation = "/^[^\s]+@[^\s]+\.[^\s]+$/i";
-	private $password_validation = "/^([a-z]+|[0-9]+|[A-Z]+)*$/";
-	private $gender_validation = "/^(fe)?male$/i";
-	private $height_unit_validation = "/^(cm|feet)$/i";
-	private $weight_unit_validation = "/^(kg|lb)$/i";
+	private static $fullname_validation = "/^[A-Z][\-a-z]*\s([A-Z]\.)?[A-Z][\-a-z]*$/";
+	private static $username_validation = "/^[_a-zA-Z0-9]+$/";
+	private static $email_validation = "/^[^\s]+@[^\s]+\.[^\s]+$/i";
+	private static $password_validation = "/^([a-z]+|[0-9]+|[A-Z]+)*$/";
+	private static $gender_validation = "/^(fe)?male$/i";
+	private static $height_unit_validation = "/^(cm|feet)$/i";
+	private static $weight_unit_validation = "/^(kg|lb)$/i";
 
 	public function __construct() {
 		$this->user_model = $this->model('User');
 	}
 
+	public function getTop() {
+		echo 'a';
+		$data = [
+			'a' => 10,
+			'b' => 9
+		];
+
+		// TODO: Test correctitude
+		// $users = $this->user_controller->getTop();
+		// if ($users) {
+		// 	foreach ($users as $user) {
+		// 		$data[$user->username] = $user->score;
+		// 	}
+		// }
+
+		return $data;
+	}
+
 	public function generator() {
 		$this->view('info/generator');
+		// TODO: Implement generator
 	}
 
 	public function login() {
@@ -40,7 +59,7 @@ class Users extends Controller {
 			// Validate the username
 			if (empty($data['username'])) {
 				$data['usernameError'] = 'Enter username';
-			} elseif (!preg_match($this->username_validation, $data['username'])) {
+			} elseif (!preg_match(self::$username_validation, $data['username'])) {
 				$data['usernameError'] = 'Enter a valid username';
 			}
 
@@ -49,7 +68,7 @@ class Users extends Controller {
 				$data['passwordError'] = 'Enter password';
 			} elseif (strlen($data['password'] < 5)) {
 				$data['passwordError'] = 'Enter a password longer than 4 characters';
-			} elseif (!preg_match($this->password_validation, $data['password'])) {
+			} elseif (!preg_match(self::$password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
 			}
 
@@ -126,21 +145,21 @@ class Users extends Controller {
 			// Validate the fullname
 			if (empty($data['fullname'])) {
 				$data['fullnameError'] = 'Please enter your full name';
-			} elseif (!preg_match($this->fullname_validation, $data['fullname'])) {
+			} elseif (!preg_match(self::$fullname_validation, $data['fullname'])) {
 				$data['fullnameError'] = 'Please enter your real full name';
 			}
 
 			// Validate the username
 			if (empty($data['username'])) {
 				$data['usernameError'] = 'Please enter username';
-			} elseif (!preg_match($this->username_validation, $data['username'])) {
+			} elseif (!preg_match(self::$username_validation, $data['username'])) {
 				$data['usernameError'] = 'Please enter a valid username';
 			}
 
 			// Validate the email
 			if (empty($data['email'])) {
 				$data['emailError'] = 'Please enter email';
-			} elseif (!preg_match($this->email_validation, $data['email'])) {
+			} elseif (!preg_match(self::$email_validation, $data['email'])) {
 				$data['emailError'] = 'Please enter a valid email';
 			} elseif ($this->user_model->existsUserWithEmail($data['email'])) {
 				$data['emailError'] = 'User with this email is already registered';
@@ -151,7 +170,7 @@ class Users extends Controller {
 				$data['passwordError'] = 'Please enter password';
 			} elseif (strlen($data['password'] < 5)) {
 				$data['passwordError'] = 'Please enter a password longer than 4 characters';
-			} elseif (!preg_match($this->password_validation, $data['password'])) {
+			} elseif (!preg_match(self::$password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
 			}
 
@@ -174,7 +193,7 @@ class Users extends Controller {
 			// Validate the gender
 			if (empty($data['gender'])) {
 				$data['genderError'] = 'Please enter your biological gender';
-			} elseif (!preg_match($this->gender_validation, $data['gender'])) {
+			} elseif (!preg_match(self::$gender_validation, $data['gender'])) {
 				$data['genderError'] = 'Selected gender is not valid';
 			}
 
@@ -189,7 +208,7 @@ class Users extends Controller {
 			// Validate the height unit
 			if (empty($data['heightUnit'])) {
 				$data['heightUnitError'] = 'Please select unit measure of your height';
-			} elseif (!preg_match($this->height_unit_validation, $data['heightUnit'])) {
+			} elseif (!preg_match(self::$height_unit_validation, $data['heightUnit'])) {
 				$data['heightUnitError'] = 'Selected measure unit of height is not valid';
 			}
 
@@ -204,7 +223,7 @@ class Users extends Controller {
 			// Validate the weight unit
 			if (empty($data['weightUnit'])) {
 				$data['weightUnitError'] = 'Please select unit measure of your weight';
-			} elseif (!preg_match($this->weight_unit_validation, $data['weightUnit'])) {
+			} elseif (!preg_match(self::$weight_unit_validation, $data['weightUnit'])) {
 				$data['weightUnitError'] = 'Selected measure unit of weight is not valid';
 			}
 

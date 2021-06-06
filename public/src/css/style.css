@@ -38,11 +38,11 @@
 
 Main colors:
 
-	White: #FBF5F3
-	Background: #A24936
-	Accent 1: #D36135
-	Accent 2: #45462A
-	Black: #282B28
+    White: #FBF5F3
+    Background: #A24936
+    Accent 1: #D36135
+    Accent 2: #45462A
+    Black: #282B28
 
 */
 
@@ -274,18 +274,27 @@ button {
   color: rgb(41, 65, 65)
 }
 
-.infoPanel--container{
+.info-panel--container {
   overflow: scroll;
-  width: 500px;
+  width: auto;
   height: 300px;
   font-family: Alata, serif;
+  font-size: 1.2em;
   background-color: transparent;
   overflow-x: hidden;
-  color: rgb(223, 213, 124);
-  font-size: 1.2em;
+  color: #dac932;
 }
 
-::-webkit-scrollbar{
+.info-panel--container td {
+  padding: .2em .5em;
+  text-align: center;
+}
+
+.info-panel--container::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar {
   width:15px;
 }
 
@@ -314,7 +323,7 @@ button {
     font-size: 2.2rem;
   }
 
-  .infoPanel--container{
+  .info-panel--container{
     position: absolute;
     right: 0;
     bottom: 10%;

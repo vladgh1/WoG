@@ -22,27 +22,21 @@
 				echo $text->text;
 			?></h1>
 		</div>
-		<div class="infoPanel--container">
-			<table>
+		<div class="info-panel--container">
+			<table border=1 frame=void rules=rows>
 				<tr>
 					<td>Rank</td>
 					<td>User</td>
 					<td>Score</td>
-				</tr>
 				<?php
-				$sql = "SELECT username, score FROM leaderboard ORDER BY score DESC";
-				$result = mysqli_query($con, $sql);
-				$rank = 1;
-				if (mysqli_num_rows($result)) {
-					while ($row = mysqli_fetch_assoc($result)) {
-						echo "<tr>
-						<td>{$rank}</td>
-						<td>{$row['username']}</td>
-						<td>{$row['score']}</td>
-						</tr>";
-							$rank++;
+					$rank = 1;
+					foreach($data as $user => $score) {
+						echo '</tr>';
+						echo '<td>' . $rank++ . '</td>';
+						echo '<td>' . $user . '</td>';
+						echo '<td>' . $score . '</td>';
+						echo '</tr>';
 					}
-				}
 				?>
 			</table>
 		</div>
