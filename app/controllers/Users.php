@@ -13,23 +13,6 @@ class Users extends Controller {
 		$this->user_model = $this->model('User');
 	}
 
-	public function getTop() {
-		$data = [
-			'a' => 10,
-			'b' => 9
-		];
-
-		// TODO: Test correctitude
-		// $users = $this->user_controller->getTop();
-		// if ($users) {
-		// 	foreach ($users as $user) {
-		// 		$data[$user->username] = $user->score;
-		// 	}
-		// }
-
-		return $data;
-	}
-
 	public function generator() {
 		$this->view('info/generator');
 		// TODO: Implement generator

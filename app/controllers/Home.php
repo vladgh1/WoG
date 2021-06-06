@@ -1,17 +1,18 @@
 <?php
 
-class Home extends Controller
-{
+class Home extends Controller {
+
 	public function index() {
-		// TODO: remove test functionality
-		$data = [
-			'afsdhlfhsdl' => 10,
-			'b' => 9,
-			'c' => 8,
-		];
+		$data = [];
+		$users = $this->model('User')->getTop();
+		
+		if ($users) {
+			foreach ($users as $user) {
+				$data[$user->username] = $user->score;
+			}
+		}
+		
 		$this->view('home/index', $data);
-		// $user = new User();
-		// $this->view('home/index', $user->getTop());
 	}
 	public function error() {
 		$this->view('home/error');
