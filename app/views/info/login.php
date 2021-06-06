@@ -25,7 +25,7 @@
 			value="<?=(isset($data['passwordError']) && strlen($data['passwordError']) == 0 && isset($data['password']) && strlen($data['password'])) ? $data['password'] : null?>" required>
 		<div class="login-buttons--container">
 			<input type="submit" name="login" value="Log In" class="pointable">
-			<a href="<?= APPROOT ?>/public/info/register" class="a--btn gray--btn pointable">Or register instead</a>
+			<a href="<?= URLROOT ?>/public/users/register" class="a--btn gray--btn pointable">Or register instead</a>
 		</div>
 	</form>
 </body>
