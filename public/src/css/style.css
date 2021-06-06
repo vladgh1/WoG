@@ -116,7 +116,7 @@ a {
 }
 
 a:hover {
-  color: #c8c9a6;
+  color: #ac6c6c;
 }
 
 input, select {
@@ -319,10 +319,6 @@ button {
 
   .landing-main--container {
     flex-wrap: wrap;
-  }
-
-  .logo-text {
-    font-size: 1.3em;
   }
 }
 
