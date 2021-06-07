@@ -2,9 +2,9 @@
 
 class Users extends Controller {
 	private static $fullname_validation = "/^[A-Z][\-a-z]*\s([A-Z]\.)?[A-Z][\-a-z]*$/";
-	private static $username_validation = "/^[_a-zA-Z0-9]+$/";
+	public static $username_validation = "/^[_a-zA-Z0-9]+$/";
 	private static $email_validation = "/^[^\s]+@[^\s]+\.[^\s]+$/i";
-	private static $password_validation = "/^([a-z]+|[0-9]+|[A-Z]+)*$/";
+	public static $password_validation = "/^([a-z]+|[0-9]+|[A-Z]+)*$/";
 	private static $gender_validation = "/^(fe)?male$/i";
 	private static $height_unit_validation = "/^(cm|feet)$/i";
 	private static $weight_unit_validation = "/^(kg|lb)$/i";
@@ -48,7 +48,7 @@ class Users extends Controller {
 			// Validate the password
 			if (empty($data['password'])) {
 				$data['passwordError'] = 'Enter password';
-			} elseif (strlen($data['password'] < 5)) {
+			} elseif (strlen($data['password'])< 5) {
 				$data['passwordError'] = 'Enter a password longer than 4 characters';
 			} elseif (!preg_match(self::$password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
@@ -59,12 +59,29 @@ class Users extends Controller {
 				$loggedInUser = $this->user_model->login($data);
 				if ($loggedInUser) {
 					$this->createUserSession($loggedInUser);
+					if (empty($data['username'])) {
+				$data['usernameError'] = 'Enter username';
+			} elseif (!preg_match(self::$username_validation, $data['username'])) {
+				$data['usernameError'] = 'Enter a valid username';
+			}
+
+			// Validate the password
+			if (empty($data['password'])) {
+				$data['passwordError'] = 'Enter password';
+			} elseif (strlen($data['password'] < 5)) {
+				$data['passwordError'] = 'Enter a password longer than 4 characters';
+			} elseif (!preg_match(self::$password_validation, $data['password'])) {
+				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
+			}
+					setcookie('username',$data['username'],time()+3600);
+					setcookie('password',$data['password'],time()+3600);
+
 				} else {
 					$data['passwordError'] = 'Password is incorrect';
 				}
 			}
 		}
-
+		
 		$this->view('info/login', $data);
 	}
 
