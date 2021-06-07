@@ -56,10 +56,6 @@ class Users extends Controller {
 		}
 	}
 
-	public function settings() {
-		$this->view('info/settings');
-	}
-
 	public function generator() {
 		$this->view('info/generator');
 		// TODO: Implement generator
@@ -301,6 +297,170 @@ class Users extends Controller {
 		$_SESSION['height'] = $user->height;
 		$_SESSION['gender'] = $user->gender;
 		header('location:' . URLROOT . '/public/home/loggedIN');
+	}
+
+	public function settings()
+	{
+		if (isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0) {
+			$dataUser = $this->user_model->getUser($_COOKIE['username']);
+			$data = [
+				'fullname' => $dataUser->fullname,
+				'username' => $_COOKIE['username'],
+				'password' => '',
+				'confirmPassword' => '',
+				'age' => $dataUser->age,
+				'gender' => $dataUser->gender,
+				'height' => $dataUser->height,
+				'heightUnit' => 'cm',
+				'weight' => $dataUser->weight,
+				'weightUnit' => 'kg',
+				'fullnameError' => '',
+				'passwordError' => '',
+				'confirmPasswordError' => '',
+				'ageError' => '',
+				'genderError' => '',
+				'heightError' => '',
+				'heightUnitError' => '',
+				'weightError' => '',
+				'weightUnitError' => ''
+			];
+
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+				$data = [
+					'fullname' => trim($_POST['fullname']),
+					'username' => $_COOKIE['username'],
+					'password' => trim($_POST['password']),
+					'confirmPassword' => trim($_POST['cpassword']),
+					'age' => trim($_POST['age']),
+					'gender' => trim($_POST['gender']),
+					'height' => trim($_POST['height']),
+					'heightUnit' => trim($_POST['typeheight']),
+					'weight' => trim($_POST['weight']),
+					'weightUnit' => trim($_POST['typeweight']),
+					'fullnameError' => '',
+					'usernameError' => '',
+					'emailError' => '',
+					'passwordError' => '',
+					'confirmPasswordError' => '',
+					'ageError' => '',
+					'genderError' => '',
+					'heightError' => '',
+					'heightUnitError' => '',
+					'weightError' => '',
+					'weightUnitError' => ''
+				];
+
+				// Validate the fullname
+				if (empty($data['fullname'])) {
+					$data['fullnameError'] = 'Please enter your full name';
+				} elseif (!preg_match(self::$fullname_validation, $data['fullname'])) {
+					$data['fullnameError'] = 'Please enter your real full name';
+				}
+
+				// Validate the password
+				if (empty($data['password'])) {
+					$data['passwordError'] = 'Please enter password';
+				} elseif (strlen($data['password']) < 5) {
+					$data['passwordError'] = 'Please enter a password longer than 4 characters';
+				} elseif (!preg_match(self::$password_validation, $data['password'])) {
+					$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
+				}
+
+				// Confirms the password
+				if (empty($data['confirmPassword'])) {
+					$data['confirmPasswordError'] = 'Please enter confirmPassword';
+				} elseif ($data['password'] != $data['confirmPassword']) {
+					$data['confirmPasswordError'] = 'Passwords do not match';
+				}
+
+				// Validate the age
+				if (empty($data['age'])) {
+					$data['ageError'] = 'Please enter your age';
+				} elseif ($data['age'] < 7) {
+					$data['ageError'] = 'You must be over 7 to use this register';
+				} elseif ($data['age'] > 120) {
+					$data['ageError'] = 'Please enter a valid age';
+				}
+
+				// Validate the gender
+				if (empty($data['gender'])) {
+					$data['genderError'] = 'Please enter your biological gender';
+				} elseif (!preg_match(self::$gender_validation, $data['gender'])) {
+					$data['genderError'] = 'Selected gender is not valid';
+				}
+
+				// Validate the height
+				if (empty($data['height'])) {
+					$data['heightError'] = 'Please select measure of your height';
+				} elseif (
+					$this->stdHeight($data['height'], $data['heightUnit']) <= 50
+					|| $this->stdHeight($data['height'], $data['heightUnit']) > 300
+				) {
+					$data['heightError'] = 'Invalid height';
+				}
+
+				// Validate the height unit
+				if (empty($data['heightUnit'])) {
+					$data['heightUnitError'] = 'Please select unit measure of your height';
+				} elseif (!preg_match(self::$height_unit_validation, $data['heightUnit'])) {
+					$data['heightUnitError'] = 'Selected measure unit of height is not valid';
+				}
+
+				// Validate the weight
+				if (empty($data['weight'])) {
+					$data['weightError'] = 'Please select measure of your weight';
+				} elseif (
+					$this->stdWeight($data['weight'], $data['weightUnit']) <= 30
+					|| $this->stdWeight($data['weight'], $data['weightUnit']) > 300
+				) {
+					$data['weightError'] = 'Invalid weight';
+				}
+
+				// Validate the weight unit
+				if (empty($data['weightUnit'])) {
+					$data['weightUnitError'] = 'Please select unit measure of your weight';
+				} elseif (!preg_match(self::$weight_unit_validation, $data['weightUnit'])) {
+					$data['weightUnitError'] = 'Selected measure unit of weight is not valid';
+				}
+
+				// Check if there are no errors
+				if (
+					empty($data['fullnameError'])
+					&& empty($data['passwordError'])
+					&& empty($data['confirmPasswordError'])
+					&& empty($data['ageError'])
+					&& empty($data['genderError'])
+					&& empty($data['heightError'])
+					&& empty($data['heightUnitError'])
+					&& empty($data['weightError'])
+					&& empty($data['weightUnitError'])
+				) {
+					// Hash password
+					$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+					$data['confirmPassword'] = $data['password'];
+
+					// standartize height and weight
+					$data['height'] = $this->stdHeight($data['height'], $data['heightUnit']);
+					$data['weight'] = $this->stdWeight($data['weight'], $data['weightUnit']);
+
+					if ($this->user_model->updateUser($data) && $this->user_model->updateUserInfo($data)) {
+						header('location: ' . URLROOT . '/public/home/loggedIN');
+					}
+				}
+			}
+
+			$this->view('info/settings', $data);
+		} else {
+			require_once 'Home.php';
+
+			$this->controller = 'Home';
+			$this->controller = new $this->controller;
+			$this->method = 'error';
+
+			call_user_func_array([$this->controller, $this->method], []);
+		}
 	}
 
 	public function logout() {

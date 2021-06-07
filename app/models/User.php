@@ -7,6 +7,16 @@ class User {
 		$this->db = new Database();
 	}
 
+	public function getUser($username) {
+		$this->db->query('SELECT * from user u JOIN userinfo i ON u.username = i.username WHERE u.username = :username');
+		$this->db->bind(':username', $username);
+		$row = $this->db->resultRow();
+		if ($row) {
+			return $row;
+		}
+		return false;
+	}
+
 	public function existsUserWithUsername($username) {
 		$this->db->query('SELECT * FROM user WHERE username = :username');
 		$this->db->bind(':username', $username);
@@ -61,6 +71,24 @@ class User {
 
 	private function addUserInfo($data) {
 		$this->db->query('INSERT INTO userinfo VALUES (:fullname, :age, :userHeight, :userWeight, :gender, :username)');
+		$this->db->bind(':fullname', $data['fullname']);
+		$this->db->bind(':age', $data['age'], 'int');
+		$this->db->bind(':userHeight', $data['height'], 'int');
+		$this->db->bind(':userWeight', $data['weight'], 'int');
+		$this->db->bind(':gender', $data['gender']);
+		$this->db->bind(':username', $data['username']);
+		return $this->db->execute();
+	}
+
+	public function updateUser($data) {
+		$this->db->query('UPDATE user SET password = :pass WHERE username = :username');
+		$this->db->bind(':pass', $data['password']);
+		$this->db->bind(':username', $data['username']);
+		return $this->db->execute();
+	}
+
+	public function updateUserInfo($data) {
+		$this->db->query('UPDATE userinfo SET fullname = :fullname, age = :age, height = :userHeight, weight = :userWeight, gender = :gender WHERE username = :username');
 		$this->db->bind(':fullname', $data['fullname']);
 		$this->db->bind(':age', $data['age'], 'int');
 		$this->db->bind(':userHeight', $data['height'], 'int');
