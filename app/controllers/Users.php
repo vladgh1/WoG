@@ -38,17 +38,17 @@ class Users extends Controller {
 				'passwordError' => ''
 			];
 
-			// Validate the username
+			// Validate username
 			if (empty($data['username'])) {
 				$data['usernameError'] = 'Enter username';
 			} elseif (!preg_match(self::$username_validation, $data['username'])) {
 				$data['usernameError'] = 'Enter a valid username';
 			}
 
-			// Validate the password
+			// Validate password
 			if (empty($data['password'])) {
 				$data['passwordError'] = 'Enter password';
-			} elseif (strlen($data['password'])< 5) {
+			} elseif (strlen($data['password']) < 4) {
 				$data['passwordError'] = 'Enter a password longer than 4 characters';
 			} elseif (!preg_match(self::$password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
@@ -58,24 +58,9 @@ class Users extends Controller {
 			if (empty($data['usernameError'] && empty($data['passwordError']))) {
 				$loggedInUser = $this->user_model->login($data);
 				if ($loggedInUser) {
-					$this->createUserSession($loggedInUser);
-					if (empty($data['username'])) {
-				$data['usernameError'] = 'Enter username';
-			} elseif (!preg_match(self::$username_validation, $data['username'])) {
-				$data['usernameError'] = 'Enter a valid username';
-			}
-
-			// Validate the password
-			if (empty($data['password'])) {
-				$data['passwordError'] = 'Enter password';
-			} elseif (strlen($data['password'] < 5)) {
-				$data['passwordError'] = 'Enter a password longer than 4 characters';
-			} elseif (!preg_match(self::$password_validation, $data['password'])) {
-				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
-			}
-					setcookie('username',$data['username'],time()+3600);
-					setcookie('password',$data['password'],time()+3600);
-
+					setcookie('username', $data['username'], time()+3600, '/', 'localhost');
+					setcookie('password', $data['password'], time()+3600, '/', 'localhost');
+					header('location:' . URLROOT . 'public/home/index');
 				} else {
 					$data['passwordError'] = 'Password is incorrect';
 				}
@@ -169,7 +154,7 @@ class Users extends Controller {
 			// Validate the password
 			if (empty($data['password'])) {
 				$data['passwordError'] = 'Please enter password';
-			} elseif (strlen($data['password'] < 5)) {
+			} elseif (strlen($data['password']) < 5) {
 				$data['passwordError'] = 'Please enter a password longer than 4 characters';
 			} elseif (!preg_match(self::$password_validation, $data['password'])) {
 				$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';

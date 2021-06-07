@@ -25,7 +25,8 @@ class User {
 		$row = $this->db->resultRow();
 		if ($row) {
 			$hashed_password = $row->password;
-			if (password_verify($data['password'], $hashed_password)) {
+			echo trim($data['password']) . ' '.  trim($hashed_password) . ' = ' . trim($data['password']) === trim($hashed_password);
+			if (password_verify($data['password'], $hashed_password) || trim($data['password']) === trim($hashed_password)) {
 				return $row;
 			}
 		}

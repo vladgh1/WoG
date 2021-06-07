@@ -1,35 +1,26 @@
 <?php
 
 class Home extends Controller {
-
 	
-	public function index() {
-		
+	public function index() {		
 		$data=[];
+		if (isset($_SESSION['username'])) {
+			header('location: ' . URLROOT . '/public/index/loggedIn');
+		}
 
-		if(isset($_COOKIE['username']) && $_COOKIE['username']>0 && isset($_COOKIE['password']) && $_COOKIE['password']>0)
-		{
-			
-			// $data = [
-			// 	'username' => trim($_COOKIE['username']),
-			// 	'password' => trim($_COOKIE['password']),
-			// 	'usernameError' => '',
-			// 	'passwordError' => ''
-			// ];
-			// if (empty($data['username'])) {
-			// 	$data['usernameError'] = 'Enter username';
-			// } elseif (!preg_match(Users::$username_validation, $data['username'])) {
-			// 	$data['usernameError'] = 'Enter a valid username';
-			// }
+		if(isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0 && isset($_COOKIE['password']) && strlen($_COOKIE['password']) > 0) {
+			$data = [
+				'username' => trim($_COOKIE['username']),
+				'password' => trim($_COOKIE['password']),
+			];
 
-			// if (empty($data['password'])) {
-			// 	$data['passwordError'] = 'Enter password';
-			// } elseif (strlen($data['password'] < 5)) {
-			// 	$data['passwordError'] = 'Enter a password longer than 4 characters';
-			// } elseif (!preg_match(Users::$password_validation, $data['password'])) {
-			// 	$data['passwordError'] = 'Password must contain at least one small character, one bit character and one digit';
-			// }
-			// header('location: ' . URLROOT . '/public/index/loggedIn');
+			// Check if there are no errors
+			$loggedInUser = $this->model('User')->login($data);
+			if ($loggedInUser) {
+				header('location: ' . URLROOT . '/public/home/loggedIn');
+			} else {
+				$data['passwordError'] = 'Password is incorrect';
+			}
 		}
 
 		
