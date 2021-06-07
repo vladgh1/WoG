@@ -4,6 +4,9 @@
 			<a href="<?= URLROOT ?>/public/home/loggedIN" class="logo-text">Workout Generator</a>
 		</div>
 		<div class="header-login-register--container">
+			<form action="<?= URLROOT ?>/public/users/profile" method="GET">
+				<button name="profile">Profile</button>
+			</form>
 			<form action="<?= URLROOT ?>/public/users/logout" method="GET">
 				<button name="logout">Logout</button>
 			</form>
