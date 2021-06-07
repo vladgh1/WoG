@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?= APPNAME ?></title>
+	<title><?= APPNAME ?> - Welcome <?= $_SESSION['username'] ?></title>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
 </head>
@@ -24,28 +24,28 @@
 											?></h1>
 		</div>
 		<div class="general-info--container">
-			<p>Nume: <?= $_SESSION['fullname']; ?></p>
+			<p>Name: <?= $_SESSION['fullname']; ?></p>
 			<hr>
 			<!-- TODO: calcul din data nasterii! -->
-			<p>Varsta: <?= $_SESSION['age']; ?></p>
+			<p>Age: <?= $_SESSION['age']; ?></p>
 			<hr>
-			<p>Inaltime: <?= $_SESSION['height']; ?></p>
+			<p>Height: <?= $_SESSION['height']; ?></p>
 			<hr>
-			<p>Greutate: <?= $_SESSION['weight']; ?></p>
+			<p>Weight: <?= $_SESSION['weight']; ?></p>
 			<hr>
-			<p>Planul pe azi:</p>
+			<p>Today's plan:</p>
 			<ul>
 				<li>
 					<input type="checkbox">
-					30 min alergare
+					30 min jogging
 				</li>
 				<li>
 					<input type="checkbox">
-					25 min incalzire
+					25 min warm-up
 				</li>
 				<li>
 					<input type="checkbox">
-					40 min ceva...
+					40 min something else... 
 				</li>
 			</ul>
 			<hr>

@@ -26,6 +26,9 @@ class App
 				$this->method = $url[1];
 				unset($url[1]);
 			} else {
+				$this->controller = 'Home';
+				require_once '../app/controllers/' . $this->controller . '.php';
+				$this->controller = new $this->controller;
 				$this->method = 'error';
 			}
 		}
