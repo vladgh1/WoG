@@ -11,6 +11,11 @@
 .header-login-register--container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.header-login--form {
+	margin-left: 0.8em;
 }
 
 .header-login-register--container a {

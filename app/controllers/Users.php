@@ -13,6 +13,53 @@ class Users extends Controller {
 		$this->user_model = $this->model('User');
 	}
 
+	public function profile() {
+		//TODO: Create profile view and display it
+		$this->view('info/profile');
+	}
+
+	public function workoutDone() {
+		$data = [
+			'workout' => '',
+			'done' => '',
+			'usernameError' => '',
+			'workoutError' => ''
+		];
+
+		if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+			// Sanitize post method
+			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+			// Get the data
+			$data = [
+				'workout' => trim($_PUT['workout']),
+				'done' => trim($_PUT['done']),
+				'workoutError' => ''
+			];
+
+			// Validate workout id
+			if (empty($data['workout'])) {
+				$data['workoutError'] = 'Enter workout';
+			}
+
+			// Check if there are no errors
+			if (empty($data['workoutError'])) {
+				$existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);
+				if ($existsWorkout) {
+					$this->user_model->completeUserWorkout($data);
+				}
+
+				if (!$existsWorkout) {
+					$data['workoutError'] = "Workout does not exits";
+				}
+			}
+		}
+	}
+
+	public function settings() {
+		$this->view('info/settings');
+	}
+
 	public function generator() {
 		$this->view('info/generator');
 		// TODO: Implement generator
@@ -58,8 +105,8 @@ class Users extends Controller {
 			if (empty($data['usernameError'] && empty($data['passwordError']))) {
 				$loggedInUser = $this->user_model->login($data);
 				if ($loggedInUser) {
-					setcookie('username', $data['username'], time() + 3600, '/', 'localhost');
-					setcookie('password', $data['password'], time() + 3600, '/', 'localhost');
+					setcookie('username', $data['username'], time() + (60 * 60 * 24 * 5), '/', 'localhost');
+					setcookie('password', $data['password'], time() + (60 * 60 * 24 * 5), '/', 'localhost');
 					header('location:' . URLROOT . '/public/home/index');
 				} else {
 					$data['passwordError'] = 'Password is incorrect';

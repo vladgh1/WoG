@@ -13,6 +13,12 @@ class User {
 		return $this->db->rowCount() > 0;
 	}
 
+	public function existsWorkoutWithName($workout) {
+		$this->db->query('SELECT * FROM work WHERE id = :workout');
+		$this->db->bind(':workout', $workout);
+		return $this->db->rowCount() > 0;
+	}
+
 	public function existsUserWithEmail($email) {
 		$this->db->query('SELECT * FROM user WHERE email = :email');
 		$this->db->bind(':email', $email);
@@ -42,6 +48,14 @@ class User {
 		$this->db->bind(':username', $data['username']);
 		$this->db->bind(':email', $data['email']);
 		$this->db->bind(':pass', $data['password']);
+		return $this->db->execute();
+	}
+
+	public function completeUserWorkout($data) {
+		// TODO: Create update query
+		$this->db->query('');
+		$this->db->bind(':username', $data['username']);
+		$this->db->bind(':workout', $data['workout']);
 		return $this->db->execute();
 	}
 

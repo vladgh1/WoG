@@ -51,7 +51,6 @@ Main colors:
   padding: 0;
 }
 
-
 .slider {
   -webkit-appearance: none;
   width: 50%;
@@ -83,7 +82,6 @@ Main colors:
   background: #4CAF50;
   cursor: pointer;
 }
-
 
 body {
   background: linear-gradient(0deg, rgb(206, 92, 64) 10%, rgba(121,54,39,1) 90%);
@@ -143,6 +141,10 @@ button {
   font-family: Alata, serif;
   font-size: 1.2rem;
   outline: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .font--alata{
