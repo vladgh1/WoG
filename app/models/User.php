@@ -56,6 +56,12 @@ class User {
 		return $this->db->execute();
 	}
 
+	public function getUserInfo($username) {
+		$this->db->query('SELECT * FROM user u JOIN userinfo i ON u.username = i.username WHERE u.username = :username');
+		$this->db->bind(':username', $username);
+		return $this->db->resultRow();
+	}
+
 	public function getTop() {
 		$this->db->query('SELECT username, score FROM leaderboard ORDER BY score DESC');
 		return $this->db->resultSet();

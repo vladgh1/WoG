@@ -13,7 +13,7 @@
 
 <body>
 	<?php require_once APPROOT . '/views/includes/loggedInHeader.php'?>
-
+	
 	<main class="landing-main--container workout-background-image" style="<?php
 																			$image = json_decode(file_get_contents(URLROOT . '/public/data/landing-page.json'));
 																			echo 'background-image: linear-gradient(to left, rgba(162, 74, 54, 0.87), #a24a3654), url(' . $image->image . ');' ?>">

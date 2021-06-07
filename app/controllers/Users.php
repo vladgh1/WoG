@@ -58,9 +58,9 @@ class Users extends Controller {
 			if (empty($data['usernameError'] && empty($data['passwordError']))) {
 				$loggedInUser = $this->user_model->login($data);
 				if ($loggedInUser) {
-					setcookie('username', $data['username'], time()+3600, '/', 'localhost');
-					setcookie('password', $data['password'], time()+3600, '/', 'localhost');
-					header('location:' . URLROOT . 'public/home/index');
+					setcookie('username', $data['username'], time() + 3600, '/', 'localhost');
+					setcookie('password', $data['password'], time() + 3600, '/', 'localhost');
+					header('location:' . URLROOT . '/public/home/index');
 				} else {
 					$data['passwordError'] = 'Password is incorrect';
 				}
@@ -264,6 +264,8 @@ class Users extends Controller {
 		unset($_SESSION['weight']);
 		unset($_SESSION['height']);
 		unset($_SESSION['gender']);
+		setcookie('username', null, -1, '/');
+		setcookie('password', null, -1, '/'); 
 		header('location:' . URLROOT . '/public/home/index');
 	}
 

@@ -1,11 +1,16 @@
 <?php
 
 class Home extends Controller {
+	private $model_user;
+
+	public function __construct() {
+		$this->model_user = $this->model('User');
+	}
 	
 	public function index() {		
 		$data=[];
 		if (isset($_SESSION['username'])) {
-			header('location: ' . URLROOT . '/public/index/loggedIn');
+			header('location: ' . URLROOT . '/public/home/loggedIn');
 		}
 
 		if(isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0 && isset($_COOKIE['password']) && strlen($_COOKIE['password']) > 0) {
@@ -15,7 +20,7 @@ class Home extends Controller {
 			];
 
 			// Check if there are no errors
-			$loggedInUser = $this->model('User')->login($data);
+			$loggedInUser = $this->model_user->login($data);
 			if ($loggedInUser) {
 				header('location: ' . URLROOT . '/public/home/loggedIn');
 			} else {
@@ -24,7 +29,7 @@ class Home extends Controller {
 		}
 
 		
-		$users = $this->model('User')->getTop();
+		$users = $this->model_user->getTop();
 		
 		if ($users) {
 			foreach ($users as $user) {
@@ -38,8 +43,13 @@ class Home extends Controller {
 		$this->view('home/error');
 	}
 	public function loggedIn() {
-		session_start();
-		$this->view('home/loggedInIndex');
+		if (isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0 && isset($_COOKIE['password']) && strlen($_COOKIE['password']) > 0) {
+			session_start();
+			$data = $this->model_user->getUserInfo($_COOKIE['username']);
+			$this->view('home/loggedInIndex', $data);
+		} else {
+			header('location:' . URLROOT . '/public/home/index');
+		}
 		
 	}
 	public function generatorRez() {
