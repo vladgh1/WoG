@@ -14,13 +14,13 @@
 
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 
-	<form action="<?= URLROOT ?>/public/users/generate" method="post" id="generator--form" class="center--container">
+	<form action="<?= URLROOT ?>/public/workout/saveProgram" method="post" id="generator--form" class="center--container">
 		<h1 id="generator-form-title" class="font--alata">Generate now:</h1>
 		<div id="generate" id="generator-form--container">
 			<div id="workout-time--container">
 				<label for="Wtime" class="font--alata">Workout Time(min):</label>
 				<div id="workout-time-slider--container">
-					<input type="range" class="range--input" name="time" min=15 max=120 step=5 value="30" class="slider" id="workout-time"></input>
+					<input type="range" class="range--input" name="Wtime" min=15 max=120 step=5 value="30" class="slider" id="workout-time"></input>
 					<p id="workout-minutes-content">30 min</p>
 				</div>
 			</div>
@@ -31,12 +31,6 @@
 				<p id="workout-intensity-content">Medium workout</p>
 			</div>
 			<div id="generator-selectors-block--container">
-				<!-- <label for="location" class="font--alata">Location</label>
-				
-				<select id="location" name="location">
-					<option value="Home">Home</option>
-					<option value="Gym">Gym</option>
-				</select> -->
 				<label for="intended" class="font--alata">Intended for</label>
 				<select id="intended" name="intended">
 					<option value="None" style="display: none;">--Not Selected--</option>

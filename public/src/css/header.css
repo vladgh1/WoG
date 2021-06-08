@@ -27,3 +27,18 @@
     font-size: 1.3em;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .header-login-register--container {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .logo-text {
+    font-size: 1em;
+  }
+  .header-login-register--container a {
+    margin: 0.5em;
+  }
+}
