@@ -36,7 +36,7 @@ class Workout extends Controller
         $nrExercises = $Wtime / 15;
         $nrSecondaryExercise = 0;
         $nrPrimaryExercise = 0;
-        if (($Pfocus == $Sfocus && $Pfocus != "None") || $Sfocus == "None" && $Pfocus != "None")
+        if (($Pfocus == $Sfocus && $Pfocus != "None") || ($Sfocus == "None" && $Pfocus != "None"))
             $nrPrimaryExercise = $nrExercises;
         else if ($Pfocus == "None" && $Sfocus != "None") {
             $nrSecondaryExercise = $nrExercises;

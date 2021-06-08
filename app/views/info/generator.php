@@ -20,7 +20,7 @@
 			<div id="workout-time--container">
 				<label for="Wtime" class="font--alata">Workout Time(min):</label>
 				<div id="workout-time-slider--container">
-					<input type="range" class="range--input" name="Wtime" min=15 max=120 step=5 value="30" class="slider" id="workout-time"></input>
+					<input type="range" class="range--input" name="Wtime" min=15 max=120 step=15 value="60" class="slider" id="workout-time"></input>
 					<p id="workout-minutes-content">30 min</p>
 				</div>
 			</div>
