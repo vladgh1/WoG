@@ -5,15 +5,6 @@ function confirmWorkout() {
 	const done = document.getElementById('done-list');
 
 	Array.from(pending).forEach(li => {
-		// console.log(li.innerText);
-		// console.log(li.dataset['time']);
-		// console.log(li.firstChild.checked);
-		if (li.firstChild.checked) {
-			li.removeChild(li.firstChild);
-			done.insertBefore(li, done.firstChild);
-		}
-		console.log(output);
-
 		const params = {
 			'id': li.dataset['id'],
 			'done': true
@@ -28,7 +19,12 @@ function confirmWorkout() {
 		fetch(URL, options )
 			.then( response => response.json() )
 			.then( response => {
-				// Do something with response.
+				if (strlen(response['workoutError']) != 0) {
+					if (li.firstChild.checked) {
+						li.removeChild(li.firstChild);
+						done.insertBefore(li, done.firstChild);
+					}
+				}
 			} );
-	})
+	});
 }
