@@ -15,17 +15,17 @@
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 	<?php
 
-	foreach ($newData['query_Primary'] as $exercise) {
-		if ($newData['nrPrimaryExercise'] == 0) break;
-		$newData['nrPrimaryExercise'];
-		echo "<a href='" . $exercise["link"] . "'><img class='exercise--container' src='" . $exercise["photo"] . "'></a>";
+	foreach ($data['query_Primary'] as $exercise) {
+		if ($data['nrPrimaryExercise'] == 0) break;
+		echo($data['nrPrimaryExercise']);
+		echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='" . $exercise->photo . "'></a>";
 		echo "<br>";
 	}
 	// if($query_Secondary->num_rows>0 && $Pfocus!=$Sfocus)
-	foreach ($newData['query_Secondary'] as $exercise) {
-		if ($newData['nrSecondaryExercise'] == 0) break;
-		$newData['nrSecondaryExercise']--;
-		echo "<a href='" . $exercise["link"] . "'><img class='exercise--container' src='" . $exercise["photo"] . "'></a>";
+	foreach ($data['query_Secondary'] as $exercise) {
+		if ($data['nrSecondaryExercise'] == 0) break;
+		$data['nrSecondaryExercise']--;
+		echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='" . $exercise->photo . "'></a>";
 		echo "<br>";
 	}
 

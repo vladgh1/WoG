@@ -54,7 +54,6 @@ class Workout extends Controller
 		];  
 
         $this->view('info/generatorResults', $newData);
-
     }
     
 
