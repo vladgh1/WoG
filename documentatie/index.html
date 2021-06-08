@@ -12,7 +12,7 @@
 <body prefix="schema: http://schema.org">
   <header>
     <div class="banner">
-      <div class="status">Relizatori proiect: Gheorghita Vlad si Zbant Alex</div>
+      <div class="status">Relizatori proiect: Gheorghita Vlad, Pavel Boris si Zbant Alex</div>
     </div>
     <h1>Documentatie proiect Workout Generator(WOG)</h1>
   </header>
@@ -22,17 +22,19 @@
     <dl>
       <dt>Authors</dt>
       <dd>
-        Gheorghita Vlad si
+        Gheorghita Vlad,
+        Pavel Boris,
         Zbant Gabriel Alexandru
       </dd>
       <dt>Discussion Group</dt>
       <dd>
-        Gheorghita Vlad si
+        Gheorghita Vlad,
+        Pavel Boris,
         Zbant Gabriel Alexandru
       </dd>
       <dt>License</dt>
       <dd>
-        FII-puternic srl (G) & (Z) 2021 Pavaloi_NiceTehacher
+        FII-puternic srl (G) & (P) & (Z) 2021 Pavaloi_NiceTehacher
       </dd>
     </dl>
   </div>
@@ -50,22 +52,25 @@
     <h2>Site usage and flow of work</h2>
     <section id="WorkFlow">
       <h3>Pagina principala</h3>
-      <section typeof="sa:image">
-        <img src="photos/paginaPrincipala.png" alt="paginaPrincipala">
-      </section>
+      <img src="photos/paginaPrincipala.png" alt="paginaPrincipala">
 
       <p>
         In momentul in care utilizatorul intra pe site, acesta este intampinat de pagina
         principala ce afiseaza un meniu in partea de sus, un motto specific in partea stanga si
-        in partea dreapta un panou cu informatii despre site-ul nostru(data infiintarii, fonator+info, etc)
+        in partea dreapta un panou cu topul celor mai activi utilizatori.
+
+        Meniul prezinta in partea stanga un buton cu logo-ul nostru. prin apasarea lui,
+        utilizatorul este adus la pagina principala. In partea dreapta, se afla 2 butoane
+        ce duc utilizatorul spre formularele de logare si inregistrare de pe site.
       </p>
+
     </section>
     <section id="login">
       <h3>Pagina de logare</h3>
       <img src="photos/paginaLogin.png" alt="paginaLogin">
       <p>
-        In momentul in care utilizatorul acceseaza link-ul spre pagina de logare aflat in partea dreapta a
-        meniului, acesta este redirectionat spre pagina unde sunt necesare adresa de email si parola pentru logare.
+        In momentul in care utilizatorul apasa butonul "Login" aflat in partea dreapta a meniului, acesta este redirectionat 
+        spre pagina de logare, pentru completarea sunt necesare adresa de email si parola pentru logare.
       </p>
     </section>
     <section id="register">
@@ -73,8 +78,9 @@
       <img src="photos/paginaRegister.png" alt="paginaRegister">
       <p>
         In momentul in care utilizatorul acceseaza link-ul spre pagina de inregistrare aflat in partea dreapta a
-        meniului, acesta este redirectionat spre pagina unde sunt necesare adresa de email si
-        alte date cu caracter personal in vederea inregistrarii pe site.
+        meniului, acesta este redirectionat spre pagina unde sunt necesare adresa de email cat si
+        alte date cu caracter personal(inaltime, greutate, varsta, numele - ce se vor gasi pe pagina principala in
+        vecinatatea butonului de generare) in vederea inregistrarii pe site.
       </p>
     </section>
     <section id="LoggedIn">
@@ -84,10 +90,8 @@
       <img src="photos/paginaDupaLogare.png" alt="paginaDupaLogare">
       <p>
         Dupa ce utilizatorul s-a logat, acesta este intampinat de o noua fereastra in partea
-        dreapta ce ii permite sa vada ce date sunt in profilul sau actual dar si ce exercitii sunt
-        suerate pentru ziua aceea. Daca acesta este nemultumit de informatia sugerata, are la dispozitie
-        un buton ce il redirectioneaza spre un formular de generare a altei sugestii in
-        functie de preferintele sale.
+        dreapta ce ii permite sa vada ce date sunt in profilul sau actual dar si un buton de
+        "Generare" ce il trimite spre un formular de generare a unui program de antrenament.
       </p>
     </section>
     <section id="Error">
@@ -97,25 +101,52 @@
       <img src="photos/error.png" alt="error">
       <p>
         Daca utilizatorul intra pe o pagina ce nu se regaseste pe site, acesta este intampinat de pagina
-        de eroare 404. Dorim sa implementam pe pagina asceasta un mic joc de X si 0 pentru a reduce
-        plictiseala.
+        de eroare 404. Am implamantat pe aceasta pagina un mic joc de "Workout" simipar cu jocul clasic
+        cu dinozaurul de pe Chrome (aici scopul este de asemenea, sa apesi "spacebar" pentru a aduna puncte).
       </p>
     </section>
+
+    <section id="Generate">
+      <h2>
+        Pagina Generare
+      </h2>
+      <img src="photos/paginaGenerare.png" alt="paginaGenerare">
+      <p>
+        La pagina de generare, utilizatorul este intampiat de un formular unde trebuie inroduse niste preferinte 
+        in vederea generarii unui program de antrenament. Dupa ce este realizat acest pas, algoritmul genereaza un antrenament in mod determinist.
+      </p>
+    </section>
+
+    <section id="Profie">
+      <h2>
+        Pagina Profil
+      </h2>
+      <img src="photos/paginaProfile.png" alt="paginaProfile">
+      <p>
+        Pagina de profil ofera utilizatorului un tabel unde poate sa isi acceseze antrenamentele ce nu sunt terminate si sa 
+        vada ce antrenamente a avut in trecut si le-a terminat. de asemenea, cand un antrenament este terminat, utilizatorul 
+        primeste un punctaj ce se adauga la scor pentru clasament.  
+      </p>
+    </section>
+
+    <section id="Settings">
+      <h2>
+        Pagina Setari
+      </h2>
+      <img src="photos/paginaSettings.png" alt="paginaSettings">
+      <p>
+        Pagina de setari prezinta utilizatorului un formular unde ii sunt incarcate datele trimise in momentul inregistrarii.
+         Acest formular ofera posibiltatea de a modifica acele date intr-un mod simplu si rapid.
+      </p>
+    </section>
+
   </section>
-  <section id="challange">
+  <!-- <section id="challange">
     <h2 id="Provocare">
       Provocari depasite
     </h2>
-    <section id="just2">
-      <h2>
-        Lucrul in 2
-      </h2>
-      <p>
-        Din motive neprevazute, din 3 coechipieri, am ramas 2 lucru ce ne-a ingreunat semnificativ progresul si
-        nu am reusit sa implementam tot ce am fi vrut in timpul ramas.
-      </p>
-    </section>
-  </section>
+
+  </section> -->
   <section id="external">
     <h2 id="resurse">
       Biblioteci Folosite
@@ -125,7 +156,7 @@
         Nu am folosit inca
       </h2>
       <p>
-        Pana in momentul de fata nu am folosit biblioteci .
+        Pana in momentul de fata nu am folosit biblioteci.
       </p>
     </section>
   </section>
