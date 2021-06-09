@@ -290,6 +290,20 @@ ul {
     display: inline-block;
 }
 
+.result-exercises--container {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.result-exercise--container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70vw;
+	padding-top: 5em;
+}
+
 @media screen and (max-width: 900px) {
     .motivational-text--container {
         margin-top: 1em;
