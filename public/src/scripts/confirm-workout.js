@@ -16,7 +16,7 @@ function confirmWorkout() {
 			},
 			body: JSON.stringify(params)  
 		};
-		fetch(URL, options )
+		fetch(URL, options)
 			.then( response => response.json() )
 			.then( response => {
 				if (strlen(response['workoutError']) != 0) {
