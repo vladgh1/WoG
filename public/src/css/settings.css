@@ -1,123 +1,59 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+.form-wrapper {
+  width: 100%;
+  height: 100%;
 
-*{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-body{
-	background: #9ecae0;
+.settings--form {
+  width: 36.2em;
+  margin: 0;
+  position: absolute;
+  top: 20%;
 }
 
-.wrapper{
-	width: 100%;
-	height: 100%;
+.settings-form-block {
+  display: flex;
+  width: 100%;
 }
 
-.lboard_section{
-	width: 500px;
-	height: 400px;
-	margin: 100px auto 0;
-	background: #f94f62;
-	padding: 25px 40px;
-	position: relative;
-	border-radius: 5px;
+input {
+  width: 100%;
 }
 
-.lboard_section .lboard_tabs ul{
-	display: flex;
+.settings-text {
+  color: #FBF5F3;
 }
 
-.lboard_section .lboard_tabs ul li{
-	margin-right: 50px;
-	font-size: 18px;
-	font-weight: 600;
-	color: #3a3d51;
-	cursor: pointer;
+.form-button:hover {
+  cursor: pointer;
 }
 
-.lboard_section .lboard_tabs ul li:hover,
-.lboard_section .lboard_tabs ul li.active{
-	color: #fff;
+.hidden-button {
+  display: none;
 }
 
-.lboard_wrap{
-	position: absolute;
-	top: 70px;
-	left: 40px;
-	background: #ffd300;
-	width: 100%;
-	height: 100%;
-	border-radius: 5px;
+.visible-button {
+  display: inherit;
 }
 
-.lboard_wrap .lboard_item{
-	padding: 25px;
-}
+@media screen and (max-width: 630px) {  
+  .settings--form {
+    width: 80vw;
+  }
 
-.lboard_wrap .lboard_mem{
-	display: flex;
-	align-items: center;
-	padding: 15px 0;
-	border-bottom: 1px solid #ffe773;
-}
+  .main-login-settings--container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.lboard_wrap .lboard_mem:first-child{
-	padding-top: 0;
-}
-
-.lboard_wrap .lboard_mem:last-child{
-	padding-bottom: 0;
-	border-bottom: 0;
-}
-
-.lboard_wrap .lboard_mem .img{
-	width: 50px;
-}
-
-.lboard_wrap .lboard_mem img{
-	display: block;
-	width: 100%;
-}
-
-.lboard_wrap .lboard_mem .name_bar{
-	margin: 0 20px;
-	width: calc(100% - 150px);
-}
-
-.lboard_wrap .lboard_mem .name_bar p{
-	color: #3a3d51;
-}
-
-.lboard_wrap .lboard_mem .name_bar p span{
-	margin-right: 5px;
-}
-
-.lboard_wrap .lboard_mem .points{
-	width: 100px;
-	color: #3a3d51;
-}
-
-.lboard_wrap .lboard_mem .name_bar .bar_wrap{
-	width: 100%;
-	height: 5px;
-	background: #d5b000;
-	margin-top: 5px;
-	border-radius: 5px;
-	position: relative;
-	overflow: hidden;
-}
-
-.lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	background: #fff;
-	border-radius: 5px;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px;
+  input {
+    width: 100%;
+  }
 }
