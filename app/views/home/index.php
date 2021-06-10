@@ -24,19 +24,20 @@
 			?></h1>
 		</div>
 		<div class="info-panel--container">
-			<table border=1 frame=void rules=rows>
+			<table>
 				<tr>
 					<td>Rank</td>
 					<td>User</td>
 					<td>Score</td>
+				</tr>
 				<?php
 					$rank = 1;
 					foreach($data as $user => $score) {
-						echo '</tr>';
-						echo '<td>' . $rank++ . '</td>';
-						echo '<td>' . $user . '</td>';
-						echo '<td>' . $score . '</td>';
-						echo '</tr>';
+						echo "<tr>";
+						echo "<td>" . $rank++ . "</td>";
+						echo "<td>" . $user . "</td>";
+						echo "<td>" . $score . "</td>";
+						echo "</tr>";
 					}
 				?>
 			</table>

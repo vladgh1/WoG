@@ -62,10 +62,8 @@ class User {
 	}
 
 	public function completeUserWorkout($data) {
-		// TODO: Create update query
-		$this->db->query('');
-		$this->db->bind(':username', $data['username']);
-		$this->db->bind(':workout', $data['workout']);
+		$this->db->query('UPDATE programs SET inProgress = 0 WHERE id = :id');
+		$this->db->bind(':id', $data['workout']);
 		return $this->db->execute();
 	}
 
