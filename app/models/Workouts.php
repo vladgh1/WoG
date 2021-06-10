@@ -17,23 +17,44 @@ class workouts
 
     public function addWorkout($data)
     {
+        $this->db->query('INSERT INTO programs (intensity,Pfocus, Sfocus, Wtime, intended, 
+        username, finished) VALUES (:intensity, :Pfocus, :Sfocus, :Wtime, :intended, :username, 
+        :finished)');
 
-        $data = [
-			'intensity' => $_POST['intensity'],
-			'Pfocus'=> $_POST['Pfocus'],
-            'Sfocus' => $_POST['Sfocus'],
-            'Wtime' => $_POST['Wtime'],
-            'intended' => $_POST['intended']
-		];
-
-        $this->db->query('INSERT INTO programs VALUES (:intensity, :Pfocus, :Sfocus, :Wtime, :intended, :username, :inProgress)');
-		$this->db->bind(':intensity', $data['intensity']);
-		$this->db->bind(':Pfocus', $data['Pfocus']);
-		$this->db->bind(':Sfocus', $data['Sfocus']);
-        $this->db->bind(':Wtime', $data['Wtime']);
+		$this->db->bind(':intensity', $_POST['intensity']);
+		$this->db->bind(':Pfocus', $_POST['Pfocus']);
+		$this->db->bind(':Sfocus', $_POST['Sfocus']);
+        $this->db->bind(':Wtime', $_POST['Wtime']);
 		$this->db->bind(':intended', $data['intended']);
         $this->db->bind(':username', $_COOKIE['username']);
-        $this->db->bind(':inProgress', 1);
+        $this->db->bind(':finished', 0);
 		return $this->db->execute();
+    }
+
+    public function getLatestId()
+    {
+        $this->db->query('SELECT max(id) as id from programs');
+		return $this->db->resultSet();
+    }
+
+    public function addExercise($id,$nume)
+    {
+        $this->db->query('INSERT INTO selected_exercise (id,nume_exercitiu) 
+        VALUES (:id, :nume)');
+
+		$this->db->bind(':id', $id);
+		$this->db->bind(':nume', $nume);
+		return $this->db->execute();
+    }
+
+    public function setPoints($points,$idProgram)
+    {
+        $this->db->query('UPDATE programs
+        SET punctaj=:points
+        WHERE id=:idProgram ');
+
+        $this->db->bind(':points', $points);
+		$this->db->bind(':idProgram', $idProgram);
+		return $this->db->resultSet();
     }
 }
