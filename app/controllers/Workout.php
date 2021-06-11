@@ -45,13 +45,37 @@ class Workout extends Controller
             $nrSecondaryExercise = $nrExercises - $nrPrimaryExercise;
         }
 
+        shuffle($query_Primary);
+        shuffle($query_Secondary);
+
         $newData = [
 			'query_Primary' => $query_Primary,
 			'query_Secondary' => $query_Secondary,
 			'nrPrimaryExercise' => $nrPrimaryExercise,
 			'nrSecondaryExercise' => $nrSecondaryExercise,
             'intensity' => $_POST['intensity']
-		];  
+		];
+
+        $programIdString=$this->workout_model->getLatestId();
+        $programId = intval($programIdString[0]->id);
+        var_dump($programId);
+        $points=0;
+
+        foreach ($query_Primary as $exercise) {
+			if ($nrPrimaryExercise == 0) break;
+			$nrPrimaryExercise--;
+			$this->workout_model->addExercise($programId,$exercise->nume);
+            $points+=$exercise->punctaj*$intensity;
+		}
+        
+        foreach ($query_Secondary as $exercise) {
+			if ($nrSecondaryExercise == 0) break;
+			$nrSecondaryExercise--;
+			$this->workout_model->addExercise($programId,$exercise->nume);
+            $points+=$exercise->punctaj*$intensity;
+		}
+        
+        $this->workout_model->setPoints($points,$programId);
 
         $this->view('info/generatorResults', $newData);
     }
