@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= APPNAME ?> - user profile</title>
+    <title><?= APPNAME ?> - user settings</title>
     <link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
     <link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
     <link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/settings.css'>
@@ -19,7 +19,7 @@
         <?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 
         <form method="post" action="<?= URLROOT ?>/public/users/settings" class="set-settings-form-width settings--form">
-            <h3 class="settings-text font--alata">Profile</h3>
+            <h3 class="settings-text font--alata">Settings</h3>
             <div class="settings-form-block">
                 <input type="text" disabled class="profile-input <?= (isset($data['fullnameError']) && strlen($data['fullnameError']) == 0) ? '' : 'error--input' ?>" name="fullname" placeholder="<?= (isset($data['fullnameError']) && strlen($data['fullnameError']) == 0) ? 'Full name' : $data['fullnameError']; ?>" value="<?= (isset($data['fullnameError']) && strlen($data['fullnameError']) == 0 && isset($data['fullname']) && strlen($data['fullname'])) ? $data['fullname'] : null ?>" required>
             </div>

@@ -81,4 +81,5 @@ class workouts
         var_dump($intensity);
         var_dump($time);
     }
+
 }
