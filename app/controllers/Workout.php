@@ -16,8 +16,11 @@ class Workout extends Controller
             'Wtime' => $_POST['Wtime'],
             'intended' => $_POST['intended']
 		];
-        $this->workout_model->addWorkout($data);
-        $this->getProgram($data);
+
+        $this->workout_model->averageExercise();
+
+        // $this->workout_model->addWorkout($data);
+        // $this->getProgram($data);
     }
 
     public function getProgram($data)
@@ -32,7 +35,6 @@ class Workout extends Controller
         $query_Primary = $this->workout_model->selectExercises($intended,$Pfocus);
         $query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus);
 
-        // echo mysqli_fetch_array($query_Primary, MYSQLI_NUM);
         $nrExercises = $Wtime / 15;
         $nrSecondaryExercise = 0;
         $nrPrimaryExercise = 0;
@@ -56,9 +58,7 @@ class Workout extends Controller
             'intensity' => $_POST['intensity']
 		];
 
-        $programIdString=$this->workout_model->getLatestId();
-        $programId = intval($programIdString[0]->id);
-        var_dump($programId);
+        $programId=$this->workout_model->getLatestId();
         $points=0;
 
         foreach ($query_Primary as $exercise) {

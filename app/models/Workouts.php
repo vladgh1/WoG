@@ -34,7 +34,8 @@ class workouts
     public function getLatestId()
     {
         $this->db->query('SELECT max(id) as id from programs');
-		return $this->db->resultSet();
+		$rez= $this->db->resultSet();
+        return intval($rez[0]->id);
     }
 
     public function addExercise($id,$nume)
@@ -56,5 +57,28 @@ class workouts
         $this->db->bind(':points', $points);
 		$this->db->bind(':idProgram', $idProgram);
 		return $this->db->resultSet();
+    }
+
+    public function nrOfPrograms()
+    {
+        $this->db->query('SELECT count(*) as nr from programs where username=:username');
+		$this->db->bind(':username', $_COOKIE['username']);
+        $rez= $this->db->resultSet();
+        return intval($rez[0]->nr);
+    }
+
+    public function averageExercise()
+    {
+        $this->db->query('SELECT avg(intensity) as intensity, avg(Wtime) as time from 
+        programs where username=:username and finished=1');
+		$this->db->bind(':username', $_COOKIE['username']);
+        $rez= $this->db->resultSet();
+        $intensity= (int)round(intval($rez[0]->intensity));
+        $time= (int)round(intval($rez[0]->time));
+        var_dump($time); 
+        if($time%15>=7)$time=min(((int)($time/15)+1)*15,120);
+        else $time=$time-($time%15);
+        var_dump($intensity);
+        var_dump($time);
     }
 }
