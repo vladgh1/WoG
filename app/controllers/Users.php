@@ -1,6 +1,7 @@
 <?php
 
-class Users extends Controller {
+class Users extends Controller
+{
 	private static $fullname_validation = "/^[A-Z][\-a-z]*\s([A-Z]\.)?[A-Z][\-a-z]*$/";
 	public static $username_validation = "/^[_a-zA-Z0-9]+$/";
 	private static $email_validation = "/^[^\s]+@[^\s]+\.[^\s]+$/i";
@@ -9,16 +10,38 @@ class Users extends Controller {
 	private static $height_unit_validation = "/^(cm|feet)$/i";
 	private static $weight_unit_validation = "/^(kg|lb)$/i";
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->user_model = $this->model('User');
 	}
+	public function generatePDF()
+	{
+		$this->user_model->generatePDF();
+	}
 
-	public function profile() {
+	public function leaderboard()
+	{
+		$data = [];
+
+		$users = $this->user_model->getTop();
+
+		if ($users) {
+			foreach ($users as $user) {
+				$data[$user->username] = $user->score;
+			}
+		}
+
+		$this->view('info/leaderboard', $data);
+	}
+
+	public function profile()
+	{
 		//TODO: Create profile view and display it
 		$this->view('info/profile');
 	}
 
-	public function workoutDone() {
+	public function workoutDone()
+	{
 		$data = [
 			'workout' => '',
 			'done' => '',
@@ -56,12 +79,14 @@ class Users extends Controller {
 		}
 	}
 
-	public function generator() {
+	public function generator()
+	{
 		$this->view('info/generator');
 		// TODO: Implement generator
 	}
 
-	public function login() {
+	public function login()
+	{
 		$data = [
 			'username' => '',
 			'password' => '',
@@ -109,11 +134,12 @@ class Users extends Controller {
 				}
 			}
 		}
-		
+
 		$this->view('info/login', $data);
 	}
 
-	public function register() {
+	public function register()
+	{
 		$data = [
 			'fullname' => '',
 			'username' => '',
@@ -229,8 +255,10 @@ class Users extends Controller {
 			// Validate the height
 			if (empty($data['height'])) {
 				$data['heightError'] = 'Please select measure of your height';
-			} elseif ($this->stdHeight($data['height'], $data['heightUnit']) <= 50 
-					|| $this->stdHeight($data['height'], $data['heightUnit']) > 300) {
+			} elseif (
+				$this->stdHeight($data['height'], $data['heightUnit']) <= 50
+				|| $this->stdHeight($data['height'], $data['heightUnit']) > 300
+			) {
 				$data['heightError'] = 'Invalid height';
 			}
 
@@ -244,8 +272,10 @@ class Users extends Controller {
 			// Validate the weight
 			if (empty($data['weight'])) {
 				$data['weightError'] = 'Please select measure of your weight';
-			} elseif ($this->stdWeight($data['weight'], $data['weightUnit']) <= 30 
-					|| $this->stdWeight($data['weight'], $data['weightUnit']) > 300) {
+			} elseif (
+				$this->stdWeight($data['weight'], $data['weightUnit']) <= 30
+				|| $this->stdWeight($data['weight'], $data['weightUnit']) > 300
+			) {
 				$data['weightError'] = 'Invalid weight';
 			}
 
@@ -257,17 +287,19 @@ class Users extends Controller {
 			}
 
 			// Check if there are no errors
-			if (empty($data['fullnameError'])
-					&& empty($data['usernameError'])
-					&& empty($data['emailError'])
-					&& empty($data['passwordError'])
-					&& empty($data['confirmPasswordError'])
-					&& empty($data['ageError'])
-					&& empty($data['genderError'])
-					&& empty($data['heightError'])
-					&& empty($data['heightUnitError'])
-					&& empty($data['weightError'])
-					&& empty($data['weightUnitError'])) {
+			if (
+				empty($data['fullnameError'])
+				&& empty($data['usernameError'])
+				&& empty($data['emailError'])
+				&& empty($data['passwordError'])
+				&& empty($data['confirmPasswordError'])
+				&& empty($data['ageError'])
+				&& empty($data['genderError'])
+				&& empty($data['heightError'])
+				&& empty($data['heightUnitError'])
+				&& empty($data['weightError'])
+				&& empty($data['weightUnitError'])
+			) {
 
 				// Hash password
 				$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -276,9 +308,9 @@ class Users extends Controller {
 				// standartize height and weight
 				$data['height'] = $this->stdHeight($data['height'], $data['heightUnit']);
 				$data['weight'] = $this->stdWeight($data['weight'], $data['weightUnit']);
-				
+
 				// Register user
-				if($this->user_model->register($data)) {
+				if ($this->user_model->register($data)) {
 					// Redirect to login page
 					header('location: ' . URLROOT . '/public/users/login');
 				}
@@ -288,7 +320,8 @@ class Users extends Controller {
 		$this->view('info/register', $data);
 	}
 
-	public function createUserSession($user) {
+	public function createUserSession($user)
+	{
 		$_SESSION['fullname'] = $user->fullname;
 		$_SESSION['user'] = $user->username;
 		$_SESSION['email'] = $user->email;
@@ -463,7 +496,8 @@ class Users extends Controller {
 		}
 	}
 
-	public function logout() {
+	public function logout()
+	{
 		unset($_SESSION['fullname']);
 		unset($_SESSION['user']);
 		unset($_SESSION['email']);
@@ -472,11 +506,12 @@ class Users extends Controller {
 		unset($_SESSION['height']);
 		unset($_SESSION['gender']);
 		setcookie('username', null, -1, '/');
-		setcookie('password', null, -1, '/'); 
+		setcookie('password', null, -1, '/');
 		header('location:' . URLROOT . '/public/home/index');
 	}
 
-	private function stdHeight(float $height, string $type) {
+	private function stdHeight(float $height, string $type)
+	{
 		switch ($type) {
 			case 'cm':
 				return $height;
@@ -485,7 +520,8 @@ class Users extends Controller {
 		}
 	}
 
-	private function stdWeight(float $weight, string $type) {
+	private function stdWeight(float $weight, string $type)
+	{
 		switch ($type) {
 			case 'kg':
 				return $weight;
