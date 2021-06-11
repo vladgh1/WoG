@@ -34,10 +34,14 @@
             }
             ?>
         </table>
-        <input type="button" class="" name="submit_btn" value="Export to JSON">
+        <form method="post" action="<?= URLROOT ?>/public/users/generateJSON">
+            <button type="submit">
+                Generate JSON</button>
+        </form>
         <form method="post" action="<?= URLROOT ?>/public/users/generatePDF">
             <button type="submit">
                 Generate PDF</button>
+        </form>
     </div>
 </body>
 

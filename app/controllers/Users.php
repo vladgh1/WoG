@@ -19,6 +19,12 @@ class Users extends Controller
 		$this->user_model->generatePDF();
 	}
 
+	public function generateJSON()
+	{
+		$this->user_model->generateJSON();
+	}
+
+
 	public function leaderboard()
 	{
 		$data = [];

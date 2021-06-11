@@ -155,4 +155,18 @@ class User
 		ob_end_clean();
 		$pdf->Output();
 	}
+
+	public function generateJSON()
+	{
+		$this->db->query('select * from leaderboard');
+		$result = $this->db->resultSet();
+		$json_data = array();
+		foreach ($result as $rec) {
+			$json_array['username'] = $rec->username;
+			$json_array['score'] = $rec->score;
+			//here pushing the values in to an array  
+			array_push($json_data, $json_array);
+		}
+		echo json_encode($json_data);
+	}
 }
