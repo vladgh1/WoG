@@ -14,7 +14,11 @@
 </head>
 
 <body>
-	<?php require APPROOT . '/views/includes/header.php'?>
+	<?php 
+	if (isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0)
+			require APPROOT . '/views/includes/loggedInHeader.php';
+			else
+			require APPROOT . '/views/includes/header.php'?>
 	<div class="error-code--container">
 		<h1 id="error-code">404</h1>
 		<p id="push-up-game-hint">space</p>

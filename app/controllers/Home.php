@@ -28,15 +28,6 @@ class Home extends Controller {
 			}
 		}
 
-		
-		$users = $this->model_user->getTop();
-		
-		if ($users) {
-			foreach ($users as $user) {
-				$data[$user->username] = $user->score;
-			}
-		}
-		
 		$this->view('home/index', $data);
 	}
 	public function error() {
