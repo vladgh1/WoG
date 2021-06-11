@@ -17,10 +17,10 @@ class Workout extends Controller
             'intended' => $_POST['intended']
 		];
 
-        $this->workout_model->averageExercise();
+        // $this->workout_model->averageExercise();
 
-        // $this->workout_model->addWorkout($data);
-        // $this->getProgram($data);
+        $this->workout_model->addWorkout($data);
+        $this->getProgram($data);
     }
 
     public function getProgram($data)
