@@ -7,7 +7,7 @@ class Home extends Controller {
 		$this->model_user = $this->model('User');
 	}
 	
-	public function index() {		
+	public function index() {	
 		$data=[];
 		if (isset($_SESSION['username'])) {
 			header('location: ' . URLROOT . '/public/home/loggedIn');
