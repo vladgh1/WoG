@@ -40,10 +40,10 @@ class Users extends Controller
 		$this->view('info/leaderboard', $data);
 	}
 
-	public function profile()
+	public function workout()
 	{
-		//TODO: Create profile view and display it
-		$this->view('info/profile');
+		//TODO: Create workout view and display it
+		$this->view('info/workout');
 	}
 
 	public function workoutDone()
@@ -88,7 +88,6 @@ class Users extends Controller
 	public function generator()
 	{
 		$this->view('info/generator');
-		// TODO: Implement generator
 	}
 
 	public function login()
@@ -338,7 +337,7 @@ class Users extends Controller
 		header('location:' . URLROOT . '/public/home/loggedIN');
 	}
 
-	public function settings()
+	public function profile()
 	{
 		if (isset($_COOKIE['username']) && strlen($_COOKIE['username']) > 0) {
 			$dataUser = $this->user_model->getUser($_COOKIE['username']);
@@ -490,7 +489,7 @@ class Users extends Controller
 				}
 			}
 
-			$this->view('info/settings', $data);
+			$this->view('info/profile', $data);
 		} else {
 			require_once 'Home.php';
 

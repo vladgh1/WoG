@@ -118,7 +118,7 @@ class User
 
 	public function getTop()
 	{
-		$this->db->query('SELECT username, score FROM leaderboard ORDER BY score DESC');
+		$this->db->query('SELECT * FROM leaderboard ORDER BY score DESC');
 		return $this->db->resultSet();
 	}
 
