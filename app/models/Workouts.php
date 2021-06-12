@@ -17,7 +17,7 @@ class workouts
 
 	public function addWorkout($data)
 	{
-		$this->db->query('INSERT INTO user_workout (username, workout, "time", intensity, finished, created_at)
+		$this->db->query('INSERT INTO user_workout (username, workout, workout_time, intensity, finished, created_at)
 		VALUES (:username, :workout, :workout_time, :intensity, 0, :created_at)');
 
 		$this->db->bind(':username', $_COOKIE['username']);

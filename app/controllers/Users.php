@@ -62,7 +62,7 @@ class Users extends Controller
 	public function workoutDone()
 	{
 		$workouts = unserialize($_COOKIE['workout_plan'], ["allowed_classes" => false]);
-		var_dump($workouts);
+		($workouts);
 
 		$data = [
 			'workout' => [],

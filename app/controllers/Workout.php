@@ -20,13 +20,35 @@ class Workout extends Controller
 		// $this->workout_model->averageExercise();
 
 		$workout = $this->generateProgram($data);
-		$this->workout_model->addWorkout($workout);
-		// $this->view('info/generatorResults', $workout);
+        foreach($workout['primary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
+		
+        foreach($workout['secondary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
+		    
+		 $this->view('info/generatorResults', $workout);
 	}
 
 	public function generateProgram($data)
 	{
-		$intensity = $data['intensity'];
 		$Pfocus = $data['Pfocus'];
 		$Sfocus = $data['Sfocus'];
 		$Wtime = $data['Wtime'];
