@@ -3,82 +3,61 @@
 class Workout extends Controller
 {
 
-    public function __construct() {
+	public function __construct() {
 		$this->workout_model = $this->model('Workouts');
 	}
 
-    public function saveProgram()
-    {
-        $data = [
+	public function saveProgram()
+	{
+		$data = [
 			'intensity' => $_POST['intensity'],
 			'Pfocus'=> $_POST['Pfocus'],
-            'Sfocus' => $_POST['Sfocus'],
-            'Wtime' => $_POST['Wtime'],
-            'intended' => $_POST['intended']
+			'Sfocus' => $_POST['Sfocus'],
+			'Wtime' => $_POST['Wtime'],
+			'intended' => $_POST['intended']
 		];
 
-        // $this->workout_model->averageExercise();
+		// $this->workout_model->averageExercise();
 
-        $this->workout_model->addWorkout($data);
-        $this->getProgram($data);
-    }
+		$workout = $this->generateProgram($data);
+		$this->workout_model->addWorkout($workout);
+		// $this->view('info/generatorResults', $workout);
+	}
 
-    public function getProgram($data)
-    {
-        $intensity=$data['intensity'];
-        $Pfocus = $data['Pfocus'];
-        $Sfocus = $data['Sfocus'];
-        $Wtime = $data['Wtime'];
-        $intended = $data['intended'];
+	public function generateProgram($data)
+	{
+		$intensity = $data['intensity'];
+		$Pfocus = $data['Pfocus'];
+		$Sfocus = $data['Sfocus'];
+		$Wtime = $data['Wtime'];
+		$intended = $data['intended'];
 
+		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus);
+		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus);
 
-        $query_Primary = $this->workout_model->selectExercises($intended,$Pfocus);
-        $query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus);
+		$nrExercises = $Wtime / 15;
+		$nrSecondaryExercise = 0;
+		$nrPrimaryExercise = 0;
+		if (($Pfocus == $Sfocus && $Pfocus != "None") || ($Sfocus == "None" && $Pfocus != "None"))
+			$nrPrimaryExercise = $nrExercises;
+		else if ($Pfocus == "None" && $Sfocus != "None") {
+			$nrSecondaryExercise = $nrExercises;
+		} else if ($Pfocus != "None" && $Sfocus != "None") {
+			$nrPrimaryExercise = ceil($nrExercises / 2);
+			$nrSecondaryExercise = $nrExercises - $nrPrimaryExercise;
+		}
 
-        $nrExercises = $Wtime / 15;
-        $nrSecondaryExercise = 0;
-        $nrPrimaryExercise = 0;
-        if (($Pfocus == $Sfocus && $Pfocus != "None") || ($Sfocus == "None" && $Pfocus != "None"))
-            $nrPrimaryExercise = $nrExercises;
-        else if ($Pfocus == "None" && $Sfocus != "None") {
-            $nrSecondaryExercise = $nrExercises;
-        } else if ($Pfocus != "None" && $Sfocus != "None") {
-            $nrPrimaryExercise = ceil($nrExercises / 2);
-            $nrSecondaryExercise = $nrExercises - $nrPrimaryExercise;
-        }
+		shuffle($query_Primary);
+		shuffle($query_Secondary);
 
-        shuffle($query_Primary);
-        shuffle($query_Secondary);
-
-        $newData = [
-			'query_Primary' => $query_Primary,
-			'query_Secondary' => $query_Secondary,
-			'nrPrimaryExercise' => $nrPrimaryExercise,
-			'nrSecondaryExercise' => $nrSecondaryExercise,
-            'intensity' => $_POST['intensity']
+		$newData = [
+			'primary' => array_slice($query_Primary, 0, $nrPrimaryExercise),
+			'secondary' => array_slice($query_Secondary, 0, $nrSecondaryExercise),
+			'intensity' => $_POST['intensity']
 		];
 
-        $programId=$this->workout_model->getLatestId();
-        $points=0;
+		setcookie('workout_plan', serialize($newData), 0, '/');
 
-        foreach ($query_Primary as $exercise) {
-			if ($nrPrimaryExercise == 0) break;
-			$nrPrimaryExercise--;
-			$this->workout_model->addExercise($programId,$exercise->nume);
-            $points+=$exercise->punctaj*$intensity;
-		}
-        
-        foreach ($query_Secondary as $exercise) {
-			if ($nrSecondaryExercise == 0) break;
-			$nrSecondaryExercise--;
-			$this->workout_model->addExercise($programId,$exercise->nume);
-            $points+=$exercise->punctaj*$intensity;
-		}
-        
-        $this->workout_model->setPoints($points,$programId);
-
-        $this->view('info/generatorResults', $newData);
-    }
-    
-
+		return $newData;
+	}
 }

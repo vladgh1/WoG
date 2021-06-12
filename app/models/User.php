@@ -27,13 +27,6 @@ class User
 		return $this->db->rowCount() > 0;
 	}
 
-	public function existsWorkoutWithName($workout)
-	{
-		$this->db->query('SELECT * FROM work WHERE id = :workout');
-		$this->db->bind(':workout', $workout);
-		return $this->db->rowCount() > 0;
-	}
-
 	public function existsUserWithEmail($email)
 	{
 		$this->db->query('SELECT * FROM user WHERE email = :email');

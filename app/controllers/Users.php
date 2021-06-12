@@ -13,6 +13,7 @@ class Users extends Controller
 	public function __construct()
 	{
 		$this->user_model = $this->model('User');
+		$this->workout_model = $this->model('Workouts');
 	}
 	public function generatePDF()
 	{
@@ -48,28 +49,34 @@ class Users extends Controller
 	public function workout()
 	{
 		//TODO: Create workout view and display it
+		$this->workout_model->getPendingWorkouts($_COOKIE);
+		$this->workout_model->getFinishedWorkouts($_COOKIE);
 		$this->view('info/workout');
 	}
 
 	public function workoutDone()
 	{
+		$workouts = unserialize($_COOKIE['workout_plan'], ["allowed_classes" => false]);
+		var_dump($workouts);
+
 		$data = [
-			'workout' => '',
-			'done' => '',
-			'usernameError' => '',
+			'workout' => [],
+			'done' => [],
 			'workoutError' => ''
 		];
 
-		if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post method
 			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 			// Get the data
-			$data = [
-				'workout' => trim($_PUT['workout']),
-				'done' => trim($_PUT['done']),
-				'workoutError' => ''
-			];
+			foreach (array_keys($_POST) as $arg) {
+				if (is_int($arg)) {
+					array_push($data['workout'], $arg);
+					$data['done'][$arg] = ($_POST[$arg] == 0 ? 0 : 1);
+				}
+			}
+			var_dump($data);
 
 			// Validate workout id
 			if (empty($data['workout'])) {
@@ -78,14 +85,20 @@ class Users extends Controller
 
 			// Check if there are no errors
 			if (empty($data['workoutError'])) {
-				$existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);
-				if ($existsWorkout) {
-					$this->user_model->completeUserWorkout($data);
+				foreach ($data['workout'] as $workout) {
+					$existsWorkout = $this->workout_model->existsWorkoutWithId($data['workout']);
+					if ($existsWorkout) {
+						$this->workout_model->completeWorkout($workout, $data['done'][$workout]);
+					}
 				}
+				// $existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);
+				// if ($existsWorkout) {
+				// 	$this->user_model->completeUserWorkout($data);
+				// }
 
-				if (!$existsWorkout) {
-					$data['workoutError'] = "Workout does not exits";
-				}
+				// if (!$existsWorkout) {
+				// 	$data['workoutError'] = "Workout does not exits";
+				// }
 			}
 		}
 	}
