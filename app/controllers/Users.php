@@ -33,7 +33,7 @@ class Users extends Controller
 
 		if ($users) {
 			foreach ($users as $user) {
-				$data[$user->username] = $user->score;
+				$data[$user->username] = $user->points;
 			}
 		}
 

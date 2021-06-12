@@ -29,11 +29,11 @@
 					<?php
 
 					$rank = 1;
-					foreach ($data as $user => $score) {
+					foreach ($data as $user => $points) {
 						echo "<tr>";
 						echo "<td>" . $rank++ . "</td>";
 						echo "<td>" . $user . "</td>";
-						echo "<td>" . $score . "</td>";
+						echo "<td>" . $points . "</td>";
 						echo "</tr>";
 					}
 					?>
@@ -59,11 +59,11 @@
 					<?php
 
 					$rank = 1;
-					foreach ($data as $user => $score) {
+					foreach ($data as $user => $points) {
 						echo "<tr>";
 						echo "<td>" . $rank++ . "</td>";
 						echo "<td>" . $user . "</td>";
-						echo "<td>" . $score . "</td>";
+						echo "<td>" . $points . "</td>";
 						echo "</tr>";
 					}
 					?>
@@ -90,11 +90,11 @@
 					<?php
 
 					$rank = 1;
-					foreach ($data as $user => $score) {
+					foreach ($data as $user => $points) {
 						echo "<tr>";
 						echo "<td>" . $rank++ . "</td>";
 						echo "<td>" . $user . "</td>";
-						echo "<td>" . $score . "</td>";
+						echo "<td>" . $points . "</td>";
 						echo "</tr>";
 					}
 					?>
