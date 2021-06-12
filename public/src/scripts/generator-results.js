@@ -7,6 +7,6 @@ function totalIt() {
         }
     }
 
-    document.getElementsByName("total")[0].value = total.toFixed(2) + " points";
-    return total;
+    document.getElementsByName("total")[0].value = total + " points";
+
 }

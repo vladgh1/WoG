@@ -118,7 +118,7 @@ class User
 	public function generatePDF()
 	{
 		include_once('../app/libraries/fpdf/fpdf.php');
-		$display_heading = array('username' => 'Name', 'points' => 'Score');
+		$display_heading = array('username' => 'Name', 'score' => 'Score');
 		$result = $this->getTop();
 		$this->db->query('SHOW columns FROM leaderboard');
 		$header =  $this->db->resultSet();
@@ -156,7 +156,7 @@ class User
 		$json_data = array();
 		foreach ($result as $rec) {
 			$json_array['username'] = $rec->username;
-			$json_array['points'] = $rec->points;
+			$json_array['score'] = $rec->score;
 			//here pushing the values in to an array  
 			array_push($json_data, $json_array);
 		}

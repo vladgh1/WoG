@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	
+
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 	
 	<form method="post" action="<?= URLROOT ?>/public/users/workoutDone" class="result-exercises--container">
@@ -26,7 +26,6 @@
 			echo '<iframe width="350" height="200" src="'. $exercise->link . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 			echo '<p>Rest for 60 seconds.</p>';
 			echo '</div>';
-			
 		}
 
 		foreach ($data['secondary'] as $exercise) {
@@ -37,7 +36,6 @@
 			echo '<iframe width="350" height="200" src="'. $exercise->link . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 			echo '<p>Rest for 60 seconds.</p>';
 			echo '</div>';
-			
 		}
 		?>
 		<input value="0 points" readonly="readonly" type="text" name="total" />

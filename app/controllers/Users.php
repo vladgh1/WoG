@@ -15,6 +15,11 @@ class Users extends Controller
 		$this->user_model = $this->model('User');
 		$this->workout_model = $this->model('Workouts');
 	}
+
+	public function congrats()
+	{
+		$this->view('info/congrats');
+	}
 	public function generatePDF()
 	{
 		$this->user_model->generatePDF();
