@@ -40,6 +40,11 @@ class Users extends Controller
 		$this->view('info/leaderboard', $data);
 	}
 
+	public function statistics()
+	{
+		$this->view('info/statistics');
+	}
+
 	public function workout()
 	{
 		//TODO: Create workout view and display it
