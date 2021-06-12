@@ -14,6 +14,11 @@ class Users extends Controller
 	{
 		$this->user_model = $this->model('User');
 	}
+
+	public function congrats()
+	{
+		$this->view('info/congrats');
+	}
 	public function generatePDF()
 	{
 		$this->user_model->generatePDF();
@@ -33,7 +38,7 @@ class Users extends Controller
 
 		if ($users) {
 			foreach ($users as $user) {
-				$data[$user->username] = $user->points;
+				$data[$user->username] = $user->score;
 			}
 		}
 
