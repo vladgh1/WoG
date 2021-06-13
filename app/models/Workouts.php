@@ -7,11 +7,12 @@ class workouts
 	{
 		$this->db = new Database();
 	}
-	public function selectExercises(String $intended, String $focus)
+	public function selectExercises(String $intended, String $focus,int $intensity)
 	{
-		$this->db->query('SELECT * from workout NATURAL JOIN workout_intensity where intended=:intended and focus=:focus');
+		$this->db->query('SELECT * from workout a JOIN workout_intensity b on a.id=b.workout_id where intended=:intended and focus=:focus and intensity=:intensity');
 		$this->db->bind(':intended', $intended);
 		$this->db->bind(':focus', $focus);
+		$this->db->bind(':intensity', $intensity);
 		return $this->db->resultSet();
 	}
 
@@ -21,7 +22,7 @@ class workouts
 		VALUES (:username, :workout, :workout_time, :intensity, 0, :created_at)');
 
 		$this->db->bind(':username', $_COOKIE['username']);
-		$this->db->bind(':workout', $data['workout']);
+		$this->db->bind(':workout', 1);
 		$this->db->bind(':workout_time', $data['workout_time']);
 		$this->db->bind(':intensity', $data['intensity']);
 		$this->db->bind(':created_at', date("Y-m-d H:i:s"));
@@ -52,13 +53,13 @@ class workouts
 		return intval($rez[0]->id);
 	}
 
-	public function addExercise($id,$nume)
+	public function addExercise($user_workout_id,$workout_id)
 	{
-		$this->db->query('INSERT INTO selected_exercise (id,nume_exercitiu) 
-		VALUES (:id, :nume)');
+		$this->db->query('INSERT INTO selected_exercise (user_workout_id,workout_id) 
+		VALUES (:user_workout_id, :workout_id)');
 
-		$this->db->bind(':id', $id);
-		$this->db->bind(':nume', $nume);
+		$this->db->bind(':user_workout_id', $user_workout_id);
+		$this->db->bind(':workout_id', $workout_id);
 		return $this->db->execute();
 	}
 
