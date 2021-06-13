@@ -51,15 +51,13 @@ class Users extends Controller
 	public function workout()
 	{
 		//TODO: Create workout view and display it
-		$this->workout_model->getPendingWorkouts($_COOKIE);
-		$this->workout_model->getFinishedWorkouts($_COOKIE);
-		$this->view('info/workout');
+		$data['pending']=$this->workout_model->getPendingWorkouts($_COOKIE);
+		$data['done']=$this->workout_model->getFinishedWorkouts($_COOKIE);
+		$this->view('info/workout',$data);
 	}
 
 	public function workoutDone()
 	{
-		$workouts = unserialize($_COOKIE['workout_plan'], ["allowed_classes" => false]);
-		($workouts);
 
 		$data = [
 			'workout' => [],

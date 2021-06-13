@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +11,9 @@
 	<link rel="stylesheet" href="<?= URLROOT ?>/public/src/css/workout.css">
 	<script src="<?= URLROOT ?>/public/src/scripts/confirm-workout.js"></script>
 </head>
+
 <body>
-	<?php require_once APPROOT . '/views/includes/loggedInHeader.php'?>
+	<?php require_once APPROOT . '/views/includes/loggedInHeader.php' ?>
 
 	<section class="profile-main--container center--container">
 		<div class="profile-main-content--container">
@@ -20,19 +22,15 @@
 			<ul>
 				<div class="profile-main--content" id="pending-list">
 					<!-- TODO: Get the list from database -->
-					<!-- <?php
-						foreach($data['pending'] as $pending) {
-							echo '<li data-id="' . $pending['id'] . '">';
-							echo '<input type="checkbox">';
-							echo $pending['title'] . ' - ' . $pending['time'];
-							echo '</li>';
-						}
-					?> -->
-					<li data-id=""><input type="checkbox"> Jogging - 10 minutes</li>
-					<li data-id=""><input type="checkbox"> Jogging - 30 minutes</li>
-					<li data-id=""><input type="checkbox"> Jogging - 30 minutes</li>
-					<li data-id=""><input type="checkbox"> Jogging - 30 minutes</li>
-					<li data-id=""><input type="checkbox"> Jogging - 30 minutes</li>
+					<?php
+					//var_dump($data);
+					foreach ($data['pending'] as $pending) {
+						echo '<li data-id="' . $pending->intensity . '">';
+						echo '<input type="checkbox">';
+						echo " $pending->name" . ' - ' . $pending->repetitions . 'x' . $pending->sessions;
+						echo '</li>';
+					}
+					?>
 				</div>
 			</ul>
 		</div>
@@ -43,21 +41,18 @@
 			<ul>
 				<div class="profile-main--content" id="done-list">
 					<!-- TODO: Get the list from database -->
-					<!-- <?php
-						foreach($data['done'] as $done) {
-							echo '<li>';
-							echo $done['title'] . ' - ' . $done['time'];
-							echo '</li>';
-						}
-					?> -->
-					<li>Jogging - 30 minutes</li>
-					<li>Jogging - 30 minutes</li>
-					<li>Jogging - 30 minutes</li>
-					<li>Jogging - 30 minutes</li>
-					<li>Jogging - 30 minutes</li>
+
+					<?php
+					foreach ($data['done'] as $done) {
+						echo '<li>';
+						echo $done->name . ' - ' . $done->repetitions . 'x' . $done->sessions;
+						echo '</li>';
+					}
+					?>
 				</div>
 			</ul>
 		</div>
 	</section>
 </body>
+
 </html>
