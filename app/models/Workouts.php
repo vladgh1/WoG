@@ -30,17 +30,19 @@ class workouts
 
 	public function completeWorkout($id, $status)
 	{
-		$this->db->query('UPDATE user_workout SET finished = :finished WHERE workout = :id');
+		$this->db->query('UPDATE user_workout SET finished = :finished WHERE workout = :id and username = :username');
+		$this->db->bind(':username', $_COOKIE['username']);
 		$this->db->bind(':finished', $status);
 		$this->db->bind(':id', $id);
-		$this->db->execute();
+		return $this->db->execute();
 	}
 
-	public function existsWorkoutWithId($workout)
+	public function getWorkoutId($workout)
 	{
-		$this->db->query('SELECT * FROM workout WHERE id = :id');
+		$this->db->query('SELECT id FROM workout WHERE name = :id');
 		$this->db->bind(':id', $workout);
-		return $this->db->rowCount() > 0;
+		$this->db->execute();
+		return $this->db->resultRow();
 	}
 
 	public function getLatestId()

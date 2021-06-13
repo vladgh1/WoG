@@ -78,9 +78,9 @@
 html,
 body {
     background: linear-gradient(0deg, rgb(206, 92, 64) 10%, rgba(121, 54, 39, 1) 90%);
-	background-color: #ce5c40;
-	background-repeat: no-repeat;
-	overflow-x: hidden;
+    background-color: #ce5c40;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
     height: 100vh;
     width: 100vw;
 }
@@ -285,27 +285,6 @@ ul {
 
 ::-webkit-scrollbar-thumb {
     background: rgb(223, 213, 124);
-}
-
-.exercise--container {
-    width: 8rem;
-    height: 8rem;
-    position: relative;
-    display: inline-block;
-}
-
-.result-exercises--container {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.result-exercise--container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70vw;
-    padding-top: 5em;
 }
 
 @media screen and (max-width: 900px) {

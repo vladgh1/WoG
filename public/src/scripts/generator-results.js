@@ -1,5 +1,5 @@
 function totalIt() {
-    var input = document.getElementsByName("exercise");
+    var input = document.getElementsByClassName("exercise");
     var total = 0;
     for (var i = 0; i < input.length; i++) {
         if (input[i].checked) {

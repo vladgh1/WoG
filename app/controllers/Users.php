@@ -16,10 +16,7 @@ class Users extends Controller
 		$this->workout_model = $this->model('Workouts');
 	}
 
-	public function congrats()
-	{
-		$this->view('info/congrats');
-	}
+
 	public function generatePDF()
 	{
 		$this->user_model->generatePDF();
@@ -74,26 +71,32 @@ class Users extends Controller
 			// Sanitize post method
 			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+
 			// Get the data
 			foreach (array_keys($_POST) as $arg) {
-				if (is_int($arg)) {
+				if (is_numeric($_POST[$arg]))
+					$_POST[$arg] = (int)$_POST[$arg];
+			}
+
+			foreach (array_keys($_POST) as $arg) {
+				if (is_int($_POST[$arg])) {
 					array_push($data['workout'], $arg);
 					$data['done'][$arg] = ($_POST[$arg] == 0 ? 0 : 1);
 				}
 			}
-			var_dump($data);
-
+			//var_dump($data);
 			// Validate workout id
 			if (empty($data['workout'])) {
 				$data['workoutError'] = 'Enter workout';
 			}
-
+			//var_dump($data['workout']);
 			// Check if there are no errors
 			if (empty($data['workoutError'])) {
 				foreach ($data['workout'] as $workout) {
-					$existsWorkout = $this->workout_model->existsWorkoutWithId($data['workout']);
-					if ($existsWorkout) {
-						$this->workout_model->completeWorkout($workout, $data['done'][$workout]);
+					$workoutId = $this->workout_model->getWorkoutId($workout);
+					//var_dump($workoutId);
+					if ($workoutId) {
+						$this->workout_model->completeWorkout($workoutId->id, $data['done'][$workout]);
 					}
 				}
 				// $existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);

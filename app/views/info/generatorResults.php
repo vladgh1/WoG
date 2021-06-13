@@ -20,7 +20,8 @@
 		
 		foreach ($data['primary'] as $exercise) {
 			echo($exercise->points);
-			echo '<input name="exercise" value="' . $exercise->points .'" type="checkbox" onclick="totalIt()" />' . $exercise->name;
+			echo($exercise->name);
+			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
 			echo '<div class="result-exercise--container">';
 			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
 			echo $exercise->description;
@@ -31,7 +32,8 @@
 
 		foreach ($data['secondary'] as $exercise) {
 			echo($exercise->points);
-			echo '<input name="exercise" value="'.$exercise->points . '" type="checkbox" onclick="totalIt()" />' . $exercise->name;
+			echo($exercise->name);
+			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
 			echo '<div class="result-exercise--container">';
 			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
 			echo $exercise->description;
