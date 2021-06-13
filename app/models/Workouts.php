@@ -113,7 +113,6 @@ class workouts
 		$rez=[
 			'intended'=>$exercises[0]
 		];
-		var_dump($rez);
 		return $rez;
 	}
 
@@ -128,7 +127,7 @@ class workouts
 		if($time%15>=7)$time=min(((int)($time/15)+1)*15,120);
 		else $time=$time-($time%15);
 		$rezData=[
-			'time'=>$time,
+			'Wtime'=>$time,
 			'intensity'=>$intensity
 		];
 		return $rezData;

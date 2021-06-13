@@ -17,9 +17,49 @@ class Workout extends Controller
 			'intended' => $_POST['intended']
 		];
 
-		//
-		// $this->workout_model->getRandomExerciseName();
-		// $this->workout_model->averageExercise();
+		$workout = $this->generateProgram($data);
+        foreach($workout['primary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
+		
+        foreach($workout['secondary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
+		    
+		 $this->view('info/generatorResults', $workout);
+	}
+
+	public function saveAverageProgram()//functia de "surprinde-ma"
+	{
+		
+
+		$dataIntended=$this->workout_model->getRandomIntendedName();
+		$dataFocus=$this->workout_model->getRandomExerciseName();
+		$dataAverage=$this->workout_model->averageExercise();
+
+		$data = [
+			'intensity' => $dataAverage['intensity'],
+			'Pfocus'=> $dataFocus['Pfocus'],
+			'Sfocus' => $dataFocus['Sfocus'],
+			'Wtime' => $dataAverage['Wtime'],
+			'intended' => $dataIntended['intended']
+		];
 
 		$workout = $this->generateProgram($data);
         foreach($workout['primary'] as $work){
