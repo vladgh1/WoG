@@ -20,26 +20,29 @@ class Workout extends Controller
 		// $this->workout_model->averageExercise();
 
 		$workout = $this->generateProgram($data);
-
-		$workData = [
-			'username' => $_COOKIE['username'],
-			'workout_time' => intval($data['Wtime']),
-			'intensity' => intval($_POST['intensity']),
-			'finished' => 0,
-			'created_at' => date("Y-m-d H:i:s")
-		];
-		$this->workout_model->addWorkout($workData);
-
-		$id_user_workout=$this->workout_model->getLatestId();
-
-		foreach ($workout['primary'] as $work) {
-			$this->workout_model->addExercise($id_user_workout, $work->id);
-		}
-
-		foreach ($workout['secondary'] as $work) {
-			$this->workout_model->addExercise($id_user_workout, $work->id);
-		}
-
+        foreach($workout['primary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
+		
+        foreach($workout['secondary'] as $work){
+            $workData = [
+                'username' => $_COOKIE['username'],
+                'workout'=> intval($work->id),
+                'workout_time' => intval($data['Wtime']),
+                'intensity' => intval($_POST['intensity']),
+                'finished' => 0,
+                'created_at' => date("Y-m-d H:i:s")
+            ];
+            $this->workout_model->addWorkout($workData);
+        }
 		    
 		 $this->view('info/generatorResults', $workout);
 	}
@@ -50,10 +53,9 @@ class Workout extends Controller
 		$Sfocus = $data['Sfocus'];
 		$Wtime = $data['Wtime'];
 		$intended = $data['intended'];
-		$intensity=$data['intensity'];
 
-		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus,$intensity);
-		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus,$intensity);
+		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus);
+		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus);
 
 		$nrExercises = $Wtime / 15;
 		$nrSecondaryExercise = 0;
