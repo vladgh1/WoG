@@ -53,9 +53,10 @@ class Workout extends Controller
 		$Sfocus = $data['Sfocus'];
 		$Wtime = $data['Wtime'];
 		$intended = $data['intended'];
+		$intensity=$data['intensity'];
 
-		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus);
-		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus);
+		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus,$intensity);
+		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus,$intensity);
 
 		$nrExercises = $Wtime / 15;
 		$nrSecondaryExercise = 0;

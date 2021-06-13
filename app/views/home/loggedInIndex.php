@@ -34,22 +34,7 @@
 			<hr>
 			<p>Weight: <?= $data->weight ?></p>
 			<hr>
-			<p>Today's plan:</p>
-			<ul>
-				<li>
-					<input type="checkbox">
-					30 min jogging
-				</li>
-				<li>
-					<input type="checkbox">
-					25 min warm-up
-				</li>
-				<li>
-					<input type="checkbox">
-					40 min something else... 
-				</li>
-			</ul>
-			<hr>
+			
 			<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a program!</a>
 		</div>
 	</main>
