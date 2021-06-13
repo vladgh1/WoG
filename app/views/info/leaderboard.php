@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?= APPNAME ?> - user profile</title>
+	<title><?= APPNAME ?> - leaderboard</title>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/leaderboard.css'>
@@ -27,16 +27,28 @@
 						<td>Score</td>
 					</tr>
 					<?php
-
+					//var_dump($data);
 					$rank = 1;
 					foreach ($data as $user => $points) {
-						echo "<tr>";
-						echo "<td>" . $rank++ . "</td>";
-						echo "<td>" . $user . "</td>";
-						echo "<td>" . $points . "</td>";
-						echo "</tr>";
+						if ($user == $_COOKIE['username']) {
+							echo "<tr>";
+							echo '<td  style="color:blue;">' . $rank++ . "</td>";
+							echo '<td  style="color:blue;">' . $user . "</td>";
+							echo '<td  style="color:blue;">' . $points . "</td>";
+							echo "</tr>";
+							$myrank = $rank-1;
+						} else {
+							echo "<tr>";
+							echo "<td>" . $rank++ . "</td>";
+							echo "<td>" . $user . "</td>";
+							echo "<td>" . $points . "</td>";
+							echo "</tr>";
+						}
 					}
+					echo 'My rank: '. $myrank;
 					?>
+
+
 				</table>
 				<div class="generate-buttons--container">
 					<form method="post" action="<?= URLROOT ?>/public/users/generateJSON">
