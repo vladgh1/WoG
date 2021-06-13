@@ -17,6 +17,8 @@ class Workout extends Controller
 			'intended' => $_POST['intended']
 		];
 
+		//
+		// $this->workout_model->getRandomExerciseName();
 		// $this->workout_model->averageExercise();
 
 		$workout = $this->generateProgram($data);

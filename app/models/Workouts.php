@@ -82,19 +82,56 @@ class workouts
 		return intval($rez[0]->nr);
 	}
 
+	public function getRandomExerciseName()
+	{
+		$exercises=[
+			"Arms",
+			"Legs",
+			"Chest",
+			"Abdomen",
+			"UpperBack",
+			"LowerBack"
+		];
+		shuffle($exercises);
+		$rez=[
+			'Pfocus'=>$exercises[0],
+			'Sfocus'=>$exercises[1]
+		];
+		return $rez;
+	}
+
+	public function getRandomIntendedName()
+	{
+		$exercises=[
+			"Flexibility",
+			"Strength",
+			"Speed",
+			"Mobility",
+			"Cardio"
+		];
+		shuffle($exercises);
+		$rez=[
+			'intended'=>$exercises[0]
+		];
+		var_dump($rez);
+		return $rez;
+	}
+
 	public function averageExercise()
 	{
-		$this->db->query('SELECT avg(intensity) as intensity, avg(Wtime) as time from 
-		programs where username=:username and finished=1');
+		$this->db->query('SELECT avg(intensity) as intensity, avg(workout_time) as time from 
+		user_workout where username=:username and finished=1');
 		$this->db->bind(':username', $_COOKIE['username']);
 		$rez= $this->db->resultSet();
 		$intensity= (int)round(intval($rez[0]->intensity));
 		$time= (int)round(intval($rez[0]->time));
-		var_dump($time); 
 		if($time%15>=7)$time=min(((int)($time/15)+1)*15,120);
 		else $time=$time-($time%15);
-		var_dump($intensity);
-		var_dump($time);
+		$rezData=[
+			'time'=>$time,
+			'intensity'=>$intensity
+		];
+		return $rezData;
 	}
 
 	public function getPendingWorkouts($data)
