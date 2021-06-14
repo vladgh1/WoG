@@ -15,7 +15,7 @@
 }
 
 .header-login--form {
-	margin-left: 0.8em;
+    margin-left: 0.8em;
 }
 
 .header-login-register--container a {
@@ -34,11 +34,20 @@
   }
 }
 
-@media screen and (max-width: 410px) {
-  .logo-text {
-    font-size: 1em;
+@media screen and (max-width: 580px) {
+  .logo--container {
+    display: none;
   }
+}
+
+@media screen and (max-width: 460px) {
   .header-login-register--container a {
-    margin: 0.5em;
+    margin: .5em;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .header-login-register--container a {
+    font-size: .8rem;
   }
 }
