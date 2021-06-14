@@ -34,7 +34,6 @@
 			<hr>
 			<p>Weight: <?= $data->weight ?></p>
 			<hr>
-			
 			<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a program!</a>
 		</div>
 	</main>

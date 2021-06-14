@@ -14,27 +14,30 @@
 
 <body>
 	<?php require_once APPROOT . '/views/includes/loggedInHeader.php' ?>
-
+	<h2 class=" profile-main-content--container center--container profile-main-content--header">Current Workout</h2>
 	<section class="profile-main--container center--container">
+
 		<div class="profile-main-content--container">
 			<h2 class="profile-main-content--header">Pending</h2>
 			<hr>
 			<ul>
 				<div class="profile-main--content" id="pending-list">
-					<!-- TODO: Get the list from database -->
-					<?php
-					//var_dump($data);
-					foreach ($data['pending'] as $pending) {
-						echo '<li data-id="' . $pending->intensity . '">';
-						echo '<input type="checkbox">';
-						echo " $pending->name" . ' - ' . $pending->repetitions . 'x' . $pending->sessions;
-						echo '</li>';
-					}
-					?>
+					<form method="post" action="<?= URLROOT ?>/public/users/workoutDone">
+						<?php
+						//var_dump($data);
+						foreach ($data['pending'] as $pending) {
+							echo '<li data-id="' . $pending->intensity . '">';
+							echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
+							echo '<a href="' . URLROOT . '/public/users/exerciseDetails" id="register--btn">' . " $pending->name" . '</a>' . ' - ' . $pending->repetitions . 'x' . $pending->sessions;
+							echo '</li>';
+						}
+						?>
+						<button type="submit">↣</button>
+						<form>
 				</div>
 			</ul>
 		</div>
-		<button onclick="confirmWorkout()">↣</button>
+
 		<div class="profile-main-content--container">
 			<h2 class="profile-main-content--header">Done</h2>
 			<hr>
@@ -53,6 +56,13 @@
 			</ul>
 		</div>
 	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a new program!</a>
 </body>
 
 </html>

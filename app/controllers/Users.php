@@ -107,8 +107,11 @@ class Users extends Controller
 				// }
 			}
 		}
+		header('location:' . URLROOT . '/public/users/workout');
 	}
-
+	public function exerciseDetails(){
+		$this->view('info/exerciseDetails');
+	}
 	public function generator()
 	{
 		$this->view('info/generator');
