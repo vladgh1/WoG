@@ -65,7 +65,7 @@
 			<div class="main-login-register--container">
 				<input type="submit" name="submit_btn" value="Sign Up">
 				<!-- <a href="<?= URLROOT ?>/public/home/loggedIN" class="a--btn green--btn">Register</a>
-		<a href="<?= URLROOT ?>/public/info/login" class="a--btn gray--btn">Or login instead</a> -->
+				<a href="<?= URLROOT ?>/public/info/login" class="a--btn gray--btn">Or login instead</a> -->
 			</div>
 		</form>
 

@@ -333,9 +333,6 @@ ul {
         transform: translate(50%, 0);
         margin: 0;
     }
-    .set-register-form-width {
-        width: 15rem;
-    }
     .set-register-form-width input,
     .set-register-form-width select {
         font-size: 0.8rem;
