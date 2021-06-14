@@ -9,7 +9,7 @@ class workouts
 	}
 	public function selectExercises(String $intended, String $focus)
 	{
-		$this->db->query('SELECT * from workout NATURAL JOIN workout_intensity where intended=:intended and focus=:focus');
+		$this->db->query('SELECT * from workout a JOIN workout_intensity b on a.id=b.workout_id where intended=:intended and focus=:focus and intensity=:intensity');
 		$this->db->bind(':intended', $intended);
 		$this->db->bind(':focus', $focus);
 		return $this->db->resultSet();
