@@ -29,21 +29,17 @@
 					<?php
 					//var_dump($data);
 					$rank = 1;
-					foreach ($data as $user => $points) {
+					foreach ($data['month'] as $user => $points) {
+						$class = "";
 						if ($user == $_COOKIE['username']) {
-							echo "<tr>";
-							echo '<td  style="color:blue;">' . $rank++ . "</td>";
-							echo '<td  style="color:blue;">' . $user . "</td>";
-							echo '<td  style="color:blue;">' . $points . "</td>";
-							echo "</tr>";
-							$myrank = $rank-1;
-						} else {
-							echo "<tr>";
-							echo "<td>" . $rank++ . "</td>";
-							echo "<td>" . $user . "</td>";
-							echo "<td>" . $points . "</td>";
-							echo "</tr>";
+							$class = ' class="leaderboard-selected-user"';
+							$myrank = $rank;
 						}
+						echo "<tr>";
+						echo "<td" . $class . ">" . $rank++ . "</td>";
+						echo "<td" . $class . ">" . $user . "</td>";
+						echo "<td" . $class . ">" . $points . "</td>";
+						echo "</tr>";
 					}
 					echo 'My rank: '. $myrank;
 					?>
@@ -71,13 +67,19 @@
 					<?php
 
 					$rank = 1;
-					foreach ($data as $user => $points) {
+					foreach ($data['year'] as $user => $points) {
+						$class = "";
+						if ($user == $_COOKIE['username']) {
+							$class = ' class="leaderboard-selected-user"';
+							$myrank = $rank;
+						}
 						echo "<tr>";
-						echo "<td>" . $rank++ . "</td>";
-						echo "<td>" . $user . "</td>";
-						echo "<td>" . $points . "</td>";
+						echo "<td" . $class . ">" . $rank++ . "</td>";
+						echo "<td" . $class . ">" . $user . "</td>";
+						echo "<td" . $class . ">" . $points . "</td>";
 						echo "</tr>";
 					}
+					echo 'My rank: '. $myrank;
 					?>
 				</table>
 
@@ -102,13 +104,19 @@
 					<?php
 
 					$rank = 1;
-					foreach ($data as $user => $points) {
+					foreach ($data['all'] as $user => $points) {
+						$class = "";
+						if ($user == $_COOKIE['username']) {
+							$class = ' class="leaderboard-selected-user"';
+							$myrank = $rank;
+						}
 						echo "<tr>";
-						echo "<td>" . $rank++ . "</td>";
-						echo "<td>" . $user . "</td>";
-						echo "<td>" . $points . "</td>";
+						echo "<td" . $class . ">" . $rank++ . "</td>";
+						echo "<td" . $class . ">" . $user . "</td>";
+						echo "<td" . $class . ">" . $points . "</td>";
 						echo "</tr>";
 					}
+					echo 'My rank: '. $myrank;
 					?>
 				</table>
 

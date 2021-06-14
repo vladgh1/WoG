@@ -115,6 +115,18 @@ class User
 		return $this->db->resultSet();
 	}
 
+	public function getTopYear()
+	{
+		$this->db->query('SELECT * FROM leaderboard_last_year ORDER BY score DESC');
+		return $this->db->resultSet();
+	}
+
+	public function getTopMonth()
+	{
+		$this->db->query('SELECT * FROM leaderboard_last_month ORDER BY score DESC');
+		return $this->db->resultSet();
+	}
+
 	public function generatePDF()
 	{
 		include_once('../app/libraries/fpdf/fpdf.php');

@@ -54,6 +54,10 @@
   font-size: .9rem;
 }
 
+.leaderboard-selected-user {
+	color: #eeb720;
+}
+
 @media screen and (max-width: 750px) {
   .leaderboards-table--container {
     flex-direction: column;

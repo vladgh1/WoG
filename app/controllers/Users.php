@@ -31,12 +31,17 @@ class Users extends Controller
 	public function leaderboard()
 	{
 		$data = [];
+		$users = [];
 
-		$users = $this->user_model->getTop();
+		$users['all'] = $this->user_model->getTop();
+		$users['year'] = $this->user_model->getTopYear();
+		$users['month'] = $this->user_model->getTopMonth();
 
-		if ($users) {
-			foreach ($users as $user) {
-				$data[$user->username] = $user->score;
+		foreach(['month', 'year', 'all'] as $period) {
+			if ($users) {
+				foreach ($users[$period] as $user) {
+					$data[$period][$user->username] = $user->score;
+				}
 			}
 		}
 
