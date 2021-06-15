@@ -40,26 +40,28 @@
 
 			<div class="register-form-block">
 				<input type="number" class="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? '' : 'error--input' ?>" name="age" placeholder="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? 'Age' : $data['ageError']; ?>" value="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0 && isset($data['age']) && strlen($data['age'])) ? $data['age'] : null ?>">
-				<select name="gender" class="<?= (isset($data['genderError']) && strlen($data['genderError']) == 0) ? '' : 'error--input' ?>" value="<?= (isset($data['genderError']) && strlen($data['genderError']) == 0 && isset($data['gender']) && strlen($data['gender'])) ? $data['gender'] : null ?>" required>
+				<select name="gender" class="<?= (isset($data['genderError']) && strlen($data['genderError']) == 0) ? '' : 'error--input' ?>" required>
 					<option value="" style="display: none;">Choose a gender</option>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
+					<option value="Male" <?= $data['gender'] == 'Male' ? 'selected' : ''?>>Male</option>
+					<option value="Female" <?= $data['gender'] == 'Female' ? 'selected' : ''?>>Female</option>
 				</select>
 			</div>
-
+			
 			<div class="register-form-block">
-				<input type="number" class="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? '' : 'error--input' ?>" name="height" placeholder="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? 'Height' : $data['heightError']; ?>" value="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0 && isset($data['height']) && strlen($data['height'])) ? $data['height'] : null ?>">
+				<input type="number" class="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? '' : 'error--input' ?>" name="height" placeholder="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? 'Height' : $data['heightError']; ?>">
 				<select name="typeheight" required>
-					<option value="cm">CM</option>
-					<option value="feet">Feet & Inches</option>
+					<option value="" style="display: none;">Choose height unit</option>
+					<option value="cm" <?= $data['heightUnit'] == 'cm' ? 'selected' : '' ?>>CM</option>
+					<option value="feet" <?= $data['heightUnit'] == 'feet' ? 'selected' : '' ?>>Feet & Inches</option>
 				</select>
 			</div>
 
 			<div class="register-form-block">
 				<input type="number" class="<?= (isset($data['weightError']) && strlen($data['weightError']) == 0) ? '' : 'error--input' ?>" name="weight" placeholder="<?= (isset($data['weightError']) && strlen($data['weightError']) == 0) ? 'Weight' : $data['weightError']; ?>" value="<?= (isset($data['weightError']) && strlen($data['weightError']) == 0 && isset($data['weight']) && strlen($data['weight'])) ? $data['weight'] : null ?>">
 				<select name="typeweight" required>
-					<option value="kg">Kg</option>
-					<option value="lb">Pounds</option>
+					<option value="" style="display: none;">Choose weight unit</option>
+					<option value="kg" <?= $data['weightUnit'] == 'kg' ? 'selected' : '' ?>>Kg</option>
+					<option value="lb" <?= $data['weightUnit'] == 'lb' ? 'selected' : '' ?>>Pounds</option>
 				</select>
 			</div>
 			<div class="main-login-register--container">

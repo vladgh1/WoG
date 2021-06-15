@@ -34,26 +34,28 @@
 
             <div class="profile-form-block">
                 <input type="number" disabled class="profile-input <?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? '' : 'error--input' ?>" name="age" placeholder="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? 'Age' : $data['ageError']; ?>" value="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0 && isset($data['age']) && strlen($data['age'])) ? $data['age'] : null ?>">
-                <select name="gender" disabled class="profile-input <?= (isset($data['genderError']) && strlen($data['genderError']) == 0) ? '' : 'error--input' ?>" value="<?= (isset($data['genderError']) && strlen($data['genderError']) == 0 && isset($data['gender']) && strlen($data['gender'])) ? $data['gender'] : null ?>" required>
+                <select name="gender" disabled class="profile-input <?= (isset($data['genderError']) && strlen($data['genderError']) == 0) ? '' : 'error--input' ?>" required>
                     <option value="" style="display: none;">Choose a gender</option>
-                    <option value="Male" <?= $data['gender'] == 'Male' ? "selected=\"selected\"" : "" ?>>Male</option>
-                    <option value="Female" <?= $data['gender'] == 'Female' ? "selected=\"selected\"" : "" ?>>Female</option>
+                    <option value="Male" <?= $data['gender'] == 'Male' ? "selected" : "" ?>>Male</option>
+                    <option value="Female" <?= $data['gender'] == 'Female' ? "selected" : "" ?>>Female</option>
                 </select>
             </div>
 
             <div class="profile-form-block">
                 <input type="number" disabled class="profile-input <?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? '' : 'error--input' ?>" name="height" placeholder="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0) ? 'Height' : $data['heightError']; ?>" value="<?= (isset($data['heightError']) && strlen($data['heightError']) == 0 && isset($data['height']) && strlen($data['height'])) ? $data['height'] : null ?>">
                 <select name="typeheight" class="profile-input" disabled required>
-                    <option value="cm" <?= $data['heightUnit'] == 'cm' ? "selected=\"selected\"" : "" ?>>CM</option>
-                    <option value="feet" <?= $data['heightUnit'] == 'feet' ? "selected=\"selected\"" : "" ?>>Feet & Inches</option>
+					<option value="" style="display: none;">Error</option>
+                    <option value="cm" <?= $data['heightUnit'] == 'cm' ? "selected" : "" ?>>CM</option>
+                    <option value="feet" <?= $data['heightUnit'] == 'feet' ? "selected" : "" ?>>Feet & Inches</option>
                 </select>
             </div>
 
             <div class="profile-form-block">
                 <input type="number" disabled class="profile-input <?= (isset($data['weightError']) && strlen($data['weightError']) == 0) ? '' : 'error--input' ?>" name="weight" placeholder="<?= (isset($data['weightError']) && strlen($data['weightError']) == 0) ? 'Weight' : $data['weightError']; ?>" value="<?= (isset($data['weightError']) && strlen($data['weightError']) == 0 && isset($data['weight']) && strlen($data['weight'])) ? $data['weight'] : null ?>">
                 <select name="typeweight" class="profile-input" disabled required>
-                    <option value="kg" <?= $data['weightUnit'] == 'kg' ? "selected=\"selected\"" : "" ?>>Kg</option>
-                    <option value="lb" <?= $data['weightUnit'] == 'lb' ? "selected=\"selected\"" : "" ?>>Pounds</option>
+					<option value="" style="display: none;">Error</option>
+                    <option value="kg" <?= $data['weightUnit'] == 'kg' ? "selected" : "" ?>>Kg</option>
+                    <option value="lb" <?= $data['weightUnit'] == 'lb' ? "selected" : "" ?>>Pounds</option>
                 </select>
             </div>
             <div class="main-login-profile--container">
