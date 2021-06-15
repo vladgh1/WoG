@@ -127,6 +127,24 @@ class User
 		return $this->db->resultSet();
 	}
 
+	public function getSelfTop($username) {
+		$this->db->query('SELECT COUNT(*) + 1 AS position FROM leaderboard WHERE score > (SELECT score FROM leaderboard WHERE username = :username ORDER BY score DESC)');
+		$this->db->bind(':username', $username);
+		return $this->db->resultRow()->position;
+	}
+
+	public function getSelfTopYear($username) {
+		$this->db->query('SELECT COUNT(*) + 1 AS position FROM leaderboard_last_year WHERE score > (SELECT score FROM leaderboard_last_year WHERE username = :username ORDER BY score DESC)');
+		$this->db->bind(':username', $username);
+		return $this->db->resultRow()->position;
+	}
+
+	public function getSelfTopMonth($username) {
+		$this->db->query('SELECT COUNT(*) + 1 AS position FROM leaderboard_last_month WHERE score > (SELECT score FROM leaderboard_last_month WHERE username = :username ORDER BY score DESC)');
+		$this->db->bind(':username', $username);
+		return $this->db->resultRow()->position;
+	}
+
 	public function generatePDF()
 	{
 		include_once('../app/libraries/fpdf/fpdf.php');

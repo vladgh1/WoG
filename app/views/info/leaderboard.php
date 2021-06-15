@@ -20,6 +20,7 @@
 		<section class="leaderboards-table--container">
 			<div class="leaderboard-table--container">
 				<h3>Last month</h3>
+				<p>My rank: <?= $data['self']['month'] ?></p>
 				<table class="leaderboard-table">
 					<tr>
 						<td>Rank</td>
@@ -41,10 +42,7 @@
 						echo "<td" . $class . ">" . $points . "</td>";
 						echo "</tr>";
 					}
-					echo 'My rank: '. $myrank;
 					?>
-
-
 				</table>
 				<div class="generate-buttons--container">
 					<form method="post" action="<?= URLROOT ?>/public/users/generateJSON">
@@ -58,6 +56,7 @@
 
 			<div class="leaderboard-table--container">
 				<h3>Last year</h3>
+				<p>My rank:  <?= $data['self']['year'] ?></p>
 				<table class="leaderboard-table">
 					<tr>
 						<td>Rank</td>
@@ -79,7 +78,6 @@
 						echo "<td" . $class . ">" . $points . "</td>";
 						echo "</tr>";
 					}
-					echo 'My rank: '. $myrank;
 					?>
 				</table>
 
@@ -95,6 +93,7 @@
 
 			<div class="leaderboard-table--container">
 				<h3>All the time</h3>
+				<p>My rank:  <?= $data['self']['all'] ?></p>
 				<table class="leaderboard-table">
 					<tr>
 						<td>Rank</td>
@@ -116,7 +115,6 @@
 						echo "<td" . $class . ">" . $points . "</td>";
 						echo "</tr>";
 					}
-					echo 'My rank: '. $myrank;
 					?>
 				</table>
 

@@ -32,10 +32,14 @@ class Users extends Controller
 	{
 		$data = [];
 		$users = [];
+		$username = $_COOKIE['username'];
 
 		$users['all'] = $this->user_model->getTop();
 		$users['year'] = $this->user_model->getTopYear();
 		$users['month'] = $this->user_model->getTopMonth();
+		$data['self']['all'] = $this->user_model->getSelfTop($username);
+		$data['self']['year'] = $this->user_model->getSelfTopYear($username);
+		$data['self']['month'] = $this->user_model->getSelfTopMonth($username);
 
 		foreach(['month', 'year', 'all'] as $period) {
 			if ($users) {
