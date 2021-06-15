@@ -57,6 +57,12 @@ class Users extends Controller
 		$this->view('info/statistics');
 	}
 
+	public function leaderboardRSS()
+	{
+		file_put_contents(APPROOT . "/../public/rss/leaderboard.xml", $this->user_model->getRSS());
+		header('location:' . URLROOT . '/public/rss/leaderboard.xml');
+	}
+
 	public function workout()
 	{
 		//TODO: Create workout view and display it

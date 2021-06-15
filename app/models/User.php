@@ -145,6 +145,77 @@ class User
 		return $this->db->resultRow()->position;
 	}
 
+	public function getRSS() {
+		$rss  = "<?xml version='1.0'?>";
+		$rss .= "<rss verison='2.0'>";
+		$rss .= "<channel>";
+		$rss .= "<title>" . APPNAME . "</title>";
+		$rss .= "<description>" . APPNAME . " - Score Report" . "</description>";
+		$rss .= "<language>" . "en-US" . "</language>";
+		$rss .= "<link>" . URLROOT . "</link>";
+		
+		$rss .= "<all>";
+		$rss .= "<users>";
+		$rank = 1;
+		$this->db->query('SELECT * FROM leaderboard NATURAL JOIN userinfo ORDER BY score DESC');
+		$users = $this->db->resultSet();
+		foreach ($users as $user) {
+			$rss .= "<user>";
+			$rss .= "<rank>" . $rank++ . "</rank>";
+			$rss .= "<username>" . $user->username . "</username>";
+			$rss .= "<name>" . $user->fullname . "</name>";
+			$rss .= "<age>" . $user->age . "</age>";
+			$rss .= "<height>" . $user->height . "</height>";
+			$rss .= "<weight>" . $user->weight . "</weight>";
+			$rss .= "<gender>" . $user->gender . "</gender>";
+			$rss .= "</user>";
+		}
+		$rss .= "</users>";
+		$rss .= "</all>";
+
+		$rss .= "<year>";
+		$rss .= "<users>";
+		$rank = 1;
+		$this->db->query('SELECT * FROM leaderboard_last_year NATURAL JOIN userinfo ORDER BY score DESC');
+		$users = $this->db->resultSet();
+		foreach ($users as $user) {
+			$rss .= "<user>";
+			$rss .= "<rank>" . $rank++ . "</rank>";
+			$rss .= "<username>" . $user->username . "</username>";
+			$rss .= "<name>" . $user->fullname . "</name>";
+			$rss .= "<age>" . $user->age . "</age>";
+			$rss .= "<height>" . $user->height . "</height>";
+			$rss .= "<weight>" . $user->weight . "</weight>";
+			$rss .= "<gender>" . $user->gender . "</gender>";
+			$rss .= "</user>";
+		}
+		$rss .= "</users>";
+		$rss .= "</year>";
+
+		$rss .= "<month>";
+		$rss .= "<users>";
+		$rank = 1;
+		$this->db->query('SELECT * FROM leaderboard_last_month NATURAL JOIN userinfo ORDER BY score DESC');
+		$users = $this->db->resultSet();
+		foreach ($users as $user) {
+			$rss .= "<user>";
+			$rss .= "<rank>" . $rank++ . "</rank>";
+			$rss .= "<username>" . $user->username . "</username>";
+			$rss .= "<name>" . $user->fullname . "</name>";
+			$rss .= "<age>" . $user->age . "</age>";
+			$rss .= "<height>" . $user->height . "</height>";
+			$rss .= "<weight>" . $user->weight . "</weight>";
+			$rss .= "<gender>" . $user->gender . "</gender>";
+			$rss .= "</user>";
+		}
+		$rss .= "</users>";
+		$rss .= "</month>";
+
+		$rss .= "</channel>";
+		$rss .= "</rss>";
+		return $rss;
+	}
+
 	public function generatePDF()
 	{
 		include_once('../app/libraries/fpdf/fpdf.php');

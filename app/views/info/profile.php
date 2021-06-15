@@ -35,7 +35,7 @@
             <div class="profile-form-block">
                 <input type="number" disabled class="profile-input <?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? '' : 'error--input' ?>" name="age" placeholder="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0) ? 'Age' : $data['ageError']; ?>" value="<?= (isset($data['ageError']) && strlen($data['ageError']) == 0 && isset($data['age']) && strlen($data['age'])) ? $data['age'] : null ?>">
                 <select name="gender" disabled class="profile-input <?= (isset($data['genderError']) && strlen($data['genderError']) == 0) ? '' : 'error--input' ?>" required>
-                    <option value="" style="display: none;">Choose a gender</option>
+                    <option value="" style="display: none;">Choose gender</option>
                     <option value="Male" <?= $data['gender'] == 'Male' ? "selected" : "" ?>>Male</option>
                     <option value="Female" <?= $data['gender'] == 'Female' ? "selected" : "" ?>>Female</option>
                 </select>
