@@ -17,10 +17,9 @@
 	
 	<form method="post" action="<?= URLROOT ?>/public/users/workoutDone" class="result-exercises--container">
 		<?php
-		
 		foreach ($data['primary'] as $exercise) {
-			echo($exercise->points);
-			echo($exercise->name);
+			echo(str_replace('_'," ",$exercise->name));
+			echo ' ' .$exercise->sessions . 'x' .$exercise->repetitions;
 			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
 			echo '<div class="result-exercise--container">';
 			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
@@ -31,8 +30,8 @@
 		}
 
 		foreach ($data['secondary'] as $exercise) {
-			echo($exercise->points);
-			echo($exercise->name);
+			echo(str_replace('_'," ",$exercise->name));
+			echo ' '. $exercise->sessions . 'x' .$exercise->repetitions;
 			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
 			echo '<div class="result-exercise--container">';
 			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
