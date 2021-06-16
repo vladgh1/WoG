@@ -145,6 +145,13 @@ class User
 		return $this->db->resultRow()->position;
 	}
 
+	public function getExerciseDetails($id){
+		$this->db->query('SELECT * from workout WHERE id=:id');
+		$this->db->bind(':id',$id);
+		return $this->db->resultRow();
+
+	}
+
 	public function getRSS() {
 		$rss  = "<?xml version='1.0'?>";
 		$rss .= "<rss verison='2.0'>";

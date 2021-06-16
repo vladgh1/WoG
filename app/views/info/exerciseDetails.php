@@ -15,7 +15,17 @@
 
 <body>
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
-    <?php var_dump($data);?>
+	<?php
+	echo "<a href='" . $data->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $data->photo . "'></a>";
+	echo "<br>";
+	echo "Focus: " . $data->focus;
+	echo "<br>";
+	echo "Intended: " . $data->intended;
+	echo "<br>";
+	echo "Descriere: " . $data->description;
+	echo "<br>";
+	echo '<iframe width="350" height="200" src="'. $data->link . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+		?>
 </body>
 
 </html>

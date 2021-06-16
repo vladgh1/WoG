@@ -83,7 +83,7 @@ class Users extends Controller
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post method
 			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+			
 
 			// Get the data
 			foreach (array_keys($_POST) as $arg) {
@@ -106,6 +106,7 @@ class Users extends Controller
 			// Check if there are no errors
 			if (empty($data['workoutError'])) {
 				foreach ($data['workout'] as $workout) {
+					var_dump($workout);
 					$workoutId = $this->workout_model->getWorkoutId($workout);
 					//var_dump($workoutId);
 					if ($workoutId) {
@@ -125,7 +126,8 @@ class Users extends Controller
 		header('location:' . URLROOT . '/public/users/workout');
 	}
 	public function exerciseDetails(){
-		$this->view('info/exerciseDetails');
+		$data=$this->user_model->getExerciseDetails($_GET['id']);
+		$this->view('info/exerciseDetails',$data);
 	}
 	public function generator()
 	{

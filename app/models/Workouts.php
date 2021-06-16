@@ -135,14 +135,14 @@ class workouts
 
 	public function getPendingWorkouts($data)
 	{
-		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=0 AND username=:username GROUP BY user_workout.id;');
+		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id AND user_workout.intensity=workout_intensity.intensity WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=0 AND username=:username GROUP BY user_workout.id;');
 		$this->db->bind(':username', $data['username']);
 		return $this->db->resultSet();
 	}
 
 	public function getFinishedWorkouts($data)
 	{
-		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=1 AND username=:username GROUP BY user_workout.id;');
+		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id AND user_workout.intensity=workout_intensity.intensity WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=1 AND username=:username GROUP BY user_workout.id;');
 		$this->db->bind(':username', $data['username']);
 		return $this->db->resultSet();
 	}

@@ -28,7 +28,7 @@
 						foreach ($data['pending'] as $pending) {
 							echo '<li data-id="' . $pending->intensity . '">';
 							echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
-							echo '<a href="' . URLROOT . '/public/users/exerciseDetails" id="register--btn">' . " $pending->name" . '</a>' . ' - ' . $pending->repetitions . 'x' . $pending->sessions;
+							echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
 							echo '</li>';
 						}
 						?>
@@ -43,12 +43,10 @@
 			<hr>
 			<ul>
 				<div class="profile-main--content" id="done-list">
-					<!-- TODO: Get the list from database -->
-
 					<?php
 					foreach ($data['done'] as $done) {
 						echo '<li>';
-						echo $done->name . ' - ' . $done->repetitions . 'x' . $done->sessions;
+						echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$done->workout.'" id="register--btn">'.str_replace('_'," ",$done->name).'</a>' . ' - ' . $done->sessions . 'x' . $done->repetitions;
 						echo '</li>';
 					}
 					?>
@@ -56,13 +54,13 @@
 			</ul>
 		</div>
 	</section>
+	<!-- <br>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-	<br>
-	<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a new program!</a>
+	<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a new program!</a> -->
 </body>
 
 </html>
