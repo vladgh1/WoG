@@ -28,31 +28,21 @@ class Workout extends Controller
 		];
 
 		$workout = $this->generateProgram($data);
-        foreach($workout['primary'] as $work){
-            $workData = [
-                'username' => $_COOKIE['username'],
-                'workout'=> intval($work->id),
-                'workout_time' => intval($data['Wtime']),
-                'intensity' => intval($_POST['intensity']),
-                'finished' => 0,
-                'created_at' => date("Y-m-d H:i:s")
-            ];
-            $this->workout_model->addWorkout($workData);
-        }
-		
-        foreach($workout['secondary'] as $work){
-            $workData = [
-                'username' => $_COOKIE['username'],
-                'workout'=> intval($work->id),
-                'workout_time' => intval($data['Wtime']),
-                'intensity' => intval($_POST['intensity']),
-                'finished' => 0,
-                'created_at' => date("Y-m-d H:i:s")
-            ];
-            $this->workout_model->addWorkout($workData);
-        }
-		    
-		 $this->view('info/generatorResults', $workout);
+		foreach(['primary', 'secondary'] as $type) {
+			foreach($workout[$type] as $work){
+				$workData = [
+					'username' => $_COOKIE['username'],
+					'workout'=> intval($work->id),
+					'workout_time' => intval($data['Wtime']),
+					'intensity' => intval($_POST['intensity']),
+					'finished' => 0,
+					'created_at' => date("Y-m-d H:i:s")
+				];
+				$this->workout_model->addWorkout($workData);
+			}
+		}
+			
+		$this->view('info/generatorResults', $workout);
 	}
 
 	public function saveAverageProgram()//functia de "surprinde-ma"
@@ -72,30 +62,30 @@ class Workout extends Controller
 		];
 
 		$workout = $this->generateProgram($data);
-        foreach($workout['primary'] as $work){
-            $workData = [
-                'username' => $_COOKIE['username'],
-                'workout'=> intval($work->id),
-                'workout_time' => intval($data['Wtime']),
-                'intensity' => intval($_POST['intensity']),
-                'finished' => 0,
-                'created_at' => date("Y-m-d H:i:s")
-            ];
-            $this->workout_model->addWorkout($workData);
-        }
+		foreach($workout['primary'] as $work){
+			$workData = [
+				'username' => $_COOKIE['username'],
+				'workout'=> intval($work->id),
+				'workout_time' => intval($data['Wtime']),
+				'intensity' => intval($_POST['intensity']),
+				'finished' => 0,
+				'created_at' => date("Y-m-d H:i:s")
+			];
+			$this->workout_model->addWorkout($workData);
+		}
 		
-        foreach($workout['secondary'] as $work){
-            $workData = [
-                'username' => $_COOKIE['username'],
-                'workout'=> intval($work->id),
-                'workout_time' => intval($data['Wtime']),
-                'intensity' => intval($_POST['intensity']),
-                'finished' => 0,
-                'created_at' => date("Y-m-d H:i:s")
-            ];
-            $this->workout_model->addWorkout($workData);
-        }
-		    
+		foreach($workout['secondary'] as $work){
+			$workData = [
+				'username' => $_COOKIE['username'],
+				'workout'=> intval($work->id),
+				'workout_time' => intval($data['Wtime']),
+				'intensity' => intval($_POST['intensity']),
+				'finished' => 0,
+				'created_at' => date("Y-m-d H:i:s")
+			];
+			$this->workout_model->addWorkout($workData);
+		}
+			
 		 $this->view('info/generatorResults', $workout);
 	}
 

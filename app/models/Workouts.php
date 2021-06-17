@@ -29,12 +29,12 @@ class workouts
 		return $this->db->execute();
 	}
 
-	public function completeWorkout($id, $status)
+	public function completeWorkout($username, $id, $status)
 	{
-		$this->db->query('UPDATE user_workout SET finished = :finished WHERE workout = :id and username = :username AND user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) ');
-		$this->db->bind(':username', $_COOKIE['username']);
+		$this->db->query('UPDATE user_workout SET finished = :finished WHERE workout = :id AND username = :username');
 		$this->db->bind(':finished', $status);
 		$this->db->bind(':id', $id);
+		$this->db->bind(':username', $username);
 		return $this->db->execute();
 	}
 
@@ -135,15 +135,19 @@ class workouts
 
 	public function getPendingWorkouts($data)
 	{
-		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id AND user_workout.intensity=workout_intensity.intensity WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=0 AND username=:username GROUP BY user_workout.id;');
-		$this->db->bind(':username', $data['username']);
-		return $this->db->resultSet();
+		return $this->getWorkouts($data, 0);
 	}
 
 	public function getFinishedWorkouts($data)
 	{
-		$this->db->query('SELECT * FROM workout JOIN user_workout ON user_workout.workout=workout.id JOIN workout_intensity ON user_workout.workout = workout_intensity.workout_id AND user_workout.intensity=workout_intensity.intensity WHERE user_workout.created_at = (SELECT  MAX(created_at) AS date FROM `user_workout`) AND finished=1 AND username=:username GROUP BY user_workout.id;');
+		return $this->getWorkouts($data, 1);	
+	}
+
+	private function getWorkouts($data, $finished)
+	{
+		$this->db->query('SELECT * FROM workout w JOIN user_workout u ON u.workout=w.id JOIN workout_intensity i ON u.workout = i.workout_id AND u.intensity=i.intensity WHERE finished=:finished AND username=:username');
 		$this->db->bind(':username', $data['username']);
+		$this->db->bind(':finished', $finished);
 		return $this->db->resultSet();
 	}
 }

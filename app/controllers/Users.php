@@ -65,7 +65,6 @@ class Users extends Controller
 
 	public function workout()
 	{
-		//TODO: Create workout view and display it
 		$data['pending']=$this->workout_model->getPendingWorkouts($_COOKIE);
 		$data['done']=$this->workout_model->getFinishedWorkouts($_COOKIE);
 		$this->view('info/workout',$data);
@@ -73,62 +72,34 @@ class Users extends Controller
 
 	public function workoutDone()
 	{
-
 		$data = [
 			'workout' => [],
 			'done' => [],
 			'workoutError' => ''
 		];
 
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			// Sanitize post method
-			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-			
-
-			// Get the data
-			foreach (array_keys($_POST) as $arg) {
-				if (is_numeric($_POST[$arg]))
-					$_POST[$arg] = (int)$_POST[$arg];
+		$input = json_decode(file_get_contents('php://input'));
+		
+		if (!is_null($input)) {
+			$data['workout'] = $input->id;
+			$data['done'] = $input->done;
+			$completed = $this->workout_model->completeWorkout($_COOKIE['username'], $data['workout'], $data['done']);
+			if (!$completed) {
+				$data['workoutError'] = "No workout with given id";
 			}
-
-			foreach (array_keys($_POST) as $arg) {
-				if (is_int($_POST[$arg])) {
-					array_push($data['workout'], $arg);
-					$data['done'][$arg] = ($_POST[$arg] == 0 ? 0 : 1);
-				}
-			}
-			//var_dump($data);
-			// Validate workout id
-			if (empty($data['workout'])) {
-				$data['workoutError'] = 'Enter workout';
-			}
-			//var_dump($data['workout']);
-			// Check if there are no errors
-			if (empty($data['workoutError'])) {
-				foreach ($data['workout'] as $workout) {
-					var_dump($workout);
-					$workoutId = $this->workout_model->getWorkoutId($workout);
-					//var_dump($workoutId);
-					if ($workoutId) {
-						$this->workout_model->completeWorkout($workoutId->id, $data['done'][$workout]);
-					}
-				}
-				// $existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);
-				// if ($existsWorkout) {
-				// 	$this->user_model->completeUserWorkout($data);
-				// }
-
-				// if (!$existsWorkout) {
-				// 	$data['workoutError'] = "Workout does not exits";
-				// }
-			}
+		} else {
+			$data['workoutError'] = "No data received";
 		}
-		header('location:' . URLROOT . '/public/users/workout');
+		
+		var_dump($data);
+		return $data;
 	}
+
 	public function exerciseDetails(){
 		$data=$this->user_model->getExerciseDetails($_GET['id']);
 		$this->view('info/exerciseDetails',$data);
 	}
+
 	public function generator()
 	{
 		$this->view('info/generator');

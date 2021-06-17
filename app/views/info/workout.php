@@ -22,22 +22,19 @@
 			<hr>
 			<ul>
 				<div class="profile-main--content" id="pending-list">
-					<form method="post" action="<?= URLROOT ?>/public/users/workoutDone">
-						<?php
-						//var_dump($data);
-						foreach ($data['pending'] as $pending) {
-							echo '<li data-id="' . $pending->intensity . '">';
-							echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
-							echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
-							echo '</li>';
-						}
-						?>
-						<button type="submit">↣</button>
-						<form>
+				<?php
+				foreach ($data['pending'] as $pending) {
+					echo '<li data-id="' . $pending->id . '">';
+					echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
+					echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
+					echo '</li>';
+				}
+				?>
 				</div>
 			</ul>
 		</div>
-
+					
+		<button onclick="confirmWorkout()">↣</button>
 		<div class="profile-main-content--container">
 			<h2 class="profile-main-content--header">Done</h2>
 			<hr>
@@ -54,13 +51,6 @@
 			</ul>
 		</div>
 	</section>
-	<!-- <br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a new program!</a> -->
 </body>
 
 </html>
