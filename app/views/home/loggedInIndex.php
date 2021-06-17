@@ -25,6 +25,9 @@
 											?></h1>
 		</div>
 		<div class="general-info--container">
+		<!-- <?php var_dump($data) ?> -->
+			<p>Username: <?= $data->username ?></p>
+			<hr>
 			<p>Name: <?= $data->fullname; ?></p>
 			<hr>
 			<!-- TODO: calcul din data nasterii! -->
@@ -34,8 +37,8 @@
 			<hr>
 			<p>Weight: <?= $data->weight ?></p>
 			<hr>
-			<br>
-			<a id="generate--btn" class="a--btn gray--btn" href="../users/generator">Generate a program!</a>
+			<p>Gender: <?= $data->gender ?></p>
+			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program!</a>
 		</div>
 	</main>
 </body>
