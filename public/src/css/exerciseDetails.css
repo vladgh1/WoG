@@ -1,0 +1,22 @@
+.exercise--container {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	position: relative;
+	top: 6.66rem;
+	padding: 0 3rem;
+}
+
+.text--container {
+	padding: 0 1.4rem;
+}
+
+.image--container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.exercise-image {
+	height: 200px;
+}
