@@ -39,4 +39,20 @@ class statistic
         var_dump($rez);
         return $rez;
     }
+	public function getConsecutiveDays(){
+		$this->db->query('select t.*
+		from (select username, grp, count(*) as NumInSequence,
+					 min(CAST(created_at AS date)) as mindate, max(CAST(created_at AS date)) as maxdate,
+					 row_number() over (partition by username order by count(*) desc) as seqnum
+			  from (select t.*,
+						   (CAST(created_at AS date) - row_number() over (partition by username order by CAST(created_at AS date))) as grp
+					from user_workout t
+				   ) t
+			  group by username, grp
+			 ) t
+		where seqnum = 1 and username = :username');
+		$this->db->bind(':username', $_COOKIE['username']);
+		return $this->db->resultRow();
+	}
 }
+

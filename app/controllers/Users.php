@@ -14,6 +14,7 @@ class Users extends Controller
 	{
 		$this->user_model = $this->model('User');
 		$this->workout_model = $this->model('Workouts');
+		$this->statistics_model = $this->model('Statistic');
 	}
 
 
@@ -54,7 +55,9 @@ class Users extends Controller
 
 	public function statistics()
 	{
-		$this->view('info/statistics');
+		$data=[];
+		$data['consecutiveDays']= $this->statistics_model->getConsecutiveDays();
+		$this->view('info/statistics',$data);
 	}
 
 	public function leaderboardRSS()
