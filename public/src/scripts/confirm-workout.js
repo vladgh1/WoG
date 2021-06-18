@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3070/WoG/public/users/workoutDone/';
+const URL_CONFIRM = 'http://localhost:3070/WoG/public/users/workoutDone/';
+const URL_SUBMIT  = 'http://localhost:3070/WoG/public/users/addUserWorkout/' 
 
 function confirmWorkout() {
 	const pending = document.getElementById('pending-list').children;
@@ -15,7 +16,7 @@ function confirmWorkout() {
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify(params)
 			};
-			fetch(URL, options)
+			fetch(URL_CONFIRM, options)
 			.then(response => response.text())
 			.then(body => {
 				var response = JSON.parse(body);
@@ -26,4 +27,28 @@ function confirmWorkout() {
 			});
 		}
 	});
+}
+
+function submitWorkout() {
+	const workout = document.getElementsByClassName('exercise--checkbox');
+
+	Array.from(workout).forEach(el => {
+		const params = {
+			'workout': el.dataset['id'],
+			'time': el.dataset['time'],
+			'intensity': el.dataset['intensity'],
+			'finished': el.checked
+		};
+		const options = {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(params)
+		};
+		fetch(URL_SUBMIT, options)
+		.then(response => response.text())
+		.then(body => {
+			console.log(JSON.parse(body));
+		});
+	});
+	location.href = '../users/workout';
 }

@@ -19,13 +19,15 @@ class workouts
 	public function addWorkout($data)
 	{
 		$this->db->query('INSERT INTO user_workout (username, workout, workout_time, intensity, finished, created_at)
-		VALUES (:username, :workout, :workout_time, :intensity, 0, :created_at)');
+		VALUES (:username, :workout, :workout_time, :intensity, :finished, :created_at)');
 
-		$this->db->bind(':username', $_COOKIE['username']);
+		$this->db->bind(':username', $data['username']);
 		$this->db->bind(':workout', $data['workout']);
 		$this->db->bind(':workout_time', $data['workout_time']);
 		$this->db->bind(':intensity', $data['intensity']);
-		$this->db->bind(':created_at', date("Y-m-d H:i:s"));
+		$this->db->bind(':finished', $data['finished']);
+		$this->db->bind(':created_at', $data['created_at']);
+
 		return $this->db->execute();
 	}
 

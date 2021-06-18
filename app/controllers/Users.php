@@ -70,6 +70,39 @@ class Users extends Controller
 		$this->view('info/workout',$data);
 	}
 
+	public function addUserWorkout()
+	{
+		$data = [
+			'username' => '',
+			'workout' => '',
+			'workout_time' => '',
+			'intensity' => '',
+			'finished' => '',
+			'created_at' => ''
+		];
+		$input = json_decode(file_get_contents('php://input'));
+		
+		if (!is_null($input)) {
+			// workout, workout_time, intensity, finished
+			$data['username'] = $_COOKIE['username'];
+			$data['workout'] = $input->workout;
+			$data['workout_time'] = $input->time;
+			$data['intensity'] = $input->intensity;
+			$data['finished'] = $input->finished ? 1 : 0;
+			$data['created_at'] = date("Y-m-d H:i:s");
+			$completed = $this->workout_model->addWorkout($data);
+
+			if (!$completed) {
+				$data['workoutError'] = "No workout with given id";
+			}
+		} else {
+			$data['workoutError'] = "No data received";
+		}
+		
+		echo json_encode($data);
+		return $data;
+	}
+
 	public function workoutDone()
 	{
 		$data = [

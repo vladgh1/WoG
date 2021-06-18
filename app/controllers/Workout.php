@@ -28,27 +28,12 @@ class Workout extends Controller
 		];
 
 		$workout = $this->generateProgram($data);
-		foreach(['primary', 'secondary'] as $type) {
-			foreach($workout[$type] as $work){
-				$workData = [
-					'username' => $_COOKIE['username'],
-					'workout'=> intval($work->id),
-					'workout_time' => intval($data['Wtime']),
-					'intensity' => intval($_POST['intensity']),
-					'finished' => 0,
-					'created_at' => date("Y-m-d H:i:s")
-				];
-				$this->workout_model->addWorkout($workData);
-			}
-		}
 			
 		$this->view('info/generatorResults', $workout);
 	}
 
 	public function saveAverageProgram()//functia de "surprinde-ma"
 	{
-		
-
 		$dataIntended=$this->workout_model->getRandomIntendedName();
 		$dataFocus=$this->workout_model->getRandomExerciseName();
 		$dataAverage=$this->workout_model->averageExercise();
@@ -95,7 +80,7 @@ class Workout extends Controller
 		$Sfocus = $data['Sfocus'];
 		$Wtime = $data['Wtime'];
 		$intended = $data['intended'];
-		$intensity=$data['intensity'];
+		$intensity = $data['intensity'];
 
 		$query_Primary = $this->workout_model->selectExercises($intended,$Pfocus,$intensity);
 		$query_Secondary = $this->workout_model->selectExercises($intended,$Sfocus,$intensity);
@@ -118,7 +103,8 @@ class Workout extends Controller
 		$newData = [
 			'primary' => array_slice($query_Primary, 0, $nrPrimaryExercise),
 			'secondary' => array_slice($query_Secondary, 0, $nrSecondaryExercise),
-			'intensity' => $_POST['intensity']
+			'intensity' => $intensity,
+			'time' => $Wtime
 		];
 
 		setcookie('workout_plan', serialize($newData), 0, '/');
