@@ -78,21 +78,65 @@ class Users extends Controller
 			'workoutError' => ''
 		];
 
-		$input = json_decode(file_get_contents('php://input'));
-		
-		if (!is_null($input)) {
-			$data['workout'] = $input->id;
-			$data['done'] = $input->done;
-			$completed = $this->workout_model->completeWorkout($_COOKIE['username'], $data['workout'], $data['done']);
-			if (!$completed) {
-				$data['workoutError'] = "No workout with given id";
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			// Sanitize post method
+			$_PUT = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			
+			// Get the data
+			foreach (array_keys($_POST) as $arg) {
+				if (is_numeric($_POST[$arg]))
+					$_POST[$arg] = (int)$_POST[$arg];
 			}
+
+			foreach (array_keys($_POST) as $arg) {
+				if (is_int($_POST[$arg])) {
+					array_push($data['workout'], $arg);
+					$data['done'][$arg] = ($_POST[$arg] == 0 ? 0 : 1);
+				}
+			}
+			//var_dump($data);
+			// Validate workout id
+			if (empty($data['workout'])) {
+				$data['workoutError'] = 'Enter workout';
+			}
+			//var_dump($data['workout']);
+			// Check if there are no errors
+			if (empty($data['workoutError'])) {
+				foreach ($data['workout'] as $workout) {
+					var_dump($workout);
+					$workoutId = $this->workout_model->getWorkoutId($workout);
+					//var_dump($workoutId);
+					if ($workoutId) {
+						$this->workout_model->completeWorkout($workoutId->id, $data['done'][$workout]);
+					}
+				}
+				// $existsWorkout = $this->user_model->existsWorkoutWithName($data['workout']);
+				// if ($existsWorkout) {
+				// 	$this->user_model->completeUserWorkout($data);
+				// }
+
+				// if (!$existsWorkout) {
+				// 	$data['workoutError'] = "Workout does not exits";
+				// }
+			}
+			header('location:' . URLROOT . '/public/users/workout');
 		} else {
-			$data['workoutError'] = "No data received";
+			$input = json_decode(file_get_contents('php://input'));
+			
+			if (!is_null($input)) {
+				$data['workout'] = $input->id;
+				$data['done'] = $input->done;
+				$completed = $this->workout_model->completeWorkout($_COOKIE['username'], $data['workout'], $data['done']);
+				if (!$completed) {
+					$data['workoutError'] = "No workout with given id";
+				}
+			} else {
+				$data['workoutError'] = "No data received";
+			}
+			
+			var_dump($data);
+			return $data;
 		}
-		
-		var_dump($data);
-		return $data;
 	}
 
 	public function exerciseDetails(){

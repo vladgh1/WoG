@@ -1,20 +1,51 @@
 .result-exercises--container {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 95vw;
 }
 
 .exercise--container {
-    width: 8rem;
-    height: 8rem;
-    position: relative;
-    display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  top: 6.66rem;
+  padding: 0 3rem;
+  margin: 0 0 6.66rem 0;
+}
+
+.text--container {
+  padding: 0 1.4rem;
+  width: 40%;
+}
+
+.image--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exercise-image {
+  height: 200px;
+}
+
+.exercise--checkbox {
+  margin: .3rem;
 }
 
 .result-exercise--container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70vw;
-    padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  padding-top: 5em;
+}
+
+.exercise-input--container {
+  display: inline;
+  position: absolute;
+  right: 3rem;
+  margin-top: 1.5rem;
 }

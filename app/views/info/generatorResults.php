@@ -9,6 +9,7 @@
 	<title><?= APPNAME ?> - generated results</title>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
+	<link rel="stylesheet" href="<?= URLROOT ?>/public/src/css/generatorResults.css">
 </head>
 
 <body>
@@ -17,32 +18,27 @@
 	
 	<form method="post" action="<?= URLROOT ?>/public/users/workoutDone" class="result-exercises--container">
 		<?php
-		foreach ($data['primary'] as $exercise) {
-			echo(str_replace('_'," ",$exercise->name));
-			echo ' ' .$exercise->sessions . 'x' .$exercise->repetitions;
-			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
-			echo '<div class="result-exercise--container">';
-			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
-			echo $exercise->description;
-			echo '<iframe width="350" height="200" src="'. $exercise->link . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-			echo '<p>Rest for 60 seconds.</p>';
-			echo '</div>';
-		}
+		foreach (['primary', 'secondary'] as $type) {
+			foreach ($data[$type] as $exercise) {
+				echo '<section class="exercise--container">';
+				echo '<div class="exersise-checkbox--container">';
+				echo '</div>';
+				echo '<a class="image--container" href="' . $exercise->link . '"><img class="exercise-image" src="' . URLROOT . '/app/Img/' . $exercise->photo . '"></a>';
+				echo '<div class="text--container">';
+					echo '<h2>' . $exercise->name . '<input type="checkbox" class="exercise--checkbox" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">' . '</h2>';
+					echo '<p><b>Focus:</b> ' . $exercise->focus . '</p>';
+					echo '<p><b>Intended:</b> ' . $exercise->intended . '</p>';
+					echo '<p><b>Description:</b> ' . $exercise->description . '</p>';
+				echo '</div>';
+				echo '<iframe src="' . $exercise->link . '" frameborder="0" width="350" height="200" title="YouTube video player" clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+				echo '</section>';
+			}
+		}?>
 
-		foreach ($data['secondary'] as $exercise) {
-			echo(str_replace('_'," ",$exercise->name));
-			echo ' '. $exercise->sessions . 'x' .$exercise->repetitions;
-			echo '<input type="checkbox" class="exercise" name="'.$exercise->name.'" value="'.$exercise->points.'" onclick="totalIt()">';
-			echo '<div class="result-exercise--container">';
-			echo "<a href='" . $exercise->link . "'><img class='exercise--container' src='\\WoG\\app\\Img\\" . $exercise->photo . "'></a>";
-			echo $exercise->description;
-			echo '<iframe width="350" height="200" src="'. $exercise->link . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-			echo '<p>Rest for 60 seconds.</p>';
-			echo '</div>';
-		}
-		?>
-		<input value="0 points" readonly="readonly" type="text" name="total" />
-		<input type="submit" name="submit_btn" value="Finish">
+		<div class="exercise-input--container">
+			<input value="0 points" readonly="readonly" type="text" name="total"/>
+			<input type="submit" name="submit_btn" value="Finish"/>
+		</div>
 	</form>
 	<script src='<?= URLROOT ?>/public/src/scripts/generator-results.js'></script>
 </body>
