@@ -10,24 +10,25 @@
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/style.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/header.css'>
 	<link rel="stylesheet" href='<?= URLROOT ?>/public/src/css/generator.css'>
+	</head>
 <body>
 
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 
 	<form action="<?= URLROOT ?>/public/workout/saveProgram" method="post" id="generator--form" class="center--container">
 		<h1 id="generator-form-title" class="font--alata">Generate now:</h1>
-		<div id="generate" id="generator-form--container">
+		<div id="generate" class="generator-form--container">
 			<div id="workout-time--container">
-				<label for="Wtime" class="font--alata">Workout Time(min):</label>
+				<label for="workout-time" class="font--alata">Workout Time(min):</label>
 				<div id="workout-time-slider--container">
-					<input type="range" class="range--input" name="Wtime" min=15 max=120 step=15 value="60" class="slider" id="workout-time"></input>
+					<input type="range" class="slider range--input" name="Wtime" min=15 max=120 step=15 value="60"  id="workout-time">
 					<p id="workout-minutes-content">30 min</p>
 				</div>
 			</div>
 			
 			<div id="workout-intensity--container">
-				<label for="intensity" class="font--alata">Workout Intensity:</label>
-				<input type="range" class="range--input" name="intensity" min=1 max=5 step=1 value="3" class="slider" id="workout-intensity">
+				<label for="workout-intensity" class="font--alata">Workout Intensity:</label>
+				<input type="range" class="slider range--input" name="intensity" min=1 max=5 step=1 value="3" id="workout-intensity">
 				<p id="workout-intensity-content">Medium workout</p>
 			</div>
 			<div id="generator-selectors-block--container">
@@ -67,6 +68,7 @@
 		<button type="submit" name="generate" class="a--btn green--btn pointable" id="generator-submit--btn">Submit</button>
 	</form>	
 
-	<script src='<?= URLROOT ?>/public/src/scripts/generator.js'></script></head>
+	<script src='<?= URLROOT ?>/public/src/scripts/generator.js'></script>
 </body>
+
 </html>
