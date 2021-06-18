@@ -29,12 +29,11 @@ class workouts
 		return $this->db->execute();
 	}
 
-	public function completeWorkout($username, $id, $status)
+	public function completeWorkout($id, $status)
 	{
-		$this->db->query('UPDATE user_workout SET finished = :finished WHERE workout = :id AND username = :username');
+		$this->db->query('UPDATE user_workout SET finished = :finished WHERE id = :id');
 		$this->db->bind(':finished', $status);
 		$this->db->bind(':id', $id);
-		$this->db->bind(':username', $username);
 		return $this->db->execute();
 	}
 

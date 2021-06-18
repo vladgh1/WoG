@@ -126,7 +126,7 @@ class Users extends Controller
 			if (!is_null($input)) {
 				$data['workout'] = $input->id;
 				$data['done'] = $input->done;
-				$completed = $this->workout_model->completeWorkout($_COOKIE['username'], $data['workout'], $data['done']);
+				$completed = $this->workout_model->completeWorkout($data['workout'], $data['done']);
 				if (!$completed) {
 					$data['workoutError'] = "No workout with given id";
 				}

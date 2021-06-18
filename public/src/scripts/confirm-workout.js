@@ -20,7 +20,6 @@ function confirmWorkout() {
 			.then(body => {
 				var response = JSON.parse(body);
 				if (response.workoutError === "") {
-					console.log("yus");
 					li.removeChild(li.firstChild);
 					done.insertBefore(li, done.firstChild);
 				}
