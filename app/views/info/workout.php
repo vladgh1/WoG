@@ -20,34 +20,30 @@
 		<div class="profile-main-content--container">
 			<h2 class="profile-main-content--header">Pending</h2>
 			<hr>
-			<ul>
-				<div class="profile-main--content" id="pending-list">
+			<ul class="profile-main--content" id="pending-list">
 				<?php
 				foreach ($data['pending'] as $pending) {
 					echo '<li data-id="' . $pending->id . '">';
-					echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
-					echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
+					echo '<input type="checkbox" name="' . $pending->name . '" value="' . $pending->points . '">';
+					echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id=' . $pending->workout . '">' . str_replace('_', " ", $pending->name) . '</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
 					echo '</li>';
 				}
 				?>
-				</div>
 			</ul>
 		</div>
-					
+
 		<button onclick="confirmWorkout()">↣</button>
 		<div class="profile-main-content--container">
 			<h2 class="profile-main-content--header">Done</h2>
 			<hr>
-			<ul>
-				<div class="profile-main--content" id="done-list">
-					<?php
-					foreach ($data['done'] as $done) {
-						echo '<li>';
-						echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$done->workout.'" id="register--btn">'.str_replace('_'," ",$done->name).'</a>' . ' - ' . $done->sessions . 'x' . $done->repetitions;
-						echo '</li>';
-					}
-					?>
-				</div>
+			<ul class="profile-main--content" id="done-list">
+				<?php
+				foreach ($data['done'] as $done) {
+					echo '<li>';
+					echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id=' . $done->workout . '">' . str_replace('_', " ", $done->name) . '</a>' . ' - ' . $done->sessions . 'x' . $done->repetitions;
+					echo '</li>';
+				}
+				?>
 			</ul>
 		</div>
 	</section>
