@@ -24,7 +24,7 @@
 				echo '<section class="exercise--container">';
 				echo '<div class="exersise-checkbox--container">';
 				echo '</div>';
-				echo '<a class="image--container" href="' . $exercise->link . '"><img class="exercise-image" src="' . URLROOT . '/app/Img/' . $exercise->photo . '"></a>';
+				echo '<a class="image--container" href="' . $exercise->link . '"><img alt="Workout exercise" class="exercise-image" src="' . URLROOT . '/app/Img/' . $exercise->photo . '"></a>';
 				echo '<div class="text--container">';
 					echo '<h2>' . $exercise->name;
 						echo '<input type="checkbox"'
@@ -37,7 +37,7 @@
 					echo '<p><b>Intended:</b> ' . $exercise->intended . '</p>';
 					echo '<p><b>Description:</b> ' . $exercise->description . '</p>';
 				echo '</div>';
-				echo '<iframe src="' . $exercise->link . '" frameborder="0" width="350" height="200" title="YouTube video player" clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+				echo '<iframe src="' . $exercise->link . '" width="350" height="200" title="YouTube video player"  allowfullscreen></iframe>';
 				echo '</section>';
 			}
 		}?>

@@ -11,13 +11,12 @@ class Workout extends Controller
 
 	public function saveProgram()
 	{
-
 		//scoate si aia din constructor!!!
 
-		// $this->statistic_model->getAvgWorkoutsPerWeekDay();
-		// $this->statistic_model->nrWorkoutsPerWeek();
-		// $this->statistic_model->nrWorkoutsPerMonth();
-
+		// $this->statistic_model->getNrWorkoutsPerWeekDay();//ok
+		// $this->statistic_model->nrWorkoutsPerWeek();//ok
+		// $this->statistic_model->nrWorkoutsPerMonth();//ok
+		$this->statistic_model->nrWorkoutsByIntensity();
 
 		$data = [
 			'intensity' => $_POST['intensity'],

@@ -16,14 +16,14 @@
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 
 	<section class="exercise--container">
-		<a class="image--container" href="<?=$data->link ?>"><img class="exercise-image" src="<?= URLROOT ?>/app/Img/<?= $data->photo ?>"></a>
+		<a class="image--container" href="<?=$data->link ?>"><img alt="Exercise image" class="exercise-image" src="<?= URLROOT ?>/app/Img/<?= $data->photo ?>"></a>
 		<div class="text--container">
 			<h2><?= $data->name ?></h2>
 			<p>Focus: <?= $data->focus ?></p>
 			<p>Intended: <?= $data->intended ?></p>
 			<p>Description: <?= $data->description ?></p>
 		</div>
-		<iframe src="<?= $data->link ?>" frameborder="0" width="350" height="200" title="YouTube video player" clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe src="<?= $data->link ?>" width="350" height="200" title="YouTube video player"  allowfullscreen></iframe>
 	</section>
 </body>
 

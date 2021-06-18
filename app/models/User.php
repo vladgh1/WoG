@@ -233,7 +233,7 @@ class User
 		$pdf = new FPDF();
 		$pdf->AddPage();
 		//header
-		$pdf->Image('../app/Img/logo.png', 10, -1, 70);
+		//$pdf->Image('../app/Img/logo.png', 10, -1, 70);
 		$pdf->Cell(80);
 		$pdf->SetFont('Arial', 'B', 13);
 		$pdf->Cell(80, 10, 'Leaderboard', 1, 0, 'C');

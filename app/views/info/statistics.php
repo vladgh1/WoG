@@ -24,6 +24,14 @@
 			<canvas id="intended-chart"></canvas>
 		</div>
 	</div>
+
+	<div class="charts--container">
+	<?php
+
+		echo 'Your streak of consecutive days: '. $data['consecutiveDays']->NumInSequence;
+	
+	?>
+	</div>
 	
 	<script src="<?= URLROOT ?>/public/src/scripts/statistics.js"></script>
 </body>

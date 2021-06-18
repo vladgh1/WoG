@@ -14,41 +14,44 @@
 
 <body>
 	<?php require_once APPROOT . '/views/includes/loggedInHeader.php' ?>
-	<h2 class=" profile-main-content--container center--container profile-main-content--header">Current Workout</h2>
-	<section class="profile-main--container center--container">
+	<section class="workout--container center--container">
+		<h2 class="header--container">Current Workout</h2>
 
-		<div class="profile-main-content--container">
-			<h2 class="profile-main-content--header">Pending</h2>
-			<hr>
-			<ul>
-				<div class="profile-main--content" id="pending-list">
-				<?php
-				foreach ($data['pending'] as $pending) {
-					echo '<li data-id="' . $pending->id . '">';
-					echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
-					echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
-					echo '</li>';
-				}
-				?>
-				</div>
-			</ul>
-		</div>
-					
-		<button onclick="confirmWorkout()">↣</button>
-		<div class="profile-main-content--container">
-			<h2 class="profile-main-content--header">Done</h2>
-			<hr>
-			<ul>
-				<div class="profile-main--content" id="done-list">
+		<div class="workout-main--container">
+			<div class="workout-main-content--container">
+				<h2 class="workout-main-content--header">Pending</h2>
+				<hr>
+				<ul>
+					<div class="workout-main--content" id="pending-list">
 					<?php
-					foreach ($data['done'] as $done) {
-						echo '<li>';
-						echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$done->workout.'" id="register--btn">'.str_replace('_'," ",$done->name).'</a>' . ' - ' . $done->sessions . 'x' . $done->repetitions;
+					foreach ($data['pending'] as $pending) {
+						echo '<li data-id="' . $pending->id . '">';
+						echo '<input type="checkbox" name="' . $pending->name . '"value="' . $pending->points . '">';
+						echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$pending->workout.'" id="register--btn">'.str_replace('_'," ",$pending->name).'</a>' . ' - ' . $pending->sessions . 'x' . $pending->repetitions;
 						echo '</li>';
 					}
 					?>
-				</div>
-			</ul>
+					</div>
+				</ul>
+			</div>
+						
+			<button class="workout--button" onclick="confirmWorkout()">↣</button>
+
+			<div class="workout-main-content--container">
+				<h2 class="workout-main-content--header">Done</h2>
+				<hr>
+				<ul>
+					<div class="workout-main--content" id="done-list">
+						<?php
+						foreach ($data['done'] as $done) {
+							echo '<li>';
+							echo '<a href="' . URLROOT . '/public/users/exerciseDetails?id='.$done->workout.'" id="register--btn">'.str_replace('_'," ",$done->name).'</a>' . ' - ' . $done->sessions . 'x' . $done->repetitions;
+							echo '</li>';
+						}
+						?>
+					</div>
+				</ul>
+			</div>
 		</div>
 	</section>
 </body>
