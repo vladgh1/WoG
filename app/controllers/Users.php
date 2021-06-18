@@ -134,7 +134,7 @@ class Users extends Controller
 				$data['workoutError'] = "No data received";
 			}
 			
-			var_dump($data);
+			echo json_encode($data);
 			return $data;
 		}
 	}
