@@ -9,7 +9,7 @@ class statistic
 	}
 	public function getNrWorkoutsPerWeekDay()
 	{
-		$this->db->query('SELECT avg(DAYNAME(created_at)) as nrDeZile,DAYNAME(created_at) as numeZi from user_workout
+		$this->db->query('SELECT count(DAYNAME(created_at)) as nrDeZile,DAYNAME(created_at) as numeZi from user_workout
          where username=:username and finished=1 group by DAYNAME(created_at) order by DAYNAME(created_at)');
 
 		$this->db->bind(':username', $_COOKIE['username']);
@@ -20,18 +20,30 @@ class statistic
     }
     public function nrWorkoutsPerWeek()
 	{
-		$this->db->query('SELECT count(week(created_at)) as nrDeZile,week(created_at) as numeZi from user_workout
-         where username=:username and finished=1 group by DAYNAME(created_at) order by week(created_at)');
+		$this->db->query('SELECT avg(t.nrDeExercitii) from (SELECT count(*) as nrDeExercitii from user_workout
+         where username=:username and finished=1 group by week(created_at)) t');
 
 		$this->db->bind(':username', $_COOKIE['username']);
         
 		$rez= $this->db->resultSet();
-        var_dump($rez);
+        // var_dump($rez);
         return $rez;
     }
     public function nrWorkoutsPerMonth()
 	{
-		$this->db->query('SELECT monthname(created_at),count(created_at) as luna from user_workout where username=:username and finished=1 group by created_at,monthname(created_at)');
+		$this->db->query('SELECT avg(t.nrDeExercitii) from (SELECT count(*) as nrDeExercitii from user_workout
+         where username=:username and finished=1 group by month(created_at)) t');
+
+		$this->db->bind(':username', $_COOKIE['username']);
+        
+		$rez= $this->db->resultSet();
+        // var_dump($rez);
+        return $rez;
+    }
+	public function nrWorkoutsByIntensity()
+	{
+		$this->db->query('SELECT nrAntrenamente,t.intensity from (SELECT count(*) as nrAntrenamente,intensity from user_workout
+         where username=:username and finished=1 group by created_at) t group by t.intensity');
 
 		$this->db->bind(':username', $_COOKIE['username']);
         

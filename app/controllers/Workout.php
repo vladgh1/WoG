@@ -14,35 +14,36 @@ class Workout extends Controller
 
 		//scoate si aia din constructor!!!
 
-		// $this->statistic_model->getAvgWorkoutsPerWeekDay();
-		// $this->statistic_model->nrWorkoutsPerWeek();
-		// $this->statistic_model->nrWorkoutsPerMonth();
+		// $this->statistic_model->getNrWorkoutsPerWeekDay();//ok
+		// $this->statistic_model->nrWorkoutsPerWeek();//ok
+		// $this->statistic_model->nrWorkoutsPerMonth();//ok
+		$this->statistic_model->nrWorkoutsByIntensity();
 
 
-		$data = [
-			'intensity' => $_POST['intensity'],
-			'Pfocus'=> $_POST['Pfocus'],
-			'Sfocus' => $_POST['Sfocus'],
-			'Wtime' => $_POST['Wtime'],
-			'intended' => $_POST['intended']
-		];
+		// $data = [
+		// 	'intensity' => $_POST['intensity'],
+		// 	'Pfocus'=> $_POST['Pfocus'],
+		// 	'Sfocus' => $_POST['Sfocus'],
+		// 	'Wtime' => $_POST['Wtime'],
+		// 	'intended' => $_POST['intended']
+		// ];
 
-		$workout = $this->generateProgram($data);
-		foreach(['primary', 'secondary'] as $type) {
-			foreach($workout[$type] as $work){
-				$workData = [
-					'username' => $_COOKIE['username'],
-					'workout'=> intval($work->id),
-					'workout_time' => intval($data['Wtime']),
-					'intensity' => intval($_POST['intensity']),
-					'finished' => 0,
-					'created_at' => date("Y-m-d H:i:s")
-				];
-				$this->workout_model->addWorkout($workData);
-			}
-		}
+		// $workout = $this->generateProgram($data);
+		// foreach(['primary', 'secondary'] as $type) {
+		// 	foreach($workout[$type] as $work){
+		// 		$workData = [
+		// 			'username' => $_COOKIE['username'],
+		// 			'workout'=> intval($work->id),
+		// 			'workout_time' => intval($data['Wtime']),
+		// 			'intensity' => intval($_POST['intensity']),
+		// 			'finished' => 0,
+		// 			'created_at' => date("Y-m-d H:i:s")
+		// 		];
+		// 		$this->workout_model->addWorkout($workData);
+		// 	}
+		// }
 			
-		$this->view('info/generatorResults', $workout);
+		// $this->view('info/generatorResults', $workout);
 	}
 
 	public function saveAverageProgram()//functia de "surprinde-ma"
