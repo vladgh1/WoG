@@ -54,7 +54,7 @@ createGraph(
 			hoverOffset: 4
 		}]
 	}
-)
+);
 
 createGraph(
 	document.getElementById('intended-chart'),
@@ -81,4 +81,64 @@ createGraph(
 			hoverOffset: 4
 		}]
 	}
-)
+);
+
+createGraph(
+	document.getElementById('day-chart').getContext('2d'),
+	'bar',
+	{
+		labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+		datasets: [{
+			label: 'Your points',
+			data: [65, 59, 80, 81, 56, 55, 40],
+			fill: true,
+			backgroundColor: '#282B28CD',
+			borderColor: '#282B28',
+			tension: 0.3
+		}]
+	},
+	{
+		responsive: true,
+		maintainAspectRatio: false
+	}
+);
+
+createGraph(
+	document.getElementById('month-chart').getContext('2d'),
+	'bar',
+	{
+		labels: ['Januray', 'February', 'March', 'April', 'May', 'June', 'July'],
+		datasets: [{
+			label: 'Your points',
+			data: [65, 59, 80, 81, 56, 55, 40],
+			fill: true,
+			backgroundColor: '#282B28CD',
+			borderColor: '#282B28',
+			tension: 0.3
+		}]
+	},
+	{
+		responsive: true,
+		maintainAspectRatio: false
+	}
+);
+
+createGraph(
+	document.getElementById('year-chart').getContext('2d'),
+	'bar',
+	{
+		labels: ['2019', '2020', '2021'],
+		datasets: [{
+			label: 'Your points',
+			data: [65, 59, 80],
+			fill: true,
+			backgroundColor: '#282B28CD',
+			borderColor: '#282B28',
+			tension: 0.3
+		}]
+	},
+	{
+		responsive: true,
+		maintainAspectRatio: false
+	}
+);

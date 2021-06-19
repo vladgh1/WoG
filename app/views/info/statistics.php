@@ -23,6 +23,15 @@
 		<div class="chart--container">
 			<canvas id="intended-chart"></canvas>
 		</div>
+		<div class="chart--container">
+			<canvas id="day-chart"></canvas>
+		</div>
+		<div class="chart--container">
+			<canvas id="month-chart"></canvas>
+		</div>
+		<div class="chart--container">
+			<canvas id="year-chart"></canvas>
+		</div>
 	</div>
 
 	<div class="charts--container">
