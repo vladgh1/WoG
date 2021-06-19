@@ -45,7 +45,6 @@ class Workout extends Controller
 			'intended' => $dataIntended['intended']
 		];
 		
-		var_dump($data);
 		$this->view('info/generatorResults', $data);
 	}
 

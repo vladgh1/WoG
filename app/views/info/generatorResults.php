@@ -33,6 +33,8 @@
 					echo '</h2>';
 					echo '<p><b>Focus:</b> ' . $exercise->focus . '</p>';
 					echo '<p><b>Intended:</b> ' . $exercise->intended . '</p>';
+					echo '<p><b>Repetitions:</b> ' . $exercise->repetitions . '</p>';
+					echo '<p><b>Sessions:</b> ' . $exercise->sessions . '</p>';
 					echo '<p><b>Description:</b> ' . $exercise->description . '</p>';
 				echo '</div>';
 				echo '<iframe src="' . $exercise->link . '" width="350" height="200" title="YouTube video player"  allowfullscreen></iframe>';
@@ -41,8 +43,8 @@
 		}?>
 
 		<div class="exercise-input--container">
-			<input value="0 points" readonly="readonly" type="text" name="total" />
-			<input type="submit" name="submit_btn" value="Finish" onclick="submitWorkout()">
+			<input id="exercuse-points--input" value="0 points" readonly="readonly" type="text" name="total" />
+			<input id="exercise-submit--button" type="submit" name="submit_btn" value="Finish" onclick="submitWorkout()">
 		</div>
 	</main>
 	<script src='<?= URLROOT ?>/public/src/scripts/generator-results.js'></script>
