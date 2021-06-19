@@ -70,7 +70,6 @@ const INTENDED = 'http://localhost:3070/WoG/public/users/getIntendedPoints/';
 
 fetch(INTENDED, options).then(response => response.text()).then(body => {
     const response = JSON.parse(body);
-    console.log(response);
     var points = [];
     var intended = [];
     response.intendedPoints.forEach(element => {
@@ -78,8 +77,6 @@ fetch(INTENDED, options).then(response => response.text()).then(body => {
         intended.push(element.intended);;
 
     });
-    console.log(points);
-
     createGraph(
         document.getElementById('intended-chart'),
         'pie', {
@@ -87,6 +84,68 @@ fetch(INTENDED, options).then(response => response.text()).then(body => {
             datasets: [{
                 label: 'My First Dataset',
                 data: points,
+                borderColor: '#282B28',
+                backgroundColor: [
+                    '#2a9d8f',
+                    '#e9c46a',
+                    '#f4a261',
+                    '#e76f51',
+                    '#0081a7'
+                ],
+                hoverOffset: 4
+            }]
+        }
+    );
+});
+
+const WEEKDAY = 'http://localhost:3070/WoG/public/users/getNrWorkoutsPerWeekDay/';
+
+fetch(WEEKDAY, options).then(response => response.text()).then(body => {
+    const response = JSON.parse(body);
+    var points = [];
+    var day = [];
+    response.workoutsPerWeekDay.forEach(element => {
+        points.push(element.nrDeZile);
+        day.push(element.numeZi);
+    })
+    createGraph(
+        document.getElementById('day-chart').getContext('2d'),
+        'bar', {
+            labels: day,
+            datasets: [{
+                label: 'Your number of exercises',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: true,
+                backgroundColor: '#282B28CD',
+                borderColor: '#282B28',
+                tension: 0.3
+            }]
+        }, {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    );
+});
+
+const MONTHDAY = 'http://localhost:3070/WoG/public/users/getNrWorkoutsByIntensity/';
+
+fetch(MONTHDAY, options).then(response => response.text()).then(body => {
+    const response = JSON.parse(body);
+    console.log(response);
+    var nrAntrenamente = [];
+    var intensity = [];
+    response.workoutsByIntensity.forEach(element => {
+        nrAntrenamente.push(element.nrAntrenamente);
+        intensity.push("Intensity: " + element.intensity);
+    })
+
+    createGraph(
+        document.getElementById('intensity-chart'),
+        'pie', {
+            labels: intensity,
+            datasets: [{
+                label: 'My First Dataset',
+                data: nrAntrenamente,
                 borderColor: '#282B28',
                 backgroundColor: [
                     '#2a9d8f',
@@ -109,59 +168,3 @@ function createGraph(element, type, data, options) {
         options: options
     });
 }
-
-
-
-createGraph(
-    document.getElementById('day-chart').getContext('2d'),
-    'bar', {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        datasets: [{
-            label: 'Your points',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: true,
-            backgroundColor: '#282B28CD',
-            borderColor: '#282B28',
-            tension: 0.3
-        }]
-    }, {
-        responsive: true,
-        maintainAspectRatio: false
-    }
-);
-
-createGraph(
-    document.getElementById('month-chart').getContext('2d'),
-    'bar', {
-        labels: ['Januray', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Your points',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: true,
-            backgroundColor: '#282B28CD',
-            borderColor: '#282B28',
-            tension: 0.3
-        }]
-    }, {
-        responsive: true,
-        maintainAspectRatio: false
-    }
-);
-
-createGraph(
-    document.getElementById('year-chart').getContext('2d'),
-    'bar', {
-        labels: ['2019', '2020', '2021'],
-        datasets: [{
-            label: 'Your points',
-            data: [65, 59, 80],
-            fill: true,
-            backgroundColor: '#282B28CD',
-            borderColor: '#282B28',
-            tension: 0.3
-        }]
-    }, {
-        responsive: true,
-        maintainAspectRatio: false
-    }
-);

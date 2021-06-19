@@ -20,23 +20,23 @@ class statistic
     }
     public function nrWorkoutsPerWeek()
 	{
-		$this->db->query('SELECT avg(t.nrDeExercitii) from (SELECT count(*) as nrDeExercitii from user_workout
+		$this->db->query('SELECT avg(t.nrDeExercitii) as avgg from (SELECT count(*) as nrDeExercitii from user_workout
          where username=:username and finished=1 group by week(created_at)) t');
 
 		$this->db->bind(':username', $_COOKIE['username']);
         
-		$rez= $this->db->resultSet();
+		$rez= $this->db->resultRow();
         // var_dump($rez);
         return $rez;
     }
     public function nrWorkoutsPerMonth()
 	{
-		$this->db->query('SELECT avg(t.nrDeExercitii) from (SELECT count(*) as nrDeExercitii from user_workout
+		$this->db->query('SELECT avg(t.nrDeExercitii) as avgg from (SELECT count(*) as nrDeExercitii from user_workout
          where username=:username and finished=1 group by month(created_at)) t');
 
 		$this->db->bind(':username', $_COOKIE['username']);
         
-		$rez= $this->db->resultSet();
+		$rez= $this->db->resultRow();
         // var_dump($rez);
         return $rez;
     }
@@ -77,7 +77,7 @@ class statistic
 		return $this->db->resultSet();
 	}
 	public function getScoreByMonth(){
-		$this->db->query('select month(created_at) as month,sum(`i`.`points`) AS `score` from (`logindb`.`user_workout` `u` join `logindb`.`workout_intensity` `i` on(`u`.`intensity` = `i`.`intensity`)) where `u`.`finished` = 1 and username=:username GROUP by month;');
+		$this->db->query('select MONTHNAME(created_at) as month,sum(`i`.`points`) AS `score` from (`logindb`.`user_workout` `u` join `logindb`.`workout_intensity` `i` on(`u`.`intensity` = `i`.`intensity`)) where `u`.`finished` = 1 and username=:username GROUP by month;');
 		$this->db->bind(':username', $_COOKIE['username']);
 		return $this->db->resultSet();
 	}

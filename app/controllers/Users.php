@@ -67,6 +67,20 @@ class Users extends Controller
 
 	}
 
+	public function getNrWorkoutsByIntensity(){
+		$data=[];
+		$data['workoutsByIntensity'] = $this->statistics_model->nrWorkoutsByIntensity();
+		echo json_encode($data);
+		return $data;
+	}
+	public function getNrWorkoutsPerWeekDay(){
+		$data=[];
+		$data['workoutsPerWeekDay'] = $this->statistics_model->getNrWorkoutsPerWeekDay();
+		echo json_encode($data);
+		return $data;
+
+	}
+
 	public function getFocusPoints(){
 		$data=[];
 		$data['focusPoints'] = $this->statistics_model->getFocusPoints();
@@ -78,6 +92,8 @@ class Users extends Controller
 	{
 		$data=[];
 		$data['consecutiveDays']= $this->statistics_model->getConsecutiveDays();
+		$data['nrWorkoutsPerWeek'] = $this->statistics_model->nrWorkoutsPerWeek();
+		$data['nrWorkoutsPerMonth'] = $this->statistics_model->nrWorkoutsPerMonth();
 		$this->view('info/statistics',$data);
 	}
 
