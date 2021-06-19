@@ -58,7 +58,7 @@ class Users extends Controller
 		$data=[];
 		$data['consecutiveDays']= $this->statistics_model->getConsecutiveDays();
 		$data['scoreByMonth'] = $this->statistics_model->getScoreByMonth();
-		$data['intendedPoints'] = $this->statistics_model->getIntededPoints();
+		$data['intendedPoints'] = $this->statistics_model->getIntendedPoints();
 		$data['focusPoints'] = $this->statistics_model->getFocusPoints();
 		$this->view('info/statistics',$data);
 	}
