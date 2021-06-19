@@ -108,13 +108,14 @@ fetch(WEEKDAY, options).then(response => response.text()).then(body => {
         points.push(element.nrDeZile);
         day.push(element.numeZi);
     })
+    console.log(points);
     createGraph(
         document.getElementById('day-chart').getContext('2d'),
         'bar', {
             labels: day,
             datasets: [{
                 label: 'Your number of exercises',
-                data: [65, 59, 80, 81, 56, 55, 40],
+                data: points,
                 fill: true,
                 backgroundColor: '#282B28CD',
                 borderColor: '#282B28',
@@ -131,7 +132,6 @@ const MONTHDAY = 'http://localhost:3070/WoG/public/users/getNrWorkoutsByIntensit
 
 fetch(MONTHDAY, options).then(response => response.text()).then(body => {
     const response = JSON.parse(body);
-    console.log(response);
     var nrAntrenamente = [];
     var intensity = [];
     response.workoutsByIntensity.forEach(element => {
