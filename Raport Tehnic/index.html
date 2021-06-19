@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Documentatie</title>
+  <title>Raport Tehnic</title>
   <link rel="stylesheet" href="css/scholarly.min.css">
   <script src="js/scholarly.min.js"></script>
-  <meta name="keywords" content="project,infoiasi, web">
+   <meta name="keywords" content="project,infoiasi, web">
 </head>
 <body prefix="schema: http://schema.org">
   <header>
     <div class="banner">
       <div class="status">Relizatori proiect: Gheorghita Vlad, Pavel Boris si Zbant Alex</div>
     </div>
-    <h1>Documentatie proiect Workout Generator(WOG)</h1>
+    <h1>Raport Tehnic proiect Workout Generator(WOG)</h1>
   </header>
 
 
@@ -49,41 +49,24 @@
   </section>
   <section id="structure">
     <!-- review? -->
-    <h2>Site usage and flow of work</h2>
-    <section id="WorkFlow">
-      <h3>Pagina principala</h3>
-      <img src="photos/paginaPrincipala.png" alt="paginaPrincipala">
-
+    <h2>Page Inner Workings</h2>
+    <section id="Register">
+      <h3>Pagina de register</h3>
+      <img src="photos/paginaRegister.png" alt="paginaRegister">
       <p>
-        In momentul in care utilizatorul intra pe site, acesta este intampinat de pagina
-        principala ce afiseaza un meniu in partea de sus, un motto specific in partea stanga.
-
-        Meniul prezinta in partea stanga un buton cu logo-ul nostru. prin apasarea lui,
-        utilizatorul este adus la pagina principala. In partea dreapta, se afla 2 butoane
-        ce duc utilizatorul spre formularele de logare si inregistrare de pe site.
+        Pagina de inregistrare foloseste Validator pentru a verifica corectitudinea informatiilor introduse si a evita introducerea de informatii gresite.
+        Datele introduse gresit primesc un feedback negativ din partea site-ului. Lucru ce imbunatateste normalizarea datelor venite.
       </p>
-
+      <p>
+        De asemenea, este verificata unicitatea fiecariu utilizator nou.
+      </p>
     </section>
-    <section id="login">
+    <section id="Login">
       <h3>Pagina de logare</h3>
       <img src="photos/paginaLogin.png" alt="paginaLogin">
       <p>
-        In momentul in care utilizatorul apasa butonul "Login" aflat in partea dreapta a meniului, acesta este redirectionat 
-        spre pagina de logare, pentru completarea sunt necesare adresa de email si parola pentru logare.
-      </p>
-    </section>
-    <section id="register">
-      <h3>Pagina de inregistrare</h3>
-      <img src="photos/paginaRegister.png" alt="paginaRegister">
-      <p>
-        In momentul in care utilizatorul acceseaza link-ul spre pagina de inregistrare aflat in partea dreapta a
-        meniului, acesta este redirectionat spre pagina unde sunt necesare adresa de email cat si
-        alte date cu caracter personal(inaltime, greutate, varsta, numele - ce se vor gasi pe pagina principala in
-        vecinatatea butonului de generare) in vederea inregistrarii pe site.
-      </p>
-      <p>
-        Pentru ca formularul sa fie corect, numele trebuie sa fie unul real si parola trebuie sa contina minim 4
-        caractere, o cifra, o litera mare si o litera mica.
+        Paina de logare foloseste Validator pentru a compara datele introduse cu cele existente in baza de date, iar in caz de esec, notifica
+        utilizatorul prin mesaje sugestive.
       </p>
     </section>
     <section id="LoggedIn">
@@ -92,16 +75,8 @@
       </h2>
       <img src="photos/paginaDupaLogare.png" alt="paginaDupaLogare">
       <p>
-        Dupa ce utilizatorul s-a logat, acesta este intampinat de o noua fereastra in partea
-        dreapta ce ii permite sa vada ce date sunt in profilul sau actual dar si doua butoane.
-      </p>
-      <p>
-        Butonul de "Generate" trimite utilizatorul spre un formular unde iti poate crea singur un antrenament
-      </p>
-      <p>
-        Butonul de "Surprise me!" trimite utilizatorul spre un antrenament generat automat, de intensitate medie,
-        calculat in functie de antrenamentele sale din trecut.
-      </p>
+        Pagina de dashboard primeste datele fiecarui utilizator din baza de date si le afiseaza in tabelul din partea dreapta a ecranului.
+      </p>>
     </section>
     <section id="Error">
       <h2>
@@ -109,9 +84,7 @@
       </h2>
       <img src="photos/error.png" alt="error">
       <p>
-        Daca utilizatorul intra pe o pagina ce nu se regaseste pe site, acesta este intampinat de pagina
-        de eroare 404. Am implamantat pe aceasta pagina un mic joc de "Workout" simipar cu jocul clasic
-        cu dinozaurul de pe Chrome (aici scopul este de asemenea, sa apesi "spacebar" pentru a aduna puncte).
+        Pagina de Error prezinta un joc ce foloseste 2 spite-uri pentru a crea animatia, 
       </p>
     </section>
 
