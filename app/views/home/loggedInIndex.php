@@ -32,7 +32,7 @@
 			<p>Weight: <?= $data->weight ?></p><hr>
 			<p>Gender: <?= $data->gender ?></p>
 			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program</a>
-			<a id="generate-random--btn" class="landing-generate-button a--btn gray--btn" href="../users/random">Surprise me!</a>
+			<a id="generate-random--btn" class="landing-generate-button a--btn gray--btn" href="../workout/saveAverageProgram">Surprise me!</a>
 		</div>
 	</main>
 </body>
