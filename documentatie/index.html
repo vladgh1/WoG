@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/scholarly.min.css">
   <script src="js/scholarly.min.js"></script>
 </head>
-
+<!-- DE ADAUGAT ACESTE TAG-URI!!!!!!! project, infoiasi, web.  -->
 <body prefix="schema: http://schema.org">
   <header>
     <div class="banner">
@@ -56,8 +56,7 @@
 
       <p>
         In momentul in care utilizatorul intra pe site, acesta este intampinat de pagina
-        principala ce afiseaza un meniu in partea de sus, un motto specific in partea stanga si
-        in partea dreapta un panou cu topul celor mai activi utilizatori.
+        principala ce afiseaza un meniu in partea de sus, un motto specific in partea stanga.
 
         Meniul prezinta in partea stanga un buton cu logo-ul nostru. prin apasarea lui,
         utilizatorul este adus la pagina principala. In partea dreapta, se afla 2 butoane
@@ -82,6 +81,10 @@
         alte date cu caracter personal(inaltime, greutate, varsta, numele - ce se vor gasi pe pagina principala in
         vecinatatea butonului de generare) in vederea inregistrarii pe site.
       </p>
+      <p>
+        Pentru ca formularul sa fie corect, numele trebuie sa fie unul real si parola trebuie sa contina minim 4
+        caractere, o cifra, o litera mare si o litera mica.
+      </p>
     </section>
     <section id="LoggedIn">
       <h2>
@@ -90,8 +93,14 @@
       <img src="photos/paginaDupaLogare.png" alt="paginaDupaLogare">
       <p>
         Dupa ce utilizatorul s-a logat, acesta este intampinat de o noua fereastra in partea
-        dreapta ce ii permite sa vada ce date sunt in profilul sau actual dar si un buton de
-        "Generare" ce il trimite spre un formular de generare a unui program de antrenament.
+        dreapta ce ii permite sa vada ce date sunt in profilul sau actual dar si doua butoane.
+      </p>
+      <p>
+        Butonul de "Generate" trimite utilizatorul spre un formular unde iti poate crea singur un antrenament
+      </p>
+      <p>
+        Butonul de "Surprise me!" trimite utilizatorul spre un antrenament generat automat, de intensitate medie,
+        calculat in functie de antrenamentele sale din trecut.
       </p>
     </section>
     <section id="Error">
@@ -113,50 +122,108 @@
       <img src="photos/paginaGenerare.png" alt="paginaGenerare">
       <p>
         La pagina de generare, utilizatorul este intampiat de un formular unde trebuie inroduse niste preferinte 
-        in vederea generarii unui program de antrenament. Dupa ce este realizat acest pas, algoritmul genereaza un antrenament in mod determinist.
+        in vederea generarii unui program de antrenament. Dupa ce este realizat acest pas, algoritmul genereaza un antrenament in mod nedeterminist.
       </p>
     </section>
 
-    <section id="Profie">
+    <section id="Workout">
       <h2>
-        Pagina Profil
+        Pagina Workout
       </h2>
-      <img src="photos/paginaProfile.png" alt="paginaProfile">
+      <img src="photos/paginaWorkout.png" alt="paginaWorkout">
       <p>
-        Pagina de profil ofera utilizatorului un tabel unde poate sa isi acceseze antrenamentele ce nu sunt terminate si sa 
-        vada ce antrenamente a avut in trecut si le-a terminat. de asemenea, cand un antrenament este terminat, utilizatorul 
+        Pagina de workout ofera utilizatorului un tabel unde poate sa isi acceseze exercitiile ce nu sunt terminate si sa 
+        vada antrenamentul curent. De asemenea, cand un antrenament este terminat, utilizatorul 
         primeste un punctaj ce se adauga la scor pentru clasament.  
       </p>
     </section>
 
-    <section id="Settings">
+    <section id="Profile">
       <h2>
-        Pagina Setari
+        Pagina Profile
       </h2>
       <img src="photos/paginaSettings.png" alt="paginaSettings">
       <p>
-        Pagina de setari prezinta utilizatorului un formular unde ii sunt incarcate datele trimise in momentul inregistrarii.
+        Pagina de profil prezinta utilizatorului un formular unde ii sunt incarcate datele trimise in momentul inregistrarii.
          Acest formular ofera posibiltatea de a modifica acele date intr-un mod simplu si rapid.
       </p>
     </section>
 
-  </section>
-  <!-- <section id="challange">
-    <h2 id="Provocare">
-      Provocari depasite
-    </h2>
+    <section id="Details">
+      <h2>
+        Pagina Detalii
+      </h2>
+      <img src="photos/paginaDetalii.png" alt="paginaDetalii">
+      <p>
+        Daca utilizatorul se afla pe pagina de workout, si doreste sa afle mai multe detalii despre un anumit antrenament,
+        acesta poate da click pe numele acelui antrenament si este dus pe pagina unde sunt prezentate detalii despre acel
+        antrenament, cat si un videoclip.
+      </p>
+    </section>
 
-  </section> -->
+    <section id="Statistics">
+      <h2>
+        Pagina Statistica
+      </h2>
+      <img src="photos/paginaStatistica.png" alt="paginaStatistica">
+      <p>
+        In meniul din partea de sus a paginii, utilizatorul gaseste putonul "Statistics" ce il trimite pe pagina de statistica 
+        unde gaseste grafice si valori reprezentand informatiile despre activitatea sa pe site.
+      </p>
+      <p>
+        Primul grafic arata numarul de puncte adunate pe luna.
+      </p>
+      <p>
+        Al doilea grafic arata ce mase musculare ai antrenat pana in acest moment si de cate ori.
+      </p>
+      <p>
+        Al treilea grafic arata ce tipuri de exercitii ai avut pana acuma si numarul acestora.
+      </p>
+      <p>
+        Graficul numarul 4 arata numarul de exercitii realizate in medie in fiecare zi a saptamanii.
+      </p>
+      <p>
+        Ultimul grafic arata cate antrenamente de o anumita intesitate ai facut pana acuma.
+      </p>
+      <p>
+        Cele 3 randuri de sub grafice arata: cea mai lunga serie de zile consecutive in care ai avut activitate,
+        cate antrenamente ai in medie pe saptamana, si cate antrenamente ai in medie pe luna.
+      </p>
+    </section>
+
+    <section id="Leaderboard">
+      <h2>
+        Pagina Detalii
+      </h2>
+      <img src="photos/paginaLeaderboard.png" alt="paginaLeaderboard">
+      <p>
+        In meniul din partea de sus a paginii, utilizatorul gaseste putonul "Leaderboard" ce il trimite pe pagina de leaderboard 
+        unde gaseste clasamentul cu utilizatorii de pe site, si progresul lor. Aici utilizatorul curent este afisat cu culoarea galbena.
+      </p>
+      <p>
+        Aici utilizatorul poate accesa si descarca clasamentul in format JSON si PDF, si il poate avea tip RSS.
+      </p>
+    </section>
+
+  </section>
   <section id="external">
     <h2 id="resurse">
       Biblioteci Folosite
     </h2>
-    <section id="nope">
+    <section id="FPDF">
       <h2>
-        Nu am folosit inca
+        FPDF
       </h2>
       <p>
-        Pana in momentul de fata nu am folosit biblioteci.
+        Generare fisiere PDF pentru pagina de leaderboard.
+      </p>
+    </section>
+    <section id="Chart.JS">
+      <h2>
+        Chart.JS
+      </h2>
+      <p>
+        Generare grafice pentru pagina de statistica.
       </p>
     </section>
   </section>
