@@ -66,5 +66,20 @@ class statistic
 		$this->db->bind(':username', $_COOKIE['username']);
 		return $this->db->resultRow();
 	}
+	public function getFocusPoints(){
+		$this->db->query('SELECT count(*) as focusPoints,focus,username FROM user_workout JOIN workout on user_workout.workout=workout.id where username = :username and finished = 1 group by focus;');
+		$this->db->bind(':username', $_COOKIE['username']);
+		return $this->db->resultSet();
+	}
+	public function getIntendedPoints(){
+		$this->db->query('SELECT count(*) as intendedPoints,intended,username FROM user_workout JOIN workout on user_workout.workout=workout.id where username = :username and finished = 1 group by intended;');
+		$this->db->bind(':username', $_COOKIE['username']);
+		return $this->db->resultSet();
+	}
+	public function getScoreByMonth(){
+		$this->db->query('select month(created_at) as month,sum(`i`.`points`) AS `score` from (`logindb`.`user_workout` `u` join `logindb`.`workout_intensity` `i` on(`u`.`intensity` = `i`.`intensity`)) where `u`.`finished` = 1 and username=:username GROUP by month;');
+		$this->db->bind(':username', $_COOKIE['username']);
+		return $this->db->resultSet();
+	}
 }
 
