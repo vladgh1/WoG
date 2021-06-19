@@ -17,13 +17,11 @@
 
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 	
-	<!-- <form method="post" action="<?= URLROOT ?>/public/users/workoutDone" class="result-exercises--container"> -->
+	<main class="generator-result-main--container">
 		<?php
 		foreach (['primary', 'secondary'] as $type) {
 			foreach ($data[$type] as $exercise) {
 				echo '<section class="exercise--container">';
-				echo '<div class="exersise-checkbox--container">';
-				echo '</div>';
 				echo '<a class="image--container" href="' . $exercise->link . '"><img alt="Workout exercise" class="exercise-image" src="' . URLROOT . '/app/Img/' . $exercise->photo . '"></a>';
 				echo '<div class="text--container">';
 					echo '<h2>' . $exercise->name;
@@ -31,7 +29,7 @@
 						. ' data-id="' . $exercise->id . '"'
 						. ' data-intensity="' . $exercise->intensity . '"'
 						. ' data-time="' . $data['time'] . '"'
-						. 'class="exercise--checkbox" name="'. $exercise->name .'" value="'.$exercise->points.'" onclick="totalIt()">';
+						. ' class="exercise--checkbox" name="'. $exercise->name .'" value="'.$exercise->points.'" onclick="totalIt()">';
 					echo '</h2>';
 					echo '<p><b>Focus:</b> ' . $exercise->focus . '</p>';
 					echo '<p><b>Intended:</b> ' . $exercise->intended . '</p>';
@@ -42,11 +40,11 @@
 			}
 		}?>
 
-		<div>
+		<div class="exercise-input--container">
 			<input value="0 points" readonly="readonly" type="text" name="total" />
 			<input type="submit" name="submit_btn" value="Finish" onclick="submitWorkout()">
 		</div>
-	<!-- </form> -->
+	</main>
 	<script src='<?= URLROOT ?>/public/src/scripts/generator-results.js'></script>
 </body>
 

@@ -48,7 +48,7 @@ class statistic
 		$this->db->bind(':username', $_COOKIE['username']);
         
 		$rez= $this->db->resultSet();
-        var_dump($rez);
+        // var_dump($rez);
         return $rez;
     }
 	public function getConsecutiveDays(){

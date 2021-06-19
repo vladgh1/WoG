@@ -1,3 +1,7 @@
+.generator-result-main--container {
+  position: relative;
+}
+
 .result-exercises--container {
   position: absolute;
   left: 50%;
@@ -47,5 +51,5 @@
   display: inline;
   position: absolute;
   right: 3rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
 }

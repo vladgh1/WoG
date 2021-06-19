@@ -25,20 +25,14 @@
 											?></h1>
 		</div>
 		<div class="general-info--container">
-		<!-- <?php var_dump($data) ?> -->
-			<p>Username: <?= $data->username ?></p>
-			<hr>
-			<p>Name: <?= $data->fullname; ?></p>
-			<hr>
-			<p>Age: <?= $data->age ?></p>
-			<hr>
-			<p>Height: <?= $data->height ?></p>
-			<hr>
-			<p>Weight: <?= $data->weight ?></p>
-			<hr>
+			<p>Username: <?= $data->username ?></p><hr>
+			<p>Name: <?= $data->fullname; ?></p><hr>
+			<p>Age: <?= $data->age ?></p><hr>
+			<p>Height: <?= $data->height ?></p><hr>
+			<p>Weight: <?= $data->weight ?></p><hr>
 			<p>Gender: <?= $data->gender ?></p>
 			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program</a>
-			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/random">Surprise me!</a>
+			<a id="generate-random--btn" class="landing-generate-button a--btn gray--btn" href="../users/random">Surprise me!</a>
 		</div>
 	</main>
 </body>

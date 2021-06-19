@@ -130,18 +130,16 @@ class Users extends Controller
 					$data['done'][$arg] = ($_POST[$arg] == 0 ? 0 : 1);
 				}
 			}
-			//var_dump($data);
+
 			// Validate workout id
 			if (empty($data['workout'])) {
 				$data['workoutError'] = 'Enter workout';
 			}
-			//var_dump($data['workout']);
+			
 			// Check if there are no errors
 			if (empty($data['workoutError'])) {
 				foreach ($data['workout'] as $workout) {
-					var_dump($workout);
 					$workoutId = $this->workout_model->getWorkoutId($workout);
-					//var_dump($workoutId);
 					if ($workoutId) {
 						$this->workout_model->completeWorkout($workoutId->id, $data['done'][$workout]);
 					}
