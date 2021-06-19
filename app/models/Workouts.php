@@ -146,7 +146,7 @@ class workouts
 
 	private function getWorkouts($data, $finished)
 	{
-		$this->db->query('SELECT * FROM workout w JOIN user_workout u ON u.workout=w.id JOIN workout_intensity i ON u.workout = i.workout_id AND u.intensity=i.intensity WHERE finished=:finished AND username=:username');
+		$this->db->query('SELECT * FROM workout w JOIN user_workout u JOIN workout_intensity i ON (w.id = u.workout AND u.intensity = i.intensity AND u.workout = i.workout_id) WHERE created_at = (SELECT MAX(created_at) FROM user_workout WHERE u.finished = :finished AND username = :username GROUP BY username)');
 		$this->db->bind(':username', $data['username']);
 		$this->db->bind(':finished', $finished);
 		return $this->db->resultSet();
