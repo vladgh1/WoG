@@ -31,8 +31,10 @@
 			<p>Height: <?= $data->height ?></p><hr>
 			<p>Weight: <?= $data->weight ?></p><hr>
 			<p>Gender: <?= $data->gender ?></p>
-			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program</a>
-			<a id="generate-random--btn" class="landing-generate-button a--btn gray--btn" href="../workout/saveAverageProgram">Surprise me!</a>
+			<div class="generate-buttons--container">
+				<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program</a>
+				<a id="generate-random--btn" class="landing-generate-button a--btn gray--btn" href="../workout/saveAverageProgram">Surprise me!</a>
+			</div>
 		</div>
 	</main>
 </body>

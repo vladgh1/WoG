@@ -250,6 +250,21 @@ ul {
     color: rgb(41, 65, 65)
 }
 
+.generate-buttons--container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#generate--btn {
+	margin: 0 .3rem 0 0;
+}
+
+#generate-random--btn {
+	margin: 0;
+}
+
 .info-panel--container {
     overflow: scroll;
     width: auto;
@@ -331,7 +346,8 @@ ul {
 }
 
 @media screen and (max-width: 460px) {
-    #generate--btn {
+    #generate--btn,
+	#generate-random--btn {
         font-size: 0.8rem;
         word-wrap: break-word;
     }
