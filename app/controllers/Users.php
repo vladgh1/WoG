@@ -52,14 +52,32 @@ class Users extends Controller
 
 		$this->view('info/leaderboard', $data);
 	}
+	public function getScoreByMonth(){
+		$data=[];
+		$data['scoreByMonth'] = $this->statistics_model->getScoreByMonth();
+		echo json_encode($data);
+		return $data;
 
+	}
+	public function getIntendedPoints(){
+		$data=[];
+		$data['intendedPoints'] = $this->statistics_model->getIntendedPoints();
+		echo json_encode($data);
+		return $data;
+
+	}
+
+	public function getFocusPoints(){
+		$data=[];
+		$data['focusPoints'] = $this->statistics_model->getFocusPoints();
+		echo json_encode($data);
+		return $data;
+
+	}
 	public function statistics()
 	{
 		$data=[];
 		$data['consecutiveDays']= $this->statistics_model->getConsecutiveDays();
-		$data['scoreByMonth'] = $this->statistics_model->getScoreByMonth();
-		$data['intendedPoints'] = $this->statistics_model->getIntendedPoints();
-		$data['focusPoints'] = $this->statistics_model->getFocusPoints();
 		$this->view('info/statistics',$data);
 	}
 
