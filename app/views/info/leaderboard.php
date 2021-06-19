@@ -16,7 +16,7 @@
 <body>
 	<?php include_once APPROOT . '/views/includes/loggedInHeader.php'; ?>
 	<main class="leaderboard--container">
-		<h2>Leaderboard</h2>
+		<h2>Leaderboard <a href="<?= URLROOT ?>/public/users/leaderboardRSS"><img src="<?= URLROOT ?>/public/src/images/rss.png" alt="rss" height="20"></a></h2>
 		<section class="leaderboards-table--container">
 			<div class="leaderboard-table--container">
 				<h3>Last month</h3>

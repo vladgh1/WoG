@@ -30,7 +30,6 @@
 			<hr>
 			<p>Name: <?= $data->fullname; ?></p>
 			<hr>
-			<!-- TODO: calcul din data nasterii! -->
 			<p>Age: <?= $data->age ?></p>
 			<hr>
 			<p>Height: <?= $data->height ?></p>
@@ -38,7 +37,8 @@
 			<p>Weight: <?= $data->weight ?></p>
 			<hr>
 			<p>Gender: <?= $data->gender ?></p>
-			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program!</a>
+			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/generator">Generate a program</a>
+			<a id="generate--btn" class="landing-generate-button a--btn gray--btn" href="../users/random">Surprise me!</a>
 		</div>
 	</main>
 </body>
