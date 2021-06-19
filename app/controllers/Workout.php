@@ -5,19 +5,10 @@ class Workout extends Controller
 
 	public function __construct() {
 		$this->workout_model = $this->model('Workouts');
-
-		$this->statistic_model = $this->model('Statistic');//scoate-ma cand termini!
 	}
 
 	public function saveProgram()
 	{
-		//scoate si aia din constructor!!!
-
-		// $this->statistic_model->getNrWorkoutsPerWeekDay();//ok
-		// $this->statistic_model->nrWorkoutsPerWeek();//ok
-		// $this->statistic_model->nrWorkoutsPerMonth();//ok
-		$this->statistic_model->nrWorkoutsByIntensity();
-
 		$data = [
 			'intensity' => $_POST['intensity'],
 			'Pfocus'=> $_POST['Pfocus'],
@@ -44,8 +35,10 @@ class Workout extends Controller
 			'Wtime' => $dataAverage['Wtime'],
 			'intended' => $dataIntended['intended']
 		];
+
+		$workout = $this->generateProgram($data);
 		
-		$this->view('info/generatorResults', $data);
+		$this->view('info/generatorResults', $workout);
 	}
 
 	public function generateProgram($data)
