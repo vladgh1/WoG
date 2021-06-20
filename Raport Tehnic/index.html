@@ -2,204 +2,194 @@
 <html lang="ro">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Raport Tehnic</title>
-  <link rel="stylesheet" href="css/scholarly.min.css">
-  <script src="js/scholarly.min.js"></script>
-   <meta name="keywords" content="project,infoiasi, web">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Raport Tehnic</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+    <meta name="keywords" content="project,infoiasi, web">
 </head>
+
 <body prefix="schema: http://schema.org">
-  <header>
-    <div class="banner">
-      <div class="status">Relizatori proiect: Gheorghita Vlad, Pavel Boris si Zbant Alex</div>
+    <header>
+        <div class="banner">
+            <div class="status">Relizatori proiect: Gheorghita Vlad, Pavel Boris si Zbant Alex</div>
+        </div>
+        <h1>Raport tehnic proiect Workout Generator(WOG)</h1>
+    </header>
+
+
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+                Gheorghita Vlad, Pavel Boris, Zbant Gabriel Alexandru
+            </dd>
+            <dt>Discussion Group</dt>
+            <dd>
+                Gheorghita Vlad, Pavel Boris, Zbant Gabriel Alexandru
+            </dd>
+            <dt>License</dt>
+            <dd>
+                FII-puternic srl (G) & (P) & (Z) 2021 Pavaloi_NiceTeacher
+            </dd>
+        </dl>
     </div>
-    <h1>Raport Tehnic proiect Workout Generator(WOG)</h1>
-  </header>
 
 
-  <div role="contentinfo">
-    <dl>
-      <dt>Authors</dt>
-      <dd>
-        Gheorghita Vlad,
-        Pavel Boris,
-        Zbant Gabriel Alexandru
-      </dd>
-      <dt>Discussion Group</dt>
-      <dd>
-        Gheorghita Vlad,
-        Pavel Boris,
-        Zbant Gabriel Alexandru
-      </dd>
-      <dt>License</dt>
-      <dd>
-        FII-puternic srl (G) & (P) & (Z) 2021 Pavaloi_NiceTehacher
-      </dd>
-    </dl>
-  </div>
+
+    <section id="structure">
+        <!-- review? -->
+        <h2>MVC</h2>
+        <p>
+            In implementarea site-ului s-a utilizat modelul MVC.
+        </p>
+        <section id="Models">
+            <h3>Models</h3>
+            <img src="photos/models.png" alt="models">
+            <p>
+                <ul>
+                    <li>Statistic</li>
+                    <li>User</li>
+                    <li>Workouts</li>
+                </ul>
+                In modelul Statistics sunt functii ce sunt folosite pentru generarea de date a tuturor statisticilor prezente pe site. In modelul User sunt prezente functiile ce sunt folosite de fiecare utilizator al site-ului. In modelul Workouts sunt functiile ce se
+                ocupa cu generarea de workout.
+            </p>
+        </section>
+        <section id="Views">
+            <h3>Views</h3>
+            <img src="photos/views.png" alt="views">
+            <p>
+                home
+                <ul>
+                    <li>error</li>
+                    <li>index</li>
+                    <li>loggedInIndex</li>
+                </ul>
+                includes
+                <ul>
+                    <li>header</li>
+                    <li>loggedInHeader</li>
+                </ul>
+                info
+                <ul>
+                    <li>exerciseDetails</li>
+                    <li>generator</li>
+                    <li>generatorResults</li>
+                    <li>leaderboard</li>
+                    <li>login</li>
+                    <li>profile</li>
+                    <li>register</li>
+                    <li>statistics</li>
+                    <li>workout</li>
+                </ul>
+                Pe partea de home sunt view-urile ce afiseaza paginile generale ale site-ului, partea de includes contine headerele prezente pe fiecare pagina, iar partea de info paginile propriu zise ce ofera informatii in site.
+            </p>
+        </section>
+        <section id="Controllers">
+            <h3>Controllers</h3>
+            <img src="photos/controllers.png" alt="controllers">
+            <p>
+                <ul>
+                    <li>Home</li>
+                    <li>Users</li>
+                    <li>Workout</li>
+                </ul>
+                Controllerele updateaza modelurile si view-urile corespondente.
+            </p>
+        </section>
 
 
-  <section id="introduction" role="doc-introduction">
-    <h2>Introduction</h2>
-    <p>
-      Acest proiect este dezvoltat cu gandul de a oferi utilizatorului o interfata prietenoasa in drumul spre
-      o viata activa si sanatoasa.
-    </p>
-  </section>
-  <section id="structure">
-    <!-- review? -->
-    <h2>Page Inner Workings</h2>
-    <section id="Register">
-      <h3>Pagina de register</h3>
-      <img src="photos/paginaRegister.png" alt="paginaRegister">
-      <p>
-        Pagina de inregistrare foloseste Validator pentru a verifica corectitudinea informatiilor introduse si a evita introducerea de informatii gresite.
-        Datele introduse gresit primesc un feedback negativ din partea site-ului. Lucru ce imbunatateste normalizarea datelor venite.
-      </p>
-      <p>
-        De asemenea, este verificata unicitatea fiecariu utilizator nou.
-      </p>
+
+
     </section>
-    <section id="Login">
-      <h3>Pagina de logare</h3>
-      <img src="photos/paginaLogin.png" alt="paginaLogin">
-      <p>
-        Paina de logare foloseste Validator pentru a compara datele introduse cu cele existente in baza de date, iar in caz de esec, notifica
-        utilizatorul prin mesaje sugestive.
-      </p>
-    </section>
-    <section id="LoggedIn">
-      <h2>
-        Logged in page
-      </h2>
-      <img src="photos/paginaDupaLogare.png" alt="paginaDupaLogare">
-      <p>
-        Pagina de dashboard primeste datele fiecarui utilizator din baza de date si le afiseaza in tabelul din partea dreapta a ecranului.
-      </p>>
-    </section>
-    <section id="Error">
-      <h2>
-        Error 404 page
-      </h2>
-      <img src="photos/error.png" alt="error">
-      <p>
-        Pagina de Error prezinta un joc ce foloseste 2 spite-uri pentru a crea animatia, 
-      </p>
+    <section id="Baze de date">
+        <h2>Baze de date</h2>
+        <section id="MySQL">
+            <h3>MySQL</h3>
+            <p>
+                Pentru stocarea datelor s-a folosit sistemul de gestiune a bazelor de date relational MySQL.
+            </p>
+            <img src="photos/bd.png" alt="bd">
+            <p>
+                Tabele:
+                <ul>
+                    <li>user</li>
+                    <li>userinfo</li>
+                    <li>user_workout</li>
+                    <li>workout</li>
+                    <li>workout_intensity</li>
+                </ul>
+                Views:
+                <ul>
+                    <li>leaderboard</li>
+                    <li>leaderboard_last_month</li>
+                    <li>leaderboard_last_year</li>
+                </ul>
+            </p>
+            <p>
+                Tabela user este folosita pentru a stoca detaliile de logare, cum ar fi numele de utilizator, e-mailul si parola hash-uita. Userinfo detine toate informatiile personale ale unui user, user_workout contine toate antrenamentele pe care le-a generat utilizatorul.
+                workout contine toate detaliile exercitiilor de antrenament, iar workout_intensity punctajele,repetarile, seturile pentru fiecare exercitiu.
+            </p>
+            <p>
+                View-urile calculeaza punctajele folosind tabelele existente.
+            </p>
+        </section>
     </section>
 
-    <section id="Generate">
-      <h2>
-        Pagina Generare
-      </h2>
-      <img src="photos/paginaGenerare.png" alt="paginaGenerare">
-      <p>
-        La pagina de generare, utilizatorul este intampiat de un formular unde trebuie inroduse niste preferinte 
-        in vederea generarii unui program de antrenament. Dupa ce este realizat acest pas, algoritmul genereaza un antrenament in mod nedeterminist.
-      </p>
+    <section id="Autentificare si Inregistrare">
+        <h2>Autentificare si Inregistrare</h2>
+        <section id="Autentificare">
+            <h3>Autentificare</h3>
+            <p>
+                Pentru autentificare se creaza o sesiune cu datele utilizatorului si se valideaza username-ul si parola.
+            </p>
+            <img src="photos/login.png" alt="login">
+        </section>
+        <section id="Inregistrare">
+            <h3>Inregistrare</h3>
+            <p>
+                Pentru inregistrare se folosesc validators pentru fiecare input.
+            </p>
+            <img src="photos/register.png" alt="register">
+        </section>
     </section>
+    <section id="sistemul de management">
+        <h2>Sistemul de management</h2>
+        <section id="GIT">
+            <h3>GitHub</h3>
+            <p>
+                Pentru management-ul codului am folosit GitHub.
+            </p>
+            <img src="photos/git.png" alt="git">
+        </section>
 
-    <section id="Workout">
-      <h2>
-        Pagina Workout
-      </h2>
-      <img src="photos/paginaWorkout.png" alt="paginaWorkout">
-      <p>
-        Pagina de workout ofera utilizatorului un tabel unde poate sa isi acceseze exercitiile ce nu sunt terminate si sa 
-        vada antrenamentul curent. De asemenea, cand un antrenament este terminat, utilizatorul 
-        primeste un punctaj ce se adauga la scor pentru clasament.  
-      </p>
-    </section>
 
-    <section id="Profile">
-      <h2>
-        Pagina Profile
-      </h2>
-      <img src="photos/paginaSettings.png" alt="paginaSettings">
-      <p>
-        Pagina de profil prezinta utilizatorului un formular unde ii sunt incarcate datele trimise in momentul inregistrarii.
-         Acest formular ofera posibiltatea de a modifica acele date intr-un mod simplu si rapid.
-      </p>
-    </section>
 
-    <section id="Details">
-      <h2>
-        Pagina Detalii
-      </h2>
-      <img src="photos/paginaDetalii.png" alt="paginaDetalii">
-      <p>
-        Daca utilizatorul se afla pe pagina de workout, si doreste sa afle mai multe detalii despre un anumit antrenament,
-        acesta poate da click pe numele acelui antrenament si este dus pe pagina unde sunt prezentate detalii despre acel
-        antrenament, cat si un videoclip.
-      </p>
-    </section>
-
-    <section id="Statistics">
-      <h2>
-        Pagina Statistica
-      </h2>
-      <img src="photos/paginaStatistica.png" alt="paginaStatistica">
-      <p>
-        In meniul din partea de sus a paginii, utilizatorul gaseste putonul "Statistics" ce il trimite pe pagina de statistica 
-        unde gaseste grafice si valori reprezentand informatiile despre activitatea sa pe site.
-      </p>
-      <p>
-        Primul grafic arata numarul de puncte adunate pe luna.
-      </p>
-      <p>
-        Al doilea grafic arata ce mase musculare ai antrenat pana in acest moment si de cate ori.
-      </p>
-      <p>
-        Al treilea grafic arata ce tipuri de exercitii ai avut pana acuma si numarul acestora.
-      </p>
-      <p>
-        Graficul numarul 4 arata numarul de exercitii realizate in medie in fiecare zi a saptamanii.
-      </p>
-      <p>
-        Ultimul grafic arata cate antrenamente de o anumita intesitate ai facut pana acuma.
-      </p>
-      <p>
-        Cele 3 randuri de sub grafice arata: cea mai lunga serie de zile consecutive in care ai avut activitate,
-        cate antrenamente ai in medie pe saptamana, si cate antrenamente ai in medie pe luna.
-      </p>
-    </section>
-
-    <section id="Leaderboard">
-      <h2>
-        Pagina Detalii
-      </h2>
-      <img src="photos/paginaLeaderboard.png" alt="paginaLeaderboard">
-      <p>
-        In meniul din partea de sus a paginii, utilizatorul gaseste putonul "Leaderboard" ce il trimite pe pagina de leaderboard 
-        unde gaseste clasamentul cu utilizatorii de pe site, si progresul lor. Aici utilizatorul curent este afisat cu culoarea galbena.
-      </p>
-      <p>
-        Aici utilizatorul poate accesa si descarca clasamentul in format JSON si PDF, si il poate avea tip RSS.
-      </p>
-    </section>
-
-  </section>
-  <section id="external">
-    <h2 id="resurse">
-      Biblioteci Folosite
-    </h2>
-    <section id="FPDF">
-      <h2>
-        FPDF
-      </h2>
-      <p>
-        Generare fisiere PDF pentru pagina de leaderboard.
-      </p>
-    </section>
-    <section id="Chart.JS">
-      <h2>
-        Chart.JS
-      </h2>
-      <p>
-        Generare grafice pentru pagina de statistica.
-      </p>
-    </section>
-  </section>
+        <section id="external">
+            <h2 id="resurse">
+                Biblioteci
+            </h2>
+            <section id="FPDF">
+                <h2>
+                    FPDF
+                </h2>
+                <img src="photos/pdf.png" alt="pdf">
+                <p>
+                    Generare fisiere PDF pentru pagina de leaderboard.
+                </p>
+            </section>
+            <section id="Chart.JS">
+                <h2>
+                    Chart.js
+                </h2>
+                <img src="photos/chart.png" alt="chart">
+                <p>
+                    Generare grafice pentru pagina de statistica.
+                </p>
+            </section>
+        </section>
 </body>
 
 </html>
