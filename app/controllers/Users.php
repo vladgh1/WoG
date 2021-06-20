@@ -5,7 +5,7 @@ class Users extends Controller
 	private static $fullname_validation = "/^[A-Z][\-a-z]*\s([A-Z]\.)?[A-Z][\-a-z]*$/";
 	public static $username_validation = "/^[_a-zA-Z0-9]+$/";
 	private static $email_validation = "/^[^\s]+@[^\s]+\.[^\s]+$/i";
-	public static $password_validation = "/^([a-z]+|[0-9]+|[A-Z]+)*$/";
+	public static $password_validation = "/^(?=.{3,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$/";
 	private static $gender_validation = "/^(fe)?male$/i";
 	private static $height_unit_validation = "/^(cm|feet)$/i";
 	private static $weight_unit_validation = "/^(kg|lb)$/i";
